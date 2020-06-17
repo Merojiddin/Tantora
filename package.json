@@ -2,6 +2,17 @@
   "name": "online-exhibition",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "serve": "serve -s build",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "lint": "tslint --project .",
+    "check": "yarn run lint && yarn run typecheck",
+    "test": "node scripts/test.js",
+    "generate": "graphql-codegen --config codegen.js"
+  },
   "dependencies": {
     "@apollo/react-hooks": "3.1.5",
     "@babel/core": "7.9.0",
@@ -100,16 +111,15 @@
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
   },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "serve": "serve -s build",
-    "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "typecheck": "tsc --noEmit",
-    "lint": "tslint --project .",
-    "check": "yarn run lint && yarn run typecheck",
-    "test": "node scripts/test.js",
-    "generate": "graphql-codegen --config codegen.js"
+  "devDependencies": {
+    "graphql-code-generator": "0.18.2",
+    "graphql-codegen-typescript-react-apollo-template": "0.18.2",
+    "prettier": "2.0.5",
+    "tslint": "6.1.2",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-loader": "3.5.4",
+    "tslint-plugin-prettier": "2.3.0",
+    "tslint-react": "5.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -125,16 +135,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "graphql-code-generator": "0.18.2",
-    "graphql-codegen-typescript-react-apollo-template": "0.18.2",
-    "prettier": "2.0.5",
-    "tslint": "6.1.2",
-    "tslint-config-prettier": "1.18.0",
-    "tslint-loader": "3.5.4",
-    "tslint-plugin-prettier": "2.3.0",
-    "tslint-react": "5.0.0"
   },
   "jest": {
     "roots": [

@@ -14,7 +14,22 @@ interface IRecentChat extends IFriend {
   createdDate: string;
 }
 
+interface IMessage {
+  senderId: string;
+  receiverId: string;
+  content: string;
+  createdDate: string;
+}
+
+interface IMessagesResponse {
+  messages: IMessage[];
+  userName: string;
+  firstName: string;
+  lastName: string;
+}
+
 class ChatStore {
+  @observable public chats = observable.map<string, IMessage[]>([]);
   @observable public friends: IFriend[] = [];
   @observable public recentChats: IRecentChat[] = [];
 
@@ -41,25 +56,47 @@ class ChatStore {
     // listeners
     this.socket?.on('recent messages', this.handleRecents);
     this.socket?.on('friends', this.handleFriends);
+    this.socket?.on('user joined', this.handleUserJoin);
+
+    this.socket?.on('new message', this.handleNewMessages);
+
+    this.socket?.on('messages list', this.handleNewMessage);
   }
 
   @action handleEnterChat = (receiverid: string, room: string) => {
     this.socket?.emit('enter chat', {
       username: this.authStore.user?.userName,
-      userId: this.authStore.user?.userId,
+      userid: this.authStore.user?.userId,
       receiverid,
       room,
     })
-  }
+  };
+
+  @action handleNewMessages = (username: string, data: IMessage) => {
+    const currentChats = this.chats.get(username) || [];
+    this.chats.set(username, [...currentChats, data]);
+  };
+
+  @action handleNewMessage = (data: IMessagesResponse) => {
+    const currentChats = this.chats.get(data.userName) || [];
+    this.chats.set(data.userName, [...currentChats, ...data.messages]);
+  };
+
+  @action handleUserJoin = (_: string) => {
+    // TODO ...need to implememt
+  };
 
   @action handleRecents = (data: IRecentChat[]) => {
-    console.log('HANDLE RECENT', data);
     this.recentChats = data;
-  }
+  };
 
   @action handleFriends = (data: IFriend[]) => {
     this.friends = data;
-  }
+  };
+
+  @action handleSend = (chatInput: string) => {
+    this.socket?.emit('new message', chatInput);
+  };
 }
 
 export default ChatStore;
