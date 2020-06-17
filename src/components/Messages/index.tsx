@@ -31,7 +31,7 @@ const Messages = observer(() => {
 
   return (
     <div className={classes.container}>
-      <FriendList socket={mainSocket} />
+      <FriendList />
       <Route
         exact={true}
         path="/messages/:username/:userid"

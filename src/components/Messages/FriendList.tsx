@@ -1,5 +1,6 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { observer }  from 'mobx-react-lite';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,30 +9,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import UserIcon from '@material-ui/icons/Person';
 import Divider from '@material-ui/core/Divider';
-import { Socket } from 'hooks/useSocket';
 
-interface IUser {
-  userId: string;
-  userName: string;
-  firstName: string;
-  lastName: string;
-}
+import useStore from 'hooks/useStore';
 
-interface IProps {
-  socket?: Socket;
-}
-
-const FriendList: FC<IProps> = ({ socket }) => {
-  const [friends, setFriends] = useState<IUser[]>([]);
+const FriendList: FC = observer(() => {
   const classes = useStyles();
-
-  useEffect(() => {
-    if (socket) {
-      socket.io?.on('recent messages', (data: IUser[]) => {
-        setFriends(data);
-      });
-    }
-  }, [socket]);
+  const { chatStore } = useStore();
 
   return (
     <div className={classes.container}>
@@ -39,7 +22,7 @@ const FriendList: FC<IProps> = ({ socket }) => {
         Recents
       </Typography>
       <List>
-        {friends.map(({ userName, userId }, idx) => (
+        {chatStore.recentChats.map(({ userName, userId }, idx) => (
           <Link
             key={userName}
             to={`/messages/${userName}/${userId}`}
@@ -51,13 +34,13 @@ const FriendList: FC<IProps> = ({ socket }) => {
               </ListItemIcon>
               <ListItemText>{userName}</ListItemText>
             </ListItem>
-            {idx < friends.length - 1 && <Divider />}
+            {idx < chatStore.recentChats.length - 1 && <Divider />}
           </Link>
         ))}
       </List>
     </div>
   );
-};
+});
 
 const useStyles = makeStyles((theme) => ({
   container: {
