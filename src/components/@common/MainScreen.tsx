@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-// import hexToRgb from 'hex-rgb';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Search from './Search'

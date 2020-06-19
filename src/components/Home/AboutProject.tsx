@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
+import ColoredLine from '../@common/HrLine'
 import MyTabs from './Tabs';
 
 const text =
@@ -12,28 +13,41 @@ const About: FC = () => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="lg" className={classes.root}>
-      <Typography variant="h4" className={classes.title}>
-        About The Project
-      </Typography>
-      <Typography className={classes.text}>{text}</Typography>
-      <MyTabs />
-    </Container>
+    <div className={classes.div}>
+      <Container maxWidth="lg" className={classes.root}>
+        <Typography variant="h4" className={classes.title}>
+          <strong>About</strong> The Project
+        </Typography>
+        <ColoredLine color="#00D1FF" width="132px" margin="auto auto 25px" right="127px" height="6px" />
+
+        <Typography className={classes.text}>{text}</Typography>
+        <MyTabs />
+      </Container>
+    </div>
   );
 };
 
 const useStyles = makeStyles({
+  div: {
+    backgroundColor: '#13303F',
+    paddingTop: 1,
+  },
   root: {
     width: '100%',
-    marginBottom: 150,
+    marginBottom: 150, 
   },
   title: {
+    fontFamily: 'Segoe UI',
     textAlign: 'center',
-    marginBottom: 25,
+    marginBottom: 0,
+    marginTop: 92,
+    fontSize: 48,
   },
   text: {
+    fontFamily: 'Segoe UI',
     fontSize: 18,
-    textAlign: 'left',
+    textAlign: 'center',
+    letterSpacing: '-0.015em',
     margin: '25px 0 50px',
   },
 });

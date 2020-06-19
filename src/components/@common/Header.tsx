@@ -20,6 +20,7 @@ import useStore from 'hooks/useStore';
 import Menu from 'components/@common/Menu';
 import MenuMobile from 'components/@common/MenuMobile';
 
+
 const LogoutQuery = gql`
   query($token: String!) {
     logout(token: $token) {
@@ -93,7 +94,9 @@ const Header = observer(() => {
             <Link to="/" style={{ textDecoration: 'none' }}>
               <Button>
                 <Typography variant="h6" className={classes.whiteBtn}>
-                  Tantora
+                  <IconButton > 
+                    Gerb
+                  </IconButton>
                 </Typography>
               </Button>
             </Link>
