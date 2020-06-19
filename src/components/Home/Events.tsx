@@ -69,8 +69,7 @@ const Events: FC = () => {
                       ? description
                       : description!.slice(0, 250) + ' ...'} {text}
                   </Typography>
-                  <div className={classes.boxForDateBtn}>
-                  </div>
+                  <div className={classes.boxForDateBtn} />
                 </div>
               );
             }
