@@ -44,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 24,
     fontFamily: 'Segoe UI',
+    color: theme.palette.common.white,
+    marginTop: '97px'
   },
   searchInputFieldContainer: {
     display: 'flex',
@@ -52,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
     backgroundColor: 'rgba(255, 255, 255, 0.04)',
     border: 'none 1px black',
-    height: 167
+    height: 167,
+    zIndex: 100
 
   },
   input: {
@@ -63,18 +66,22 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(255, 255, 255, 0.13)',
     padding: '22px 37px 19px',
     zIndex: 100,
+    border: '1px solid rgba(255, 255, 255, 0.16)',
+    boxSizing: 'border-box',
     
   },
   iconButton: {
     padding: 10,
     position: 'relative',
-    left: '-76px'
+    left: '-76px',
+    color: '#00D1FF'
   },
   divider: {
     height: 40,
     margin: 4,
     position: 'relative',
-    left: '-97px'
+    left: '-97px',
+    border: '1px solid rgba(255, 255, 255, 0.19)',
   },
   button: {
     position: 'absolute',

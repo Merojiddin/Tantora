@@ -28,9 +28,6 @@ const MainScreen: FC<IProps> = (props) => {
 
 const useStyles = (props: IStyleProps) =>
   makeStyles((theme) => {
-    //const black = hexToRgb(theme.palette.common.black);
-    // const primary = hexToRgb(theme.palette.secondary.main);
-
     return {
       wrapper: {
         position: 'relative',
@@ -53,7 +50,7 @@ const useStyles = (props: IStyleProps) =>
           left: 0,
           top: 0,
           // tslint:disable-next-line: prettier
-         // background: `linear-gradient(90deg, rgba(${black.red}, ${black.green}, ${black.blue}, 0.5) 0%, rgba(${primary.red}, ${primary.green}, ${primary.blue}, 0.7) 96%)`,
+          background: `rgba(19, 48, 63, 0.9)`,
         },
       },
       title: {
@@ -70,9 +67,10 @@ const useStyles = (props: IStyleProps) =>
         fontFamily: 'Segoe UI',
         fontSize: 36,
         textAlign: 'center',
-        marginTop: -20,
         width: '100%',
         color: theme.palette.common.white,
+        marginTop: '20px',
+        zIndex: 1001
 
       }
     };
