@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import { NAV_ITEMS } from './MenuMobile';
@@ -13,7 +12,7 @@ const Menu = () => {
 
   return (
     <List className={classes.list}>
-      {NAV_ITEMS.map(({ label, link, icon }) => (
+      {NAV_ITEMS.map(({ label, link }) => (
         <Link to={link} key={label}>
           <ListItem
             className={classes.button}
@@ -21,7 +20,6 @@ const Menu = () => {
             key={label}
             button={true}
           >
-            <ListItemIcon className={classes.icon}>{icon}</ListItemIcon>
             <ListItemText primary={label} />
           </ListItem>
         </Link>

@@ -1,15 +1,13 @@
 import React, { FC } from 'react';
 import MainScreen from '../@common/MainScreen';
-import Search from './Search';
 import Events from './Events';
 import About from './AboutProject';
 
-const image = require('../../assets/images/bgImg.jpg');
+const image = require('../../assets/images/mainbg.jpg');
 
 const Home: FC = () => (
   <>
-    <MainScreen title={'Tantora'} bgSrc={image} />
-    <Search />
+    <MainScreen title={'ONLINE-FAIR'} bgSrc={image} />
     <Events />
     <About />
   </>

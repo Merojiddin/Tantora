@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import MainScreen from '../@common/MainScreen';
-import Search from '../Home/Search';
+import Search from '../@common/Search';
 import Events from './Events';
 
 const image = require('../../assets/images/bgImg.jpg');
