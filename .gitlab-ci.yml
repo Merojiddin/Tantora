@@ -5,12 +5,44 @@ image: node:latest
 #   - redis:latest
 #   - postgres:latest
 
+stages:
+  - test
+  - build
+  - deploy
+
 cache:
+  key: ${CI_BUILD_REF_NAME}
   paths:
     - node_modules/
 
 test:
+  stage: test
+  tags:
+    - front
   script:
     - yarn
     - yarn run format
     - yarn run check
+
+build_stage:
+  stage: build
+  tags:
+    - front
+  before_script:
+    - yarn
+  script: yarn build
+  except:
+    - master
+  artifacts:
+    paths:
+      - build/
+  variables:
+    REACT_APP_CHAT_URL: https://tantora-chat.herokuapp.com/
+    REACT_APP_BACKEND_URL: https://online-exhibition.herokuapp.com/graphql
+
+#deploy_stage:
+#  stage: deploy
+#  tags:
+#    - front
+#  script:
+#    - mkdir /
