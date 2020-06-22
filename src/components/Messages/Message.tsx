@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import get from 'lodash/get';
 import { useParams } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
@@ -16,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import useStore from 'hooks/useStore';
 import roomCreator from 'helpers/roomCreator';
 
-const Message: FC = () => {
+const Message: FC = observer(() => {
   const { authStore, chatStore } = useStore();
   const [chatInput, setChatInput] = useState('');
   const { username, userid } = useParams<{
@@ -34,7 +35,7 @@ const Message: FC = () => {
   );
 
   useEffect(() => {
-    chatStore.handleEnterChat(username, room);
+    chatStore.handleEnterChat(userid, username, room);
   }, [username, userid]);
 
   useEffect(() => {
@@ -86,7 +87,7 @@ const Message: FC = () => {
       />
     </Container>
   );
-};
+});
 
 const useStyles = (online: boolean) =>
   makeStyles((theme) => ({

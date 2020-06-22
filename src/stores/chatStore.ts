@@ -63,11 +63,12 @@ class ChatStore {
     this.socket?.on('messages list', this.handleNewMessage);
   }
 
-  @action handleEnterChat = (receiverid: string, room: string) => {
+  @action handleEnterChat = (receiverId: string, receiverName: string, room: string) => {
     this.socket?.emit('enter chat', {
-      username: this.authStore.user?.userName,
-      userid: this.authStore.user?.userId,
-      receiverid,
+      userName: this.authStore.user?.userName,
+      userId: this.authStore.user?.userId,
+      receiverId,
+      receiverName,
       room,
     })
   };

@@ -1,4 +1,4 @@
-image: node:latest
+image: node:10
 
 # services:
 #   - mysql:latest
@@ -8,15 +8,24 @@ image: node:latest
 stages:
   - test
   - build
-  - deploy
+  - deploy_review
+  - deploy_staging
 
 cache:
-  key: ${CI_BUILD_REF_NAME}
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
 
+variables:
+  STAGING_DOMAIN: tantora-staging.surge.sh
+  REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
+
 test:
   stage: test
+  only:
+    - master
+    - development
+    - merge_requests
   script:
     - yarn
     - yarn run format
@@ -24,11 +33,13 @@ test:
 
 build_stage:
   stage: build
+  only:
+    - master
+    - development
+    - merge_requests
   before_script:
     - yarn
-  script: yarn build
-  except:
-    - master
+  script: yarn run build
   artifacts:
     paths:
       - build/
@@ -36,9 +47,39 @@ build_stage:
     REACT_APP_CHAT_URL: https://tantora-chat.herokuapp.com/
     REACT_APP_BACKEND_URL: https://online-exhibition.herokuapp.com/graphql
 
-#deploy_stage:
-#  stage: deploy
-#  tags:
-#    - front
-#  script:
-#    - mkdir /
+deploy_review:
+  stage: deploy_review
+  only:
+    - merge_requests
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    url: https://$REVIEW_DOMAIN
+    on_stop: stop_review
+  script:
+    - npm install --global surge
+    - surge --project ./build --domain $REVIEW_DOMAIN
+
+stop review:
+  stage: deploy_review
+  only:
+    - merge_requests
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - npm install --global surge
+    - surge teardown $REVIEW_DOMAIN
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    action: stop
+
+deploy staging:
+  stage: deploy_staging
+  environment:
+    name: staging
+    url: http://$STAGING_DOMAIN
+  only:
+    - development
+  script:
+    - npm install --global surge
+    - surge --project ./public --domain $STAGING_DOMAIN
