@@ -5,7 +5,8 @@ WORKDIR /app
 COPY ./package.json .
 COPY ./yarn.lock .
 
-RUN yarn
+RUN yarn config set registry https://registry.yarnpkg.com &&\
+    yarn
 
 COPY ./ /app
 

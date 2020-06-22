@@ -17,8 +17,6 @@ cache:
 
 test:
   stage: test
-  tags:
-    - front
   script:
     - yarn
     - yarn run format
@@ -26,8 +24,6 @@ test:
 
 build_stage:
   stage: build
-  tags:
-    - front
   before_script:
     - yarn
   script: yarn build
