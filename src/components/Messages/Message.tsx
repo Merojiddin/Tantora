@@ -7,45 +7,25 @@ import React, {
   KeyboardEventHandler,
 } from 'react';
 import get from 'lodash/get';
-import { makeStyles } from '@material-ui/core/styles';
 import { useParams } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
-import { Socket } from 'hooks/useSocket';
 import useStore from 'hooks/useStore';
 import roomCreator from 'helpers/roomCreator';
 
-interface IProps {
-  socket?: Socket;
-}
-
-interface IMessage {
-  senderId: string;
-  receiverId: string;
-  content: string;
-  createdDate: string;
-}
-
-interface IMessagesResponse {
-  messages: IMessage[];
-  userName: string;
-  firstName: string;
-  lastName: string;
-}
-
-const Message: FC<IProps> = ({ socket }) => {
-  const { authStore } = useStore();
-  const [userOnline, setUserOnline] = useState(false);
+const Message: FC = observer(() => {
+  const { authStore, chatStore } = useStore();
   const [chatInput, setChatInput] = useState('');
-  const [messages, setMessage] = useState<IMessage[]>([]);
   const { username, userid } = useParams<{
     username: string;
     userid: string;
   }>();
   const contentRef = useRef(null);
-  const classes = useStyles(userOnline)();
+  const classes = useStyles(false)();
 
   const room = roomCreator(
     get(authStore, 'user.userName', ''),
@@ -55,31 +35,12 @@ const Message: FC<IProps> = ({ socket }) => {
   );
 
   useEffect(() => {
-    if (socket !== undefined) {
-      socket.io?.emit('enter chat', {
-        username: authStore.user?.userName,
-        userid: authStore.user?.userId,
-        receiverid: userid,
-        room,
-      });
+    chatStore.handleEnterChat(userid, username, room);
+  }, [username, userid]);
 
-      socket.io!.on('user joined', (newUser: string) => {
-        if (newUser !== authStore.user?.userName) {
-          setUserOnline(true);
-        }
-      });
-
-      socket.io?.on('new message', (data: IMessage) => {
-        setMessage((state) => [...state, data]);
-        scrollToBottom();
-      });
-
-      socket.io?.on('messages list', (data: IMessagesResponse) => {
-        setMessage((state) => [...data.messages, ...state]);
-        scrollToBottom();
-      });
-    }
-  }, [socket, username]);
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatStore.chats.get(username)]);
 
   const scrollToBottom = () => {
     if (Boolean(contentRef) && Boolean(contentRef.current)) {
@@ -91,16 +52,10 @@ const Message: FC<IProps> = ({ socket }) => {
     setChatInput(e.target.value);
   };
 
-  const handleEnter = () => {
-    if (socket !== undefined) {
-      socket.io?.emit('new message', chatInput);
-      setChatInput('');
-    }
-  };
-
   const handleKeyPress: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') {
-      handleEnter();
+      chatStore.handleSend(chatInput);
+      setChatInput('');
     }
   };
 
@@ -110,7 +65,7 @@ const Message: FC<IProps> = ({ socket }) => {
         {username} <span className={classes.indicator} />
       </Typography>
       <div className={classes.content} ref={contentRef}>
-        {messages.map((message, idx) => (
+        {(chatStore.chats.get(username) || []).map((message, idx) => (
           <div key={idx} className="wrapper">
             <div className="header">
               <span className="username">{message.senderId}</span>
@@ -132,7 +87,7 @@ const Message: FC<IProps> = ({ socket }) => {
       />
     </Container>
   );
-};
+});
 
 const useStyles = (online: boolean) =>
   makeStyles((theme) => ({
