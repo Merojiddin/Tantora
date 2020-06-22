@@ -28,7 +28,7 @@ const MyTabs: FC = () => {
       <TabPanel value={value} index={0} >
         {['0','1','2','3','4','5'].map((index)=> {
           return (
-            <div id={index} className={classes.tabItem}>
+            <div key={index} className={classes.tabItem}>
               <AcUnitIcon className={classes.tabIcon}/>
               <Typography className={classes.tabTitle} >Opportunity</Typography>
               <Typography className={classes.tabText} >An effective opportunity to strengthen business positions and enter new markets </Typography>
