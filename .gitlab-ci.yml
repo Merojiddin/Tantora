@@ -53,7 +53,7 @@ deploy_review:
     - merge_requests
   environment:
     name: review/$CI_COMMIT_REF_NAME
-    url: https://$REVIEW_DOMAIN
+    url: https://tantora-$CI_ENVIRONMENT_SLUG.surge.sh
     on_stop: stop_review
   script:
     - npm install --global surge
