@@ -59,7 +59,7 @@ deploy_review:
     - npm install --global surge
     - surge --project ./build --domain $REVIEW_DOMAIN
 
-stop review:
+stop_review:
   stage: deploy_review
   only:
     - merge_requests
