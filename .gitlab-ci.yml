@@ -21,10 +21,10 @@ variables:
   STAGING_DOMAIN: tantora-staging.surge.sh
   REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
 
-.test:
+test:
   stage: test
   tags:
-    - tantora
+    - front
   only:
     - master
     - development
@@ -37,7 +37,7 @@ variables:
 build_stage:
   stage: build
   tags:
-    - tantora
+    - front
   only:
     - master
     - development
@@ -54,7 +54,7 @@ build_stage:
 
 .deploy_base: &deploy
   tags:
-    - tantora
+    - front
   script:
     - npm install --global surge
     - surge --project ./build --domain $DOMAIN
@@ -103,7 +103,7 @@ deploy_staging:
 deploy_production:
   stage: deploy_production
   tags:
-    - tantora
+    - front
   only:
     - master
   before_script:
