@@ -64,8 +64,6 @@ deploy_review:
     on_stop: stop_review
   variables:
     DOMAIN: $REVIEW_DOMAIN
-  dependencies:
-    - build_stage
 
 stop_review:
   stage: deploy_review
@@ -91,8 +89,6 @@ deploy_staging:
     - development
   variables:
     DOMAIN: $STAGING_DOMAIN
-  dependencies:
-    - build_stage
 
 deploy_production:
   stage: deploy_production
