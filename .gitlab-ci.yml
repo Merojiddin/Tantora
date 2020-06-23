@@ -99,7 +99,7 @@ deploy_production:
     - echo $EC2_HOST
   script:
     - >
-      ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
+      ssh -i "$PRIVATE_KEY" ec2-user@$EC2_HOST "
       cd ~/tantora_front &&
       echo hello > hello.txt &&
       cat hello.txt"
