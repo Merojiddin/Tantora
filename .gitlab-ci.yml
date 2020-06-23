@@ -97,9 +97,10 @@ deploy_production:
   before_script:
     - mkdir -p ~/.ssh
     - ssh-keyscan -t rsa $EC2_HOST >> ~/.ssh/known_hosts
+    - chmod 400 $PRIVATE_KEY
   script:
     - >
-      ssh -i "$PRIVATE_KEY" ec2-user@$EC2_HOST "
+      ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
       cd ~/tantora_front &&
       echo hello > hello.txt &&
       cat hello.txt"
