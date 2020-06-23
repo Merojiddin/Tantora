@@ -96,9 +96,12 @@ deploy_staging:
 
 deploy_production:
   stage: deploy_production
-  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   only:
     - master
+  before_script:
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -t rsa $EC2_HOST >> ~/.ssh/known_hosts
+    - chmod 400 $PRIVATE_KEY
   script:
     - >
       ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
