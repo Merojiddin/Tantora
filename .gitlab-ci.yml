@@ -32,7 +32,7 @@ variables:
     - yarn run format
     - yarn run check
 
-build_stage:
+.build_stage:
   stage: build
   only:
     - master
@@ -99,13 +99,13 @@ deploy_production:
   only:
     - master
   before_script:
-    - echo $PRIVATE_KEY > tantora.pem
-    - cat tantora.pem
+    - cat $PRIVATE_KEY
+    - echo $EC2_HOST
   script:
     - >
-      ssh -i tantora.pem ec2-user@$EC2_HOST "
+      ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
       cd ~/tantora_front &&
       echo hello > hello.txt &&
       cat hello.txt"
-  dependencies:
-    - build_stage
+#  dependencies:
+#    - build_stage
