@@ -21,7 +21,7 @@ variables:
   STAGING_DOMAIN: tantora-staging.surge.sh
   REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
 
-test:
+.test:
   stage: test
   only:
     - master
@@ -96,7 +96,6 @@ deploy_staging:
 
 deploy_production:
   stage: deploy_production
-  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   only:
     - master
   script:
