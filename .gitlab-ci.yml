@@ -23,6 +23,8 @@ variables:
 
 test:
   stage: test
+  tags:
+    - tantora
   only:
     - master
     - development
@@ -34,6 +36,8 @@ test:
 
 build_stage:
   stage: build
+  tags:
+    - tantora
   only:
     - master
     - development
@@ -49,6 +53,8 @@ build_stage:
     REACT_APP_BACKEND_URL: https://online-exhibition.herokuapp.com/graphql
 
 .deploy_base: &deploy
+  tags:
+    - tantora
   script:
     - npm install --global surge
     - surge --project ./build --domain $DOMAIN
@@ -96,6 +102,8 @@ deploy_staging:
 
 deploy_production:
   stage: deploy_production
+  tags:
+    - tantora
   only:
     - master
   before_script:
