@@ -21,7 +21,7 @@ variables:
   STAGING_DOMAIN: tantora-staging.surge.sh
   REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
 
-.test:
+test:
   stage: test
   only:
     - master
@@ -32,7 +32,7 @@ variables:
     - yarn run format
     - yarn run check
 
-.build_stage:
+build_stage:
   stage: build
   only:
     - master
@@ -64,6 +64,8 @@ deploy_review:
     on_stop: stop_review
   variables:
     DOMAIN: $REVIEW_DOMAIN
+  dependencies:
+    - build_stage
 
 stop_review:
   stage: deploy_review
@@ -89,6 +91,8 @@ deploy_staging:
     - development
   variables:
     DOMAIN: $STAGING_DOMAIN
+  dependencies:
+    - build_stage
 
 deploy_production:
   stage: deploy_production
@@ -104,5 +108,5 @@ deploy_production:
       cd ~/tantora_front &&
       echo hello > hello.txt &&
       cat hello.txt"
-#  dependencies:
-#    - build_stage
+  dependencies:
+    - build_stage
