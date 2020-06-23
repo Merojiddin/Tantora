@@ -95,8 +95,7 @@ deploy_production:
   only:
     - master
   before_script:
-    - cat $PRIVATE_KEY
-    - echo $EC2_HOST
+    - ssh-keyscan -t rsa $EC2_HOST >> ~/.ssh/known_hosts
   script:
     - >
       ssh -i "$PRIVATE_KEY" ec2-user@$EC2_HOST "
