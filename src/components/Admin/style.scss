@@ -1,0 +1,9 @@
+.wrapper {
+  min-height: calc(100vh - 128px);
+}
+
+.centralized {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
