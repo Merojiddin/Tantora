@@ -21,7 +21,7 @@ variables:
   STAGING_DOMAIN: tantora-staging.surge.sh
   REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
 
-test:
+.test:
   stage: test
   tags:
     - tantora
