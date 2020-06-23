@@ -10,6 +10,7 @@ stages:
   - build
   - deploy_review
   - deploy_staging
+  - deploy_production
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -47,17 +48,24 @@ build_stage:
     REACT_APP_CHAT_URL: https://tantora-chat.herokuapp.com/
     REACT_APP_BACKEND_URL: https://online-exhibition.herokuapp.com/graphql
 
+.deploy_base: &deploy
+  script:
+    - npm install --global surge
+    - surge --project ./build --domain $DOMAIN
+
 deploy_review:
+  <<: *deploy
   stage: deploy_review
   only:
     - merge_requests
   environment:
     name: review/$CI_COMMIT_REF_NAME
-    url: https://$REVIEW_DOMAIN
+    url: https://tantora-$CI_ENVIRONMENT_SLUG.surge.sh
     on_stop: stop_review
-  script:
-    - npm install --global surge
-    - surge --project ./build --domain $REVIEW_DOMAIN
+  variables:
+    DOMAIN: $REVIEW_DOMAIN
+  dependencies:
+    - build_stage
 
 stop_review:
   stage: deploy_review
@@ -73,13 +81,29 @@ stop_review:
     name: review/$CI_COMMIT_REF_NAME
     action: stop
 
-deploy staging:
+deploy_staging:
+  <<: *deploy
   stage: deploy_staging
   environment:
     name: staging
     url: http://$STAGING_DOMAIN
   only:
     - development
+  variables:
+    DOMAIN: $STAGING_DOMAIN
+  dependencies:
+    - build_stage
+
+deploy_production:
+  stage: deploy_production
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  only:
+    - master
   script:
-    - npm install --global surge
-    - surge --project ./public --domain $STAGING_DOMAIN
+    - >
+      ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
+      cd ~/tantora_front &&
+      echo hello > hello.txt &&
+      cat hello.txt"
+  dependencies:
+    - build_stage
