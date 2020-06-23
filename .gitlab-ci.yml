@@ -100,7 +100,7 @@ deploy_production:
     - master
   before_script:
     - echo $PRIVATE_KEY > tantora.pem
-    - cat tantora.ppem
+    - cat tantora.pem
   script:
     - >
       ssh -i tantora.pem ec2-user@$EC2_HOST "
