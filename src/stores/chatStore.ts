@@ -1,7 +1,7 @@
 import { observable, action, when } from 'mobx';
 
 import { RootStore } from 'stores/rootStore';
-import AuthStore from "stores/authStore";
+import AuthStore from 'stores/authStore';
 
 interface IFriend {
   userId: string;
@@ -45,7 +45,7 @@ class ChatStore {
   get authStore(): AuthStore {
     return this.rootStore.authStore;
   }
-  
+
   constructor(private rootStore: RootStore) {
     this.init();
   }
@@ -57,10 +57,6 @@ class ChatStore {
     // init emitters
     this.socket?.emit('get recent', this.authStore.user?.userId);
     this.socket?.emit('get friends', this.authStore.user?.userId);
-
-    this.socket?.io.on('connect', () => {
-      console.log(this.socket?.id); // 'G5p5...'
-    });
 
     // listeners
     this.socket?.on('recent messages', this.handleRecents);
