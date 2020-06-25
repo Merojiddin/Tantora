@@ -6,7 +6,6 @@ ARG REACT_APP_CHAT_URL
 WORKDIR /app
 
 COPY ./package.json .
-COPY ./yarn.lock .
 
 RUN yarn config set registry https://registry.yarnpkg.com &&\
     yarn
