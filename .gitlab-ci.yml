@@ -28,6 +28,7 @@ test:
     - development
     - merge_requests
   script:
+    - yarn config set registry https://registry.yarnpkg.com
     - yarn
     - yarn run format
     - yarn run check
@@ -39,6 +40,7 @@ build_stage:
     - development
     - merge_requests
   before_script:
+    - yarn config set registry https://registry.yarnpkg.com
     - yarn
   script: yarn run build
   artifacts:
