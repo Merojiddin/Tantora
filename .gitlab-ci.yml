@@ -45,8 +45,8 @@ build_stage:
     paths:
       - build/
   variables:
-    REACT_APP_CHAT_URL: https://tantora-chat.herokuapp.com/
-    REACT_APP_BACKEND_URL: https://online-exhibition.herokuapp.com/graphql
+    REACT_APP_BACKEND_URL: http://18.163.6.250/api/graphql
+    REACT_APP_CHAT_URL: http://18.163.6.250/api-chat
 
 .deploy_base: &deploy
   script:
