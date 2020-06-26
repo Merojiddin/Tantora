@@ -18,6 +18,7 @@ cache:
     - node_modules/
 
 variables:
+  PRODUCTION_DOMAIN: 18.163.156.118
   STAGING_DOMAIN: tantora-staging.surge.sh
   REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
 
@@ -47,8 +48,8 @@ build_stage:
     paths:
       - build/
   variables:
-    REACT_APP_BACKEND_URL: http://18.163.6.250/api/graphql
-    REACT_APP_CHAT_URL: http://18.163.6.250/api-chat
+    REACT_APP_BACKEND_URL: http://$PRODUCTION_DOMAIN/api/graphql
+    REACT_APP_CHAT_URL: http://$PRODUCTION_DOMAIN/api-chat
 
 .deploy_base: &deploy
   script:
@@ -60,6 +61,8 @@ deploy_review:
   stage: deploy_review
   only:
     - merge_requests
+  except:
+    - master
   environment:
     name: review/$CI_COMMIT_REF_NAME
     url: https://tantora-$CI_ENVIRONMENT_SLUG.surge.sh
@@ -107,8 +110,9 @@ deploy_production:
   script:
     - >
       ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
-      cd ~/tantora_front &&
-      echo hello > hello.txt &&
-      cat hello.txt"
+      cd ~/tantora/tantora_front &&
+      git pull --no-edit &&
+      cd .. &&
+      docker-compose up -d --build
   dependencies:
     - build_stage
