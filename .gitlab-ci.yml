@@ -1,4 +1,4 @@
-image: node:14.4.0-alpine
+image: node:10
 
 # services:
 #   - mysql:latest
@@ -113,6 +113,7 @@ deploy_production:
       git checkout master &&
       git pull &&
       cd ../ &&
+      docker-compose down &&
       docker-compose up -d --build"
   dependencies:
     - build_stage
