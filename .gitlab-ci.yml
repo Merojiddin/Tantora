@@ -109,6 +109,7 @@ deploy_production:
     - >
       ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
       cd ~/tantora/tantora_front &&
+      git checkout master &&
       git pull &&
       cd ../ &&
       docker-compose up -d --build"
