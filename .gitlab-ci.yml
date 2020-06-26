@@ -25,7 +25,6 @@ variables:
 test:
   stage: test
   only:
-    - master
     - development
     - merge_requests
   script:
@@ -109,9 +108,9 @@ deploy_production:
   script:
     - >
       ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
-      cd ~/tantora/tantora_front &&\
-      git pull &&\
-      cd ../ &&\
+      cd ~/tantora/tantora_front &&
+      git pull &&
+      cd ../ &&
       docker-compose up -d --build"
   dependencies:
     - build_stage
