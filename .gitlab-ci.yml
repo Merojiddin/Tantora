@@ -109,10 +109,10 @@ deploy_production:
     - chmod 400 $PRIVATE_KEY
   script:
     - >
-      ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "ls -l && cd tantora && ls -l && git"
-#      cd ~/tantora/tantora_front &&\
-#      git pull --no-edit &&\
-#      cd .. &&\
-#      docker-compose up -d --build"
+      ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
+      cd ~/tantora/tantora_front &&\
+      git pull &&\
+      cd ../ &&\
+      docker-compose up -d --build"
   dependencies:
     - build_stage
