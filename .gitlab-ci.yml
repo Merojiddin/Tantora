@@ -114,6 +114,7 @@ deploy_production:
       git pull &&
       cd ../ &&
       docker-compose down &&
-      docker-compose up -d --build"
+      docker-compose up -d --build &&
+      sleep 30"
   dependencies:
     - build_stage
