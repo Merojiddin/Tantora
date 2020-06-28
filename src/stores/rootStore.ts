@@ -17,7 +17,10 @@ export class RootStore {
     return this._socket.io;
   }
 
-  constructor(public appClient: ApolloClient<unknown>, private _socket: Socket) {
+  constructor(
+    public appClient: ApolloClient<unknown>,
+    private _socket: Socket
+  ) {
     if (!_socket.io) {
       _socket.connect();
     }

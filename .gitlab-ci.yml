@@ -10,6 +10,7 @@ stages:
   - build
   - deploy_review
   - deploy_staging
+  - deploy_production
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -17,6 +18,7 @@ cache:
     - node_modules/
 
 variables:
+  PRODUCTION_DOMAIN: 18.163.156.118
   STAGING_DOMAIN: tantora-staging.surge.sh
   REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
 
@@ -27,6 +29,7 @@ test:
     - development
     - merge_requests
   script:
+    - yarn config set registry https://registry.yarnpkg.com
     - yarn
     - yarn run format
     - yarn run check
@@ -34,30 +37,39 @@ test:
 build_stage:
   stage: build
   only:
-    - master
     - development
     - merge_requests
   before_script:
+    - yarn config set registry https://registry.yarnpkg.com
     - yarn
   script: yarn run build
   artifacts:
     paths:
       - build/
   variables:
-    REACT_APP_CHAT_URL: https://tantora-chat.herokuapp.com/
-    REACT_APP_BACKEND_URL: https://online-exhibition.herokuapp.com/graphql
+    REACT_APP_BACKEND_URL: http://$PRODUCTION_DOMAIN/api/graphql
+    REACT_APP_CHAT_URL: http://$PRODUCTION_DOMAIN/api-chat
+
+.deploy_base: &deploy
+  script:
+    - npm install --global surge
+    - surge --project ./build --domain $DOMAIN
 
 deploy_review:
+  <<: *deploy
   stage: deploy_review
   only:
     - merge_requests
+  except:
+    - master
   environment:
     name: review/$CI_COMMIT_REF_NAME
     url: https://tantora-$CI_ENVIRONMENT_SLUG.surge.sh
     on_stop: stop_review
-  script:
-    - npm install --global surge
-    - surge --project ./build --domain $REVIEW_DOMAIN
+  variables:
+    DOMAIN: $REVIEW_DOMAIN
+  dependencies:
+    - build_stage
 
 stop_review:
   stage: deploy_review
@@ -73,13 +85,36 @@ stop_review:
     name: review/$CI_COMMIT_REF_NAME
     action: stop
 
-deploy staging:
+deploy_staging:
+  <<: *deploy
   stage: deploy_staging
   environment:
     name: staging
     url: http://$STAGING_DOMAIN
   only:
     - development
+  variables:
+    DOMAIN: $STAGING_DOMAIN
+  dependencies:
+    - build_stage
+
+deploy_production:
+  stage: deploy_production
+  only:
+    - master
+  before_script:
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -t rsa $EC2_HOST >> ~/.ssh/known_hosts
+    - chmod 400 $PRIVATE_KEY
   script:
-    - npm install --global surge
-    - surge --project ./public --domain $STAGING_DOMAIN
+    - >
+      ssh -i $PRIVATE_KEY ec2-user@$EC2_HOST "
+      cd ~/tantora/tantora_front &&
+      git checkout master &&
+      git pull &&
+      cd ../ &&
+      docker-compose down &&
+      docker-compose up -d --build &&
+      sleep 30"
+  dependencies:
+    - build_stage

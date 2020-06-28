@@ -1,13 +1,15 @@
 FROM node:14.4.0-alpine
 
+ARG REACT_APP_BACKEND_URL
+ARG REACT_APP_CHAT_URL
+
 WORKDIR /app
 
 COPY ./package.json .
-COPY ./yarn.lock .
 
 RUN yarn config set registry https://registry.yarnpkg.com &&\
     yarn
 
 COPY ./ /app
 
-RUN yarn run build
+RUN REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL REACT_APP_CHAT_URL=$REACT_APP_CHAT_URL yarn run build

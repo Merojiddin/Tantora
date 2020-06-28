@@ -1,7 +1,7 @@
 import { observable, action, when } from 'mobx';
 
 import { RootStore } from 'stores/rootStore';
-import AuthStore from "stores/authStore";
+import AuthStore from 'stores/authStore';
 
 interface IFriend {
   userId: string;
@@ -19,6 +19,11 @@ interface IMessage {
   receiverId: string;
   content: string;
   createdDate: string;
+}
+
+interface INewMessage extends IMessage {
+  senderName: string;
+  receiverName: string;
 }
 
 interface IMessagesResponse {
@@ -40,7 +45,7 @@ class ChatStore {
   get authStore(): AuthStore {
     return this.rootStore.authStore;
   }
-  
+
   constructor(private rootStore: RootStore) {
     this.init();
   }
@@ -58,29 +63,40 @@ class ChatStore {
     this.socket?.on('friends', this.handleFriends);
     this.socket?.on('user joined', this.handleUserJoin);
 
-    this.socket?.on('new message', this.handleNewMessages);
+    this.socket?.on('new message', this.handleNewMessage);
+    this.socket?.on('messages list', this.handleNewMessages);
+  };
 
-    this.socket?.on('messages list', this.handleNewMessage);
-  }
+  @action handleEnterChat = async (
+    receiverId: string,
+    receiverName: string,
+    room: string
+  ) => {
+    await when(() => this.socket !== undefined);
+    await when(() => this.authStore.isAuth);
 
-  @action handleEnterChat = (receiverId: string, receiverName: string, room: string) => {
     this.socket?.emit('enter chat', {
       userName: this.authStore.user?.userName,
       userId: this.authStore.user?.userId,
       receiverId,
       receiverName,
       room,
-    })
+    });
   };
 
-  @action handleNewMessages = (username: string, data: IMessage) => {
-    const currentChats = this.chats.get(username) || [];
-    this.chats.set(username, [...currentChats, data]);
-  };
-
-  @action handleNewMessage = (data: IMessagesResponse) => {
+  @action handleNewMessages = (data: IMessagesResponse) => {
     const currentChats = this.chats.get(data.userName) || [];
     this.chats.set(data.userName, [...currentChats, ...data.messages]);
+  };
+
+  @action handleNewMessage = (data: INewMessage) => {
+    const userName =
+      data.senderId === this.authStore.user?.userId
+        ? data.receiverName
+        : data.senderName;
+    const currentChats = this.chats.get(userName) || [];
+
+    this.chats.set(userName, [...currentChats, data]);
   };
 
   @action handleUserJoin = (_: string) => {
