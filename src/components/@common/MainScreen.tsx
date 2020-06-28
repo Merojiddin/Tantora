@@ -44,13 +44,13 @@ const useStyles = (props: IStyleProps) =>
         marginBottom: 150,
 
         '&:before': {
-          content: " ",
+          content: `' '`,
           position: 'absolute',
-          height: '100%',
+          height: '90vh',
           width: '100%',
           left: 0,
           top: 0,
-          zIndex: 200,
+          zIndex: 4,
           // tslint:disable-next-line: prettier
           background: `rgba(0, 0, 0, 0.4)`,
         },
@@ -64,6 +64,7 @@ const useStyles = (props: IStyleProps) =>
         color: theme.palette.common.white,
         textAlign: 'center',
         width: '100%',
+        zIndex: 100,
       },
       titleText: {
         fontFamily: 'Roboto',

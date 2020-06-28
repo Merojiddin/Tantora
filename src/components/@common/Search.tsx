@@ -28,13 +28,15 @@ const Search: FC = () => {
 
 const useStyles = makeStyles((theme) => ({
   searchField: {
-    position: 'absolute',
+    position: 'relative',
     width: '80%',
-    margin: '295px 94px',
+    margin: 'auto',
     alignItems: 'center',
     minWidth: 480,
     borderRadius: 10,
+    top: '12%',
     boxSizing: "border-box",
+    zIndex: 100
     
   },
  
@@ -46,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '',
     border: 'none 1px black',
     height: 167,
-    zIndex: 100
 
   },
   input: {

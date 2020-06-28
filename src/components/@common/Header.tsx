@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme) => {
       position: 'relative',
       backgroundColor: 'transparent',
       boxShadow: 'none',
-      marginTop: 25,
+      paddingTop: 25,
 
       '&.active': {
         '& > .bg': { opacity: 1 },
@@ -160,10 +160,10 @@ const useStyles = makeStyles((theme) => {
       top: 0,
       width: '100%',
       height: '100%',
-      //background: `linear-gradient(90deg, rgb(${red}, ${green}, ${blue}) 0%, rgb(${blue}, ${green}, ${red}) 96%)`,
+      backgroundColor: theme.palette.common.darkBlue,
       opacity: 0,
       transition: '0.3s',
-      minHeight: 120,
+      minHeight: 60,
     },
     headerToolbar: {
       display: 'flex',

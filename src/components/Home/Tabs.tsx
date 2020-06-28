@@ -5,6 +5,8 @@ import { makeStyles, Typography } from '@material-ui/core';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Button from '@material-ui/core/Button';
 
+import hexToRgb from 'hex-rgb';
+
 
 import TabPanel from './TabPanel';
 //const Eye = '../../assets/logo/Eye.svg'
@@ -63,29 +65,38 @@ const MyTabs: FC = () => {
           return (
             <div id={index} className={classes.tabPanelItem}>
               <AcUnitIcon className={classes.tabPanelIcon}/>
-              <Typography className={classes.tabPanelTitle} >Opportunity</Typography>
+              <h1 className={classes.tabPanelTitle} >Opportunity</h1>
               <Typography className={classes.tabPanelText} >An effective opportunity to strengthen business positions and enter new markets </Typography>
             </div> 
           )
         })}
+        
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={1} className={classes.tabPanel}>
         Item Two
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={2} className={classes.tabPanel}>
         Item Three
       </TabPanel>
+      <Button className={classes.tabPanelBtn}>More</Button>
     </div>
   );
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => {
+  const green = hexToRgb(theme.palette.common.green)
+  const black = hexToRgb(theme.palette.common.black)
+  const white = hexToRgb(theme.palette.common.white)
+
+  return {
   tabs: {
-    backgroundColor: '#ffffff',
+    backgroundColor: theme.palette.common.white,
     margin: 'auto',
     width: '100%',
     '& .MuiTabs-flexContainer': {
       justifyContent: 'center',
+      display: 'flex',
+      flexWrap: 'wrap',
       '& .MuiTabs-indicator': {
         border: '5px solid black'
       }
@@ -95,17 +106,17 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     color: theme.palette.common.black,
     margin: '10px 20px 80px ',
-    
     width: 380,
     height: 268,
     background: '#FFFFFF',
-    boxShadow: '0px 8px 20px rgba(27, 112, 190, 0.15)',
+    boxShadow: `0px 8px 20px rgba(${green.red},${green.green},${green.blue}, 0.15)`,
     borderRadius: 10,
+  
 
     '&.Mui-selected': {
       color: theme.palette.common.black,
-      boxShadow: '0px 20px 50px rgba(27, 112, 190, 0.15)',
-      background: '#FFFFFF',
+      boxShadow: `0px 8px 20px rgba(${green.red},${green.green},${green.blue}, 0.15)`,
+      background: theme.palette.common.white,
       
       
       '&. MuiTouchRipple-root': {
@@ -127,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px 17px',
     fontSize: 16,
     borderRadius: '0px 10px',
-    background: '#E3E8ED',
+    background: theme.palette.common.whiteGrey,
     fontWeight: 'bold',
     left: 218,
     top: 22,
@@ -150,26 +161,38 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     flexWrap: 'wrap',
+    padding: '0 100px',
+    justifyContent: 'center',
+      '& .MuiBox-root': {
+        '& .MuiTypography-root': {
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-around',
+          maxWidth: 1240,
+        }
+      }
   },
   tabPanelItem: {  
     color: 'black',
     width: 315,
-
+    margin: '15px 11px',
   },
   tabPanelIcon: {
-    boxShadow: 'inset 0px 4px 4px rgba(0, 0, 0, 0.15)',
-    background: 'rgba(255, 255, 255, 0.25)',
+    boxShadow: `inset 0px 4px 4px rgba(${black.red}, ${black.green}, ${black.blue}, 0.15)`,
+    background: `rgba(${white.red},${white.green},${white.blue}, 0.25)`,
     borderRadius: '50%',
     width: 152,
-    height: 152,  
+    height: 152,
     margin: 'auto',
     display: 'flex',
   },
   tabPanelTitle: {
     fontFamily: 'Roboto',
     fontWeight: 'bold',
-    fontSize: 24,
-    textAlign: 'center',
+    fontSize: 20,
+    justifyContent: 'center',
+    margin: 'auto',
+    display: 'flex',
   },
   tabPanelText: {
     fontFamily: 'Roboto',
@@ -177,7 +200,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   learnBtn: {
-    border: '1px solid #1B70BE',
+    border: `1px solid ${theme.palette.common.blue}`,
     borderRadius: 5,
     fontSize: 14,
     fontWeight: 'bold',
@@ -187,11 +210,20 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     marginTop: '32px',
     marginBottom: 61,
-    color: '#1B70BE',
+    color: theme.palette.common.blue,
+  },
+  tabPanelBtn: {
+    backgroundColor: theme.palette.common.blue,
+    fontSize: 14,
+    display: 'flex',
+    margin: '70px auto 107px',
+    width:163,
+    height: 47,
   },
   active: {
-    border: 'none'
-  },
-}));
+    border: 'none',
+    
+  }
+}});
 
 export default MyTabs;

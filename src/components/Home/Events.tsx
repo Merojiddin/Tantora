@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import hexToRgb from 'hex-rgb';
 
 import { Exhibition } from 'generated/graphql';
 import Loading from 'components/@common/Loading';
@@ -76,8 +77,10 @@ const Events: FC = () => {
   );
 };
 
-const useStyles = (props: IStyleProps) =>
-  makeStyles((theme) => ({
+const useStyles = (props: IStyleProps) => 
+  makeStyles((theme) => {
+    const black = hexToRgb(theme.palette.common.black)
+    return {
     wrapper: {
       width: '100%',
       marginBottom: 150,
@@ -104,8 +107,9 @@ const useStyles = (props: IStyleProps) =>
       width: '580px',
       height: '248px',
       padding: '15px 30px',
-      boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.1)',
-      color: '#rgba(0, 0, 0, 0.1)',
+      boxShadow: `0px 4px 16px rgba(${black.red}, ${black.green}, ${black.blue} 0.1)`,
+      color: theme.palette.common.black,
+      opacity: 0.1,
       marginBottom: 25,
       borderRadius: 10,
       backgroundImage: `url(${props.bgSrc})`,
@@ -148,7 +152,7 @@ const useStyles = (props: IStyleProps) =>
     },
     data: {
       fontSize: 14,
-      color: '#929292',
+      color: theme.palette.common.lighterGrey,
       letterSpacing: '-1.5%',
       fontFamily: 'Roboto',
       marginBottom: 17
@@ -163,6 +167,6 @@ const useStyles = (props: IStyleProps) =>
     hrLine: {
       marginBottom: '50',
     }
-  }));
+  }});
 
 export default Events;
