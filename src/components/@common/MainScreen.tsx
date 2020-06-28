@@ -20,6 +20,7 @@ const MainScreen: FC<IProps> = (props) => {
         {props.title}
       </Typography>
       <Typography className={classes.titleText} variant="h4">Enjoy exhibitions at home</Typography>
+      <Typography className={classes.titleText2} variant="h4">Keep in touch with all online exhibitions</Typography>
       <Search />
     </div>
   );
@@ -29,12 +30,13 @@ const useStyles = (props: IStyleProps) =>
   makeStyles((theme) => {
     return {
       wrapper: {
-        position: 'relative',
+        //position: 'relative',
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
         height: '90vh',
         width: '100%',
+        minWidth: '700px', 
         background: `url(${props.bgSrc}) center no-repeat`,
         backgroundSize: 'cover',
         backgroundColor: '#13303F',
@@ -42,36 +44,47 @@ const useStyles = (props: IStyleProps) =>
         marginBottom: 150,
 
         '&:before': {
-          content: `""`,
+          content: " ",
           position: 'absolute',
           height: '100%',
           width: '100%',
           left: 0,
           top: 0,
+          zIndex: 200,
           // tslint:disable-next-line: prettier
-          background: `rgba(19, 48, 63, 0.9)`,
+          background: `rgba(0, 0, 0, 0.4)`,
         },
       },
       title: {
         fontSize: 120,
-        fontFamily: 'Segoe UI',
+        fontFamily: 'Roboto',
         marginTop: 196,
         fontWeight: 'bolder',
         position: 'relative',
         color: theme.palette.common.white,
         textAlign: 'center',
-        width: '100%'
+        width: '100%',
       },
       titleText: {
-        fontFamily: 'Segoe UI',
-        fontSize: 36,
+        fontFamily: 'Roboto',
+        fontSize: 24,
         textAlign: 'center',
         width: '100%',
         color: theme.palette.common.white,
-        marginTop: '20px',
+        marginTop: '9px',
         zIndex: 1001
-
-      }
+      },
+      titleText2: {
+        fontFamily: 'Roboto',
+        fontSize: 24,
+        textAlign: 'center',
+        width: '100%',
+        color: theme.palette.common.white,
+        marginTop: '12px',
+        zIndex: 1001,
+        marginBottom: 40,
+      },
+     
     };
   });
 

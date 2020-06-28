@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
+//import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import Container from '@material-ui/core/Container';
@@ -11,18 +11,15 @@ const Search: FC = () => {
 
   return (
     <Container maxWidth="lg" className={classes.searchField}>
-      <label htmlFor="text" className={classes.label}>
-        Keep in touch with all online exhibitions
-      </label>
       <Typography className={classes.searchInputFieldContainer}>
         <InputBase
           className={classes.input}
           placeholder="What are you looking for..."
           inputProps={{ 'aria-label': 'naked' }}
         />
-        <Divider className={classes.divider} orientation="vertical" />
+        {/* <Divider className={classes.divider} orientation="vertical" /> */}
         <IconButton type="submit" className={classes.iconButton} aria-label="search">
-          <SearchIcon />
+          <SearchIcon /> Search
         </IconButton>
       </Typography>
     </Container>
@@ -31,28 +28,22 @@ const Search: FC = () => {
 
 const useStyles = makeStyles((theme) => ({
   searchField: {
-    position: 'relative',
-    width: '60%',
-    marginBottom: 150,
+    position: 'absolute',
+    width: '80%',
+    margin: '295px 94px',
     alignItems: 'center',
     minWidth: 480,
+    borderRadius: 10,
+    boxSizing: "border-box",
+    
   },
-  label: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: 50,
-    fontWeight: 'bold',
-    fontSize: 24,
-    fontFamily: 'Segoe UI',
-    color: theme.palette.common.white,
-    marginTop: '97px'
-  },
+ 
   searchInputFieldContainer: {
     display: 'flex',
     alignItems: 'center',
     padding: '49px 0px 49px 37px',
-    borderRadius: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderRadius: 40,
+    backgroundColor: '',
     border: 'none 1px black',
     height: 167,
     zIndex: 100
@@ -60,37 +51,38 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     width: '100%',
-    maxWidth: 1066,
-    height: 69,
-    borderRadius: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.13)',
+    maxWidth: 1170,
+    height: 100,
+    backgroundColor: 'white',
     padding: '22px 37px 19px',
     zIndex: 100,
-    border: '1px solid rgba(255, 255, 255, 0.16)',
+    border: '1px solid rgba(0, 0, 0, 0.15)',
     boxSizing: 'border-box',
+    borderRadius: '5px 0 0 5px '
     
   },
   iconButton: {
     padding: 10,
     position: 'relative',
-    left: '-76px',
-    color: '#00D1FF'
+    color: '#FFF',
+    backgroundColor: '#1B70BE',
+    borderRadius: '0 10px 10px 0',
+    height: 100,
+    width: 280,
+    fontSize: '16px',
+
   },
   divider: {
     height: 40,
     margin: 4,
     position: 'relative',
-    left: '-97px',
     border: '1px solid rgba(255, 255, 255, 0.19)',
   },
   button: {
-    position: 'absolute',
-    justifyContent: 'right',
-    height: 46,
-    right: 22,
+    height: 100,
+    width: 280,
     bottom: 5,
     fontWeight: 'bolder',
-    backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
     zIndex: 150,
   },

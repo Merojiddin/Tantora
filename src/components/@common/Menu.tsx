@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     color: theme.palette.common.white,
     marginRight: 25,
+    fontSize: 14,
 
     '&:last-child': {
       marginRight: 0,

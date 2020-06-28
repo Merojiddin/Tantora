@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
 import { Waypoint } from 'react-waypoint';
 import cls from 'classnames';
-import hexToRgb from 'hex-rgb';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -19,6 +18,7 @@ import { LogoutResponse } from 'generated/graphql';
 import useStore from 'hooks/useStore';
 import Menu from 'components/@common/Menu';
 import MenuMobile from 'components/@common/MenuMobile';
+import Logo from '../../assets/images/icon.png'
 
 
 const LogoutQuery = gql`
@@ -94,9 +94,7 @@ const Header = observer(() => {
             <Link to="/" style={{ textDecoration: 'none' }}>
               <Button>
                 <Typography variant="h6" className={classes.whiteBtn}>
-                  <IconButton > 
-                    Gerb
-                  </IconButton>
+                  <img src={Logo} alt="Logo" className={classes.logo} />
                 </Typography>
               </Button>
             </Link>
@@ -125,8 +123,7 @@ const Header = observer(() => {
 });
 
 const useStyles = makeStyles((theme) => {
-  const { red, green, blue } = hexToRgb(theme.palette.primary.main);
-  const black = hexToRgb(theme.palette.common.black);
+  //const { red, green, blue } = hexToRgb(theme.palette.primary.main);
 
   return {
     root: {
@@ -134,11 +131,15 @@ const useStyles = makeStyles((theme) => {
       top: 0,
       left: 0,
       width: '100%',
-      zIndex: 250,
+      zIndex: 250, 
+      margin: 'auto'
+
     },
     headerBar: {
       position: 'relative',
       backgroundColor: 'transparent',
+      boxShadow: 'none',
+      marginTop: 25,
 
       '&.active': {
         '& > .bg': { opacity: 1 },
@@ -151,7 +152,6 @@ const useStyles = makeStyles((theme) => {
         right: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: `rgba(${black.red}, ${black.green}, ${black.blue}, 0.3)`,
       },
     },
     headerBg: {
@@ -160,9 +160,10 @@ const useStyles = makeStyles((theme) => {
       top: 0,
       width: '100%',
       height: '100%',
-      background: `linear-gradient(90deg, rgb(${red}, ${green}, ${blue}) 0%, rgb(${blue}, ${green}, ${red}) 96%)`,
+      //background: `linear-gradient(90deg, rgb(${red}, ${green}, ${blue}) 0%, rgb(${blue}, ${green}, ${red}) 96%)`,
       opacity: 0,
       transition: '0.3s',
+      minHeight: 120,
     },
     headerToolbar: {
       display: 'flex',
@@ -175,10 +176,20 @@ const useStyles = makeStyles((theme) => {
     whiteBtn: {
       color: theme.palette.common.white,
     },
+    logo: {
+      width: 274,
+      height: 180,
+      boxSizing: 'border-box',
+      backgroundSize: 'cover',
+      position: 'absolute',
+      top: -80,
+      left: -82,
+    },
     loginWrapper: {
       display: 'flex',
       alignItems: 'center',
     },
+
   };
 });
 

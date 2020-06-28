@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import ColoredLine from '../@common/HrLine'
 
 import { Exhibition } from 'generated/graphql';
 import Loading from 'components/@common/Loading';
@@ -28,7 +27,7 @@ interface IStyleProps {
 }
 
 const Events: FC = () => {
-  const classes = useStyles({ bgSrc: require('assets/images/download.jpg') })();
+  const classes = useStyles({ bgSrc: require('assets/images/homeEventBg.jpg') })();
   const { data, loading, error } = useQuery<IResponse>(GET_EXHIBITONS);
 
   if (error) {
@@ -42,9 +41,8 @@ const Events: FC = () => {
   return (
     <Container maxWidth="lg" className={classes.wrapper}>
       <Typography variant="h4" className={classes.title}>
-        <strong>Up coming</strong> online exhibitions
+        Up coming online exhibitions
       </Typography>
-      <ColoredLine color="#00D1FF" width="269px" margin="auto auto 50px" right="190px" height="6px" />
       {loading && <Loading />}
       <div className={classes.container}>
         {!loading &&
@@ -63,7 +61,6 @@ const Events: FC = () => {
                   <Typography variant="h6" className={classes.eventTitle}>
                     {name}
                   </Typography>
-                  <ColoredLine color="#00D1FF" width="105px" margin="" right="190px"  height="2px"/>
                   <Typography className={classes.text} variant="subtitle2">
                     {description!.length < 150
                       ? description
@@ -88,12 +85,14 @@ const useStyles = (props: IStyleProps) =>
     },
     title: {
       textAlign: 'center',
-      fontSize: 48,
-      fontFamily: 'Segoe UI',
+      fontSize: 42,
+      fontFamily: 'Roboto',
+      fontWeight: 'bold',
+      marginBottom: 10,
     },
     container: {
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       flexWrap: 'wrap',
       width: `100%`,
       opacity: '80%',
@@ -102,19 +101,31 @@ const useStyles = (props: IStyleProps) =>
     },
     event: {
       textAlign: 'left',
-      width: '555px',
-      height: '225px',
+      width: '580px',
+      height: '248px',
       padding: '15px 30px',
       boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.1)',
       color: '#rgba(0, 0, 0, 0.1)',
       marginBottom: 25,
-      backgroundColor: theme.palette.common.white,
-      borderRadius: 16,
+      borderRadius: 10,
       backgroundImage: `url(${props.bgSrc})`,
-      backgroundSize: 'cover',
+      backgroundSize: ' 372px 248px',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'right',
+      justifyContent: 'center',
+      '&:before': {
+        content: ' ',
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        zIndex: 250,
+        top: 0,
+        left: 0,
+        background:'linear-gradient(red 0%, orange 25%, yellow 50%, green 75%, blue 100%)',
+      },
     },
     eventTitle: {
-      fontFamily: 'Segoe UI',
+      fontFamily: 'Roboto',
       color: theme.palette.common.black,
       fontWeight: 'bolder',
       fontSize: 18,
@@ -124,9 +135,11 @@ const useStyles = (props: IStyleProps) =>
     text: {
       height: 150,
       fontSize: 16,
-      fontFamily: 'Segoe UI',
+      fontFamily: 'Roboto',
       color: theme.palette.common.black,
       fontWeight: 'bolder',
+      fontStyle: 'light',
+      width: '356px',
     },
     boxForDateBtn: {
       display: 'flex',
@@ -137,7 +150,8 @@ const useStyles = (props: IStyleProps) =>
       fontSize: 14,
       color: '#929292',
       letterSpacing: '-1.5%',
-      fontFamily: 'Segoe UI'
+      fontFamily: 'Roboto',
+      marginBottom: 17
     },
     joinBtn: {
       fontWeight: 'bolder',

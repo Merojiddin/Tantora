@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 interface IProps {
   value: number;
   index: number;
+  className?: string;
 }
 
 const TabPanel: FC<IProps> = (props) => {
@@ -15,6 +16,7 @@ const TabPanel: FC<IProps> = (props) => {
       role="tabpanel"
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
+      className={props.className}
     >
       {value === index && (
         <Box p={3}>
