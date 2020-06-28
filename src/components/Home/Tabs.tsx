@@ -104,7 +104,6 @@ const useStyles = makeStyles((theme) => {
       }
     },
   },
-
   tab: {
     color: theme.palette.common.black,
     margin: '10px 20px 80px ',
@@ -143,8 +142,7 @@ const useStyles = makeStyles((theme) => {
     fontWeight: 'bold',
     left: 218,
     top: 22,
-    position: 'relative'
-
+    position: 'relative',
   },
   tabLabel: {
     fontFamily: 'Roboto',
@@ -223,7 +221,6 @@ const useStyles = makeStyles((theme) => {
   },
   active: {
     border: 'none',
-    
   }
 }});
 

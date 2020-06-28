@@ -100,9 +100,7 @@ const useStyles = makeStyles({
     borderRadius: 10,
     width: "456px",
     height: "448px",
-    
   }
-
 });
 
 export default About;

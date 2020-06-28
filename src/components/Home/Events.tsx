@@ -19,13 +19,15 @@ const GET_EXHIBITONS = gql`
     }
   }
 `;
-const text = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam a dolorum suscipit velit nobis sunt aspernatur, vero quia! Corporis facilis maxime praesentium cupiditate sint assumenda modi saepe mollitia incidunt soluta?'
+
 interface IResponse {
   exhibitions: Exhibition[];
 }
 interface IStyleProps {
   bgSrc: string;
 }
+
+const text = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam a dolorum suscipit velit nobis sunt aspernatur, vero quia! Corporis facilis maxime praesentium cupiditate sint assumenda modi saepe mollitia incidunt soluta?'
 
 const Events: FC = () => {
   const classes = useStyles({ bgSrc: require('assets/images/homeEventBg.jpg') })();
