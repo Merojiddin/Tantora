@@ -80,93 +80,94 @@ const Events: FC = () => {
 const useStyles = (props: IStyleProps) => 
   makeStyles((theme) => {
     const black = hexToRgb(theme.palette.common.black)
+    
     return {
-    wrapper: {
-      width: '100%',
-      marginBottom: 150,
-      padding: '0px 50px',
-    },
-    title: {
-      textAlign: 'center',
-      fontSize: 42,
-      fontFamily: 'Roboto',
-      fontWeight: 'bold',
-      marginBottom: 10,
-    },
-    container: {
-      display: 'flex',
-      justifyContent: 'center',
-      flexWrap: 'wrap',
-      width: `100%`,
-      opacity: '80%',
-      borderRadius: 16,
-      scale: 'Fill'
-    },
-    event: {
-      textAlign: 'left',
-      width: '580px',
-      height: '248px',
-      padding: '15px 30px',
-      boxShadow: `0px 4px 16px rgba(${black.red}, ${black.green}, ${black.blue} 0.1)`,
-      color: theme.palette.common.black,
-      opacity: 0.1,
-      marginBottom: 25,
-      borderRadius: 10,
-      backgroundImage: `url(${props.bgSrc})`,
-      backgroundSize: ' 372px 248px',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'right',
-      justifyContent: 'center',
-      '&:before': {
-        content: ' ',
+      wrapper: {
         width: '100%',
-        height: '100%',
-        position: 'absolute',
-        zIndex: 250,
-        top: 0,
-        left: 0,
-        background:'linear-gradient(red 0%, orange 25%, yellow 50%, green 75%, blue 100%)',
+        marginBottom: 150,
+        padding: '0px 50px',
       },
-    },
-    eventTitle: {
-      fontFamily: 'Roboto',
-      color: theme.palette.common.black,
-      fontWeight: 'bolder',
-      fontSize: 18,
-      letterSpacing: '-1.5%',
+      title: {
+        textAlign: 'center',
+        fontSize: 42,
+        fontFamily: 'Roboto',
+        fontWeight: 'bold',
+        marginBottom: 10,
+      },
+      container: {
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        width: `100%`,
+        opacity: '80%',
+        borderRadius: 16,
+        scale: 'Fill'
+      },
+      event: {
+        textAlign: 'left',
+        width: '580px',
+        height: '248px',
+        padding: '15px 30px',
+        boxShadow: `0px 4px 16px rgba(${black.red}, ${black.green}, ${black.blue} 0.1)`,
+        color: theme.palette.common.black,
+        opacity: 0.1,
+        marginBottom: 25,
+        borderRadius: 10,
+        backgroundImage: `url(${props.bgSrc})`,
+        backgroundSize: ' 372px 248px',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'right',
+        justifyContent: 'center',
+        '&:before': {
+          content: ' ',
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          zIndex: 250,
+          top: 0,
+          left: 0,
+          background:'linear-gradient(red 0%, orange 25%, yellow 50%, green 75%, blue 100%)',
+        },
+      },
+      eventTitle: {
+        fontFamily: 'Roboto',
+        color: theme.palette.common.black,
+        fontWeight: 'bolder',
+        fontSize: 18,
+        letterSpacing: '-1.5%',
 
-    },
-    text: {
-      height: 150,
-      fontSize: 16,
-      fontFamily: 'Roboto',
-      color: theme.palette.common.black,
-      fontWeight: 'bolder',
-      fontStyle: 'light',
-      width: '356px',
-    },
-    boxForDateBtn: {
-      display: 'flex',
-      alignItems: 'flex-end',
-      justifyContent: 'space-between',
-    },
-    data: {
-      fontSize: 14,
-      color: theme.palette.common.lighterGrey,
-      letterSpacing: '-1.5%',
-      fontFamily: 'Roboto',
-      marginBottom: 17
-    },
-    joinBtn: {
-      fontWeight: 'bolder',
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-      width: 97,
-      height: 47,
-    },
-    hrLine: {
-      marginBottom: '50',
-    }
-  }});
+      },
+      text: {
+        height: 150,
+        fontSize: 16,
+        fontFamily: 'Roboto',
+        color: theme.palette.common.black,
+        fontWeight: 'bolder',
+        fontStyle: 'light',
+        width: '356px',
+      },
+      boxForDateBtn: {
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+      },
+      data: {
+        fontSize: 14,
+        color: theme.palette.common.lighterGrey,
+        letterSpacing: '-1.5%',
+        fontFamily: 'Roboto',
+        marginBottom: 17
+      },
+      joinBtn: {
+        fontWeight: 'bolder',
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.common.white,
+        width: 97,
+        height: 47,
+      },
+      hrLine: {
+        marginBottom: '50',
+      }
+    }});
 
 export default Events;

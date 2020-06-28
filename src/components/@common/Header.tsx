@@ -123,7 +123,6 @@ const Header = observer(() => {
 });
 
 const useStyles = makeStyles((theme) => {
-  //const { red, green, blue } = hexToRgb(theme.palette.primary.main);
 
   return {
     root: {

@@ -30,7 +30,6 @@ const useStyles = (props: IStyleProps) =>
   makeStyles((theme) => {
     return {
       wrapper: {
-        //position: 'relative',
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
@@ -51,7 +50,6 @@ const useStyles = (props: IStyleProps) =>
           left: 0,
           top: 0,
           zIndex: 4,
-          // tslint:disable-next-line: prettier
           background: `rgba(0, 0, 0, 0.4)`,
         },
       },

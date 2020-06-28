@@ -9,7 +9,6 @@ import hexToRgb from 'hex-rgb';
 
 
 import TabPanel from './TabPanel';
-//const Eye = '../../assets/logo/Eye.svg'
 
 const MyTabs: FC = () => {
   const classes = useStyles();
@@ -17,6 +16,7 @@ const MyTabs: FC = () => {
   const handleChange = (_: ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+
   return (
     <div>
       <Tabs
@@ -26,11 +26,11 @@ const MyTabs: FC = () => {
         textColor="primary"
       >
         <Tab 
-          label={
+          label=
+          {
             <div className={classes.tabBtnContainer}>
               <div className={classes.tabCornerNumber}>01</div>
               <AcUnitIcon className={classes.tabIcon}/>
-              {/* //<img className={classes.tabIcon}>{Eye}</img> */}
               <Typography className={classes.tabLabel}>Visitors</Typography>
               <Button className={`${classes.learnBtn} ${classes.active}`}>Learn More...</Button>
             </div>
@@ -38,7 +38,8 @@ const MyTabs: FC = () => {
           className={classes.tab}
          />
         <Tab 
-          label={
+          label=
+          {
             <div className={classes.tabBtnContainer}>
               <div className={classes.tabCornerNumber}>02</div>
               <AcUnitIcon className={classes.tabIcon}/>
@@ -49,7 +50,8 @@ const MyTabs: FC = () => {
           className={classes.tab}
          />
         <Tab 
-          label={
+          label=
+          {
             <div className={classes.tabBtnContainer}>
               <div className={classes.tabCornerNumber}>03</div>
               <AcUnitIcon className={classes.tabIcon}/>
@@ -63,7 +65,7 @@ const MyTabs: FC = () => {
       <TabPanel value={value} index={0} className={classes.tabPanel}>
         {['0','1','2','3','4','5'].map((index)=> {
           return (
-            <div id={index} className={classes.tabPanelItem}>
+            <div id={index} className={classes.tabPanelItem} key={index}>
               <AcUnitIcon className={classes.tabPanelIcon}/>
               <h1 className={classes.tabPanelTitle} >Opportunity</h1>
               <Typography className={classes.tabPanelText} >An effective opportunity to strengthen business positions and enter new markets </Typography>
@@ -125,7 +127,6 @@ const useStyles = makeStyles((theme) => {
     },
     '&.MuiTab-root': {
       maxWidth: 380,
-      //padding: '40px 12px',
     },
   },
   tabBtnContainer: {
