@@ -70,7 +70,7 @@ deploy_review:
     url: https://tantora-$CI_ENVIRONMENT_SLUG.surge.sh
     on_stop: stop_review
   variables:
-    DOMAIN: $REVIEW_DOMAIN
+    DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
   dependencies:
     - build_stage
 
@@ -82,7 +82,7 @@ stop_review:
     GIT_STRATEGY: none
   script:
     - npm install --global surge
-    - surge teardown $REVIEW_DOMAIN
+    - surge teardown tantora-$CI_ENVIRONMENT_SLUG.surge.sh
   when: manual
   environment:
     name: review/$CI_COMMIT_REF_NAME
