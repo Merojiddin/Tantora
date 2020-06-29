@@ -44,6 +44,7 @@ build_stage:
     - yarn
   script: yarn run build
   artifacts:
+    when: always
     paths:
       - build/
   variables:
@@ -100,6 +101,9 @@ deploy_staging:
 
 deploy_production:
   stage: deploy_production
+  environment:
+    name: production
+    url: http://$PRODUCTION_DOMAIN
   only:
     - master
   before_script:
