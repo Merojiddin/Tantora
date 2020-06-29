@@ -44,6 +44,7 @@ build_stage:
     - yarn
   script: yarn run build
   artifacts:
+    when: always
     paths:
       - build/
   variables:
@@ -51,6 +52,8 @@ build_stage:
     REACT_APP_CHAT_URL: http://$PRODUCTION_DOMAIN/api-chat
 
 .deploy_base: &deploy
+  before_script:
+    - echo "deploying to $DOMAIN"
   script:
     - npm install --global surge
     - surge --project ./build --domain $DOMAIN
@@ -100,6 +103,9 @@ deploy_staging:
 
 deploy_production:
   stage: deploy_production
+  environment:
+    name: production
+    url: http://$PRODUCTION_DOMAIN
   only:
     - master
   before_script:
