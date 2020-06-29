@@ -6,9 +6,9 @@ import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 
-import VisitorsIcon from 'assets/images/Visitors.png'
-import OrganizatorsIcon from 'assets/images/Organizators.png'
-import ExhibitorsIcon from 'assets/images/Exhibitors.png'
+import VisitorsIcon from 'assets/images/Visitors.png';
+import OrganizatorsIcon from 'assets/images/Organizators.png';
+import ExhibitorsIcon from 'assets/images/Exhibitors.png';
 
 import hexToRgb from 'hex-rgb';
 

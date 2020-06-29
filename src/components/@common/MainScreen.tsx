@@ -37,7 +37,7 @@ const useStyles = (props: IStyleProps) =>
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
-        height: '90vh',
+        height: '800px',
         width: '100%',
         minWidth: '700px',
         background: `url(${props.bgSrc}) center no-repeat`,
@@ -45,11 +45,12 @@ const useStyles = (props: IStyleProps) =>
         backgroundColor: '#13303F',
         padding: 0,
         marginBottom: 150,
+        position: 'relative',
 
         '&:before': {
           content: `' '`,
           position: 'absolute',
-          height: '90vh',
+          height: '800px',
           width: '100%',
           left: 0,
           top: 0,
