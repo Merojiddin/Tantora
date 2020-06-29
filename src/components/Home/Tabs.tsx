@@ -4,6 +4,11 @@ import Tabs from '@material-ui/core/Tabs';
 import { makeStyles, Typography } from '@material-ui/core';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Button from '@material-ui/core/Button';
+import CardMedia from '@material-ui/core/CardMedia';
+
+import VisitorsIcon from 'assets/images/Visitors.png'
+import OrganizatorsIcon from 'assets/images/Organizators.png'
+import ExhibitorsIcon from 'assets/images/Exhibitors.png'
 
 import hexToRgb from 'hex-rgb';
 
@@ -19,7 +24,7 @@ const MyTabs: FC = () => {
   const TabVisitors = (
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>01</div>
-      <AcUnitIcon className={classes.tabIcon} />
+      <CardMedia image={VisitorsIcon} className={classes.tabIcon} />
       <Typography className={classes.tabLabel}>Visitors</Typography>
       <Button className={`${classes.learnBtn} ${classes.active}`}>
         Learn More...
@@ -30,8 +35,8 @@ const MyTabs: FC = () => {
   const TabExhibitions = (
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>02</div>
-      <AcUnitIcon className={classes.tabIcon} />
-      <Typography className={classes.tabLabel}>Exhibitions</Typography>
+      <CardMedia image={ExhibitorsIcon} className={classes.tabIcon} />
+      <Typography className={classes.tabLabel}>Exhibitors</Typography>
       <Button className={classes.learnBtn}>More</Button>
     </div>
   );
@@ -39,7 +44,7 @@ const MyTabs: FC = () => {
   const TabOrganizations = (
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>03</div>
-      <AcUnitIcon className={classes.tabIcon} />
+      <CardMedia image={OrganizatorsIcon} className={classes.tabIcon} />
       <Typography className={classes.tabLabel}>Organizations</Typography>
       <Button className={classes.learnBtn}>More</Button>
     </div>

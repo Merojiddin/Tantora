@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import Container from '@material-ui/core/Container';
 
@@ -16,13 +16,14 @@ const Search: FC = () => {
           placeholder="What are you looking for..."
           inputProps={{ 'aria-label': 'naked' }}
         />
-        <IconButton
+        <Button
           type="submit"
+          variant="contained"
           className={classes.iconButton}
           aria-label="search"
         >
           <SearchIcon /> Search
-        </IconButton>
+        </Button>
       </Typography>
     </Container>
   );
