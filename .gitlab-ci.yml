@@ -44,6 +44,7 @@ build_stage:
     - yarn
   script: yarn run build
   artifacts:
+    when: always
     paths:
       - build/
   variables:
@@ -51,6 +52,8 @@ build_stage:
     REACT_APP_CHAT_URL: http://$PRODUCTION_DOMAIN/api-chat
 
 .deploy_base: &deploy
+  before_script:
+    - echo "deploying to $DOMAIN"
   script:
     - npm install --global surge
     - surge --project ./build --domain $DOMAIN
@@ -67,7 +70,7 @@ deploy_review:
     url: https://tantora-$CI_ENVIRONMENT_SLUG.surge.sh
     on_stop: stop_review
   variables:
-    DOMAIN: $REVIEW_DOMAIN
+    DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
   dependencies:
     - build_stage
 
@@ -79,7 +82,7 @@ stop_review:
     GIT_STRATEGY: none
   script:
     - npm install --global surge
-    - surge teardown $REVIEW_DOMAIN
+    - surge teardown tantora-$CI_ENVIRONMENT_SLUG.surge.sh
   when: manual
   environment:
     name: review/$CI_COMMIT_REF_NAME
@@ -100,6 +103,9 @@ deploy_staging:
 
 deploy_production:
   stage: deploy_production
+  environment:
+    name: production
+    url: http://$PRODUCTION_DOMAIN
   only:
     - master
   before_script:
