@@ -52,6 +52,8 @@ build_stage:
     REACT_APP_CHAT_URL: http://$PRODUCTION_DOMAIN/api-chat
 
 .deploy_base: &deploy
+  before_script:
+    - echo "deploying to $DOMAIN"
   script:
     - npm install --global surge
     - surge --project ./build --domain $DOMAIN
