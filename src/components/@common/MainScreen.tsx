@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Search from './Search'
+import Search from './Search';
 
 interface IStyleProps {
   bgSrc: string;
@@ -19,8 +19,12 @@ const MainScreen: FC<IProps> = (props) => {
       <Typography className={classes.title} variant="h1">
         {props.title}
       </Typography>
-      <Typography className={classes.titleText} variant="h4">Enjoy exhibitions at home</Typography>
-      <Typography className={classes.titleText2} variant="h4">Keep in touch with all online exhibitions</Typography>
+      <Typography className={classes.titleText} variant="h4">
+        Enjoy exhibitions at home
+      </Typography>
+      <Typography className={classes.titleText2} variant="h4">
+        Keep in touch with all online exhibitions
+      </Typography>
       <Search />
     </div>
   );
@@ -35,7 +39,7 @@ const useStyles = (props: IStyleProps) =>
         alignItems: 'center',
         height: '90vh',
         width: '100%',
-        minWidth: '700px', 
+        minWidth: '700px',
         background: `url(${props.bgSrc}) center no-repeat`,
         backgroundSize: 'cover',
         backgroundColor: '#13303F',
@@ -71,7 +75,7 @@ const useStyles = (props: IStyleProps) =>
         width: '100%',
         color: theme.palette.common.white,
         marginTop: '9px',
-        zIndex: 1001
+        zIndex: 1001,
       },
       titleText2: {
         fontFamily: 'Roboto',
@@ -83,7 +87,6 @@ const useStyles = (props: IStyleProps) =>
         zIndex: 1001,
         marginBottom: 40,
       },
-     
     };
   });
 

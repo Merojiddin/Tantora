@@ -17,11 +17,29 @@ const Exhibition: FC = () => {
     <div className={classes.wrapper}>
       <MainScreen bgSrc={image} title="Exhibition Name" />
       <About />
-      <ColoredLine color="black" width='640px' margin='50px auto' right="" height="6"/>
+      <ColoredLine
+        color="black"
+        width="640px"
+        margin="50px auto"
+        right=""
+        height="6"
+      />
       <Reason />
-      <ColoredLine color="black" width='640px' margin='50px auto' right="" height="6"/>
+      <ColoredLine
+        color="black"
+        width="640px"
+        margin="50px auto"
+        right=""
+        height="6"
+      />
       <Partners />
-      <ColoredLine color="black" width='640px' margin='50px auto' right="" height="6"/>
+      <ColoredLine
+        color="black"
+        width="640px"
+        margin="50px auto"
+        right=""
+        height="6"
+      />
       <News />
     </div>
   );

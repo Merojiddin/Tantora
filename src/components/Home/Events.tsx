@@ -27,10 +27,13 @@ interface IStyleProps {
   bgSrc: string;
 }
 
-const text = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam a dolorum suscipit velit nobis sunt aspernatur, vero quia! Corporis facilis maxime praesentium cupiditate sint assumenda modi saepe mollitia incidunt soluta?'
+const text =
+  'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam a dolorum suscipit velit nobis sunt aspernatur, vero quia! Corporis facilis maxime praesentium cupiditate sint assumenda modi saepe mollitia incidunt soluta?';
 
 const Events: FC = () => {
-  const classes = useStyles({ bgSrc: require('assets/images/homeEventBg.jpg') })();
+  const classes = useStyles({
+    bgSrc: require('assets/images/homeEventBg.jpg'),
+  })();
   const { data, loading, error } = useQuery<IResponse>(GET_EXHIBITONS);
 
   if (error) {
@@ -59,15 +62,16 @@ const Events: FC = () => {
               return (
                 <div className={classes.event} key={exhibitionId!}>
                   <Typography variant="body2" className={classes.data}>
-                      {`Date: ${year}/${month}/${day}`}
-                    </Typography>
+                    {`Date: ${year}/${month}/${day}`}
+                  </Typography>
                   <Typography variant="h6" className={classes.eventTitle}>
                     {name}
                   </Typography>
                   <Typography className={classes.text} variant="subtitle2">
                     {description!.length < 150
                       ? description
-                      : description!.slice(0, 250) + ' ...'} {text}
+                      : description!.slice(0, 250) + ' ...'}{' '}
+                    {text}
                   </Typography>
                   <div className={classes.boxForDateBtn} />
                 </div>
@@ -79,10 +83,10 @@ const Events: FC = () => {
   );
 };
 
-const useStyles = (props: IStyleProps) => 
+const useStyles = (props: IStyleProps) =>
   makeStyles((theme) => {
-    const black = hexToRgb(theme.palette.common.black)
-    
+    const black = hexToRgb(theme.palette.common.black);
+
     return {
       wrapper: {
         width: '100%',
@@ -103,7 +107,7 @@ const useStyles = (props: IStyleProps) =>
         width: `100%`,
         opacity: '80%',
         borderRadius: 16,
-        scale: 'Fill'
+        scale: 'Fill',
       },
       event: {
         textAlign: 'left',
@@ -128,7 +132,8 @@ const useStyles = (props: IStyleProps) =>
           zIndex: 250,
           top: 0,
           left: 0,
-          background:'linear-gradient(red 0%, orange 25%, yellow 50%, green 75%, blue 100%)',
+          background:
+            'linear-gradient(red 0%, orange 25%, yellow 50%, green 75%, blue 100%)',
         },
       },
       eventTitle: {
@@ -137,7 +142,6 @@ const useStyles = (props: IStyleProps) =>
         fontWeight: 'bolder',
         fontSize: 18,
         letterSpacing: '-1.5%',
-
       },
       text: {
         height: 150,
@@ -158,7 +162,7 @@ const useStyles = (props: IStyleProps) =>
         color: theme.palette.common.lighterGrey,
         letterSpacing: '-1.5%',
         fontFamily: 'Roboto',
-        marginBottom: 17
+        marginBottom: 17,
       },
       joinBtn: {
         fontWeight: 'bolder',
@@ -169,7 +173,8 @@ const useStyles = (props: IStyleProps) =>
       },
       hrLine: {
         marginBottom: '50',
-      }
-    }});
+      },
+    };
+  });
 
 export default Events;

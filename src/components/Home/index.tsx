@@ -4,7 +4,6 @@ import Events from './Events';
 import About from './AboutProject';
 import MyTabs from './Tabs';
 
-
 const image = require('../../assets/images/mainbackg.jpg');
 
 const Home: FC = () => (

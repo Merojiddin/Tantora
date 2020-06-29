@@ -6,14 +6,14 @@ interface IProps {
   margin?: string;
   right?: string;
   height: string;
-  radius?: string; 
+  radius?: string;
   bottom?: string;
 }
 
 const ColoredLine: FC<IProps> = (props) => (
   <hr
     style={{
-      position: "relative",
+      position: 'relative',
       right: props.right,
       color: props.color,
       backgroundColor: props.color,

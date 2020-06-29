@@ -16,7 +16,11 @@ const Search: FC = () => {
           placeholder="What are you looking for..."
           inputProps={{ 'aria-label': 'naked' }}
         />
-        <IconButton type="submit" className={classes.iconButton} aria-label="search">
+        <IconButton
+          type="submit"
+          className={classes.iconButton}
+          aria-label="search"
+        >
           <SearchIcon /> Search
         </IconButton>
       </Typography>
@@ -33,11 +37,10 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 480,
     borderRadius: 10,
     top: '12%',
-    boxSizing: "border-box",
-    zIndex: 100
-    
+    boxSizing: 'border-box',
+    zIndex: 100,
   },
- 
+
   searchInputFieldContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -46,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '',
     border: 'none 1px black',
     height: 167,
-
   },
   input: {
     width: '100%',
@@ -57,8 +59,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 100,
     border: '1px solid rgba(0, 0, 0, 0.15)',
     boxSizing: 'border-box',
-    borderRadius: '5px 0 0 5px '
-    
+    borderRadius: '5px 0 0 5px ',
   },
   iconButton: {
     padding: 10,
@@ -69,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
     height: 100,
     width: 280,
     fontSize: '16px',
-
   },
   divider: {
     height: 40,

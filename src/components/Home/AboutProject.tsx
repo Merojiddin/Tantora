@@ -5,8 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 
-
-import about from '../../assets/images/about.jpg'
+import about from '../../assets/images/about.jpg';
 import theme from 'theme';
 
 const text =
@@ -23,10 +22,12 @@ const About: FC = () => {
             <strong>About</strong> The Project
           </Typography>
           <Typography className={classes.text}>{text}</Typography>
-          <Button color="primary" className={classes.learnBtn}>Learn more</Button>
+          <Button color="primary" className={classes.learnBtn}>
+            Learn more
+          </Button>
         </div>
         <div className={classes.secondColumn}>
-          <CardMedia image={about} className={classes.secondndColumnPic}/>        
+          <CardMedia image={about} className={classes.secondndColumnPic} />
         </div>
       </Container>
     </div>
@@ -40,11 +41,10 @@ const useStyles = makeStyles({
   },
   root: {
     width: '100%',
-    marginBottom: 150, 
+    marginBottom: 150,
     justifyContent: 'space-around',
     display: 'flex',
     flexWrap: 'wrap',
-
   },
   title: {
     fontFamily: 'Roboto',
@@ -65,7 +65,6 @@ const useStyles = makeStyles({
   firstColumn: {
     width: 518,
     padding: 20,
-    
   },
   learnBtn: {
     border: '1px solid',
@@ -98,9 +97,9 @@ const useStyles = makeStyles({
     marginTop: 109,
     zIndex: 200,
     borderRadius: 10,
-    width: "456px",
-    height: "448px",
-  }
+    width: '456px',
+    height: '448px',
+  },
 });
 
 export default About;

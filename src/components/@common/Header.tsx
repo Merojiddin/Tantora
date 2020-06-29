@@ -18,8 +18,7 @@ import { LogoutResponse } from 'generated/graphql';
 import useStore from 'hooks/useStore';
 import Menu from 'components/@common/Menu';
 import MenuMobile from 'components/@common/MenuMobile';
-import Logo from '../../assets/images/icon.png'
-
+import Logo from '../../assets/images/icon.png';
 
 const LogoutQuery = gql`
   query($token: String!) {
@@ -123,16 +122,14 @@ const Header = observer(() => {
 });
 
 const useStyles = makeStyles((theme) => {
-
   return {
     root: {
       position: 'fixed',
       top: 0,
       left: 0,
       width: '100%',
-      zIndex: 250, 
-      margin: 'auto'
-
+      zIndex: 250,
+      margin: 'auto',
     },
     headerBar: {
       position: 'relative',
@@ -188,7 +185,6 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       alignItems: 'center',
     },
-
   };
 });
 
