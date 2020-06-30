@@ -135,7 +135,8 @@ const useStyles = makeStyles((theme) => {
       position: 'relative',
       backgroundColor: 'transparent',
       boxShadow: 'none',
-      paddingTop: 25,
+      paddingTop: 15,
+      paddingBottom: 15,
 
       '&.active': {
         '& > .bg': { opacity: 1 },

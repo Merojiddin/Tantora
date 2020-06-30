@@ -76,7 +76,7 @@ const useStyles = (props: IStyleProps) =>
         width: '100%',
         color: theme.palette.common.white,
         marginTop: '9px',
-        zIndex: 1001,
+        zIndex: 10,
       },
       titleText2: {
         fontFamily: 'Roboto',
@@ -85,7 +85,7 @@ const useStyles = (props: IStyleProps) =>
         width: '100%',
         color: theme.palette.common.white,
         marginTop: '12px',
-        zIndex: 1001,
+        zIndex: 10,
         marginBottom: 40,
       },
     };
