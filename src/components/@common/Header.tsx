@@ -135,8 +135,7 @@ const useStyles = makeStyles((theme) => {
       position: 'relative',
       backgroundColor: 'transparent',
       boxShadow: 'none',
-      paddingTop: 15,
-      paddingBottom: 15,
+      paddingTop: 2,
 
       '&.active': {
         '& > .bg': { opacity: 1 },
@@ -160,7 +159,7 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: theme.palette.common.darkBlue,
       opacity: 0,
       transition: '0.3s',
-      minHeight: 60,
+      minHeight: 50,
     },
     headerToolbar: {
       display: 'flex',
@@ -174,13 +173,12 @@ const useStyles = makeStyles((theme) => {
       color: theme.palette.common.white,
     },
     logo: {
-      width: 274,
-      height: 180,
+      paddingTop: 5,
+      width: 74,
+      height: 55,
       boxSizing: 'border-box',
       backgroundSize: 'cover',
-      position: 'absolute',
-      top: -80,
-      left: -82,
+      position: 'relative',
     },
     loginWrapper: {
       display: 'flex',

@@ -19,6 +19,7 @@ declare module '@material-ui/core/styles/createPalette' {
     whiteGrey: string;
     darkBlue: string;
     ultraLightGrey: string;
+    ultraLightGrey2: string;
     grey2: string;
   }
 }

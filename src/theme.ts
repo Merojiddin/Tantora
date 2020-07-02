@@ -13,6 +13,7 @@ let theme = createMuiTheme({
       lightGrey: '#EFF4F8',
       lighterGrey: '#858585',
       ultraLightGrey: '#BCCFE1',
+      ultraLightGrey2: '#8A9CAD',
       grey2: '#97A4AF',
       black: '#000000',
       green: '#1BBE61',

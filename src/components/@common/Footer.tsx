@@ -22,31 +22,31 @@ const Header = () => {
           </Typography>
         </div>
         <div className={classes.menu}>
-          <p className={classes.title}>Menu</p>
-          <p className={classes.btn}>Home</p>
-          <p className={classes.btn}>About</p>
-          <p className={classes.btn}>Services</p>
-          <p className={classes.btn}>News</p>
-          <p className={classes.btn}>Gallery</p>
-          <p className={classes.btn}>Contact</p>
+          <h3 className={classes.title}>Menu</h3>
+          <li className={classes.btn}>Home</li>
+          <li className={classes.btn}>About</li>
+          <li className={classes.btn}>Services</li>
+          <li className={classes.btn}>News</li>
+          <li className={classes.btn}>Gallery</li>
+          <li className={classes.btn}>Contact</li>
         </div>
         <div className={classes.menu}>
-          <p className={classes.title}>Services</p>
-          <p className={classes.btn}>Virtual exhibition</p>
-          <p className={classes.btn}>Online conference</p>
-          <p className={classes.btn}>MarketPlace</p>
-          <p className={classes.btn}>Traditional exhibition</p>
-          <p className={classes.btn}>Lorem ipsum</p>
-          <p className={classes.btn}>Dolor sit amet</p>
+          <h3 className={classes.title}>Services</h3>
+          <li className={classes.btn}>Virtual exhibition</li>
+          <li className={classes.btn}>Online conference</li>
+          <li className={classes.btn}>Marketlilace</li>
+          <li className={classes.btn}>Traditional exhibition</li>
+          <li className={classes.btn}>Lorem ilisum</li>
+          <li className={classes.btn}>Dolor sit amet</li>
         </div>
         <div className={classes.contact}>
-          <p className={classes.title}>CONTACT US</p>
-          <p className={classes.btn}>
+          <h3 className={classes.title}>CONTACT US</h3>
+          <li className={classes.contacts}>
             <EmailIcon fontSize="small" /> nurislam.ashirmatov@yandex.ru
-          </p>
-          <p className={classes.btn}>
+          </li>
+          <li className={classes.contacts}>
             <PhoneIcon fontSize="small" /> +8 613 249 72 0671
-          </p>
+          </li>
           <FacebookIcon fontSize="small" /> <InstagramIcon fontSize="small" />
         </div>
       </Container>
@@ -56,6 +56,7 @@ const Header = () => {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
+    paddingTop: 75,
     backgroundColor: theme.palette.common.darkBlue,
   },
   root: {
@@ -67,12 +68,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   logo: {
-    width: 274,
-    height: 180,
+    width: 74,
+    height: 55,
     boxSizing: 'border-box',
     backgroundSize: 'cover',
     position: 'relative',
-    left: -82,
     marginBottom: 65,
   },
   ftitle: {
@@ -81,20 +81,33 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
   menu: {
-    color: theme.palette.common.ultraLightGrey,
+    position: 'relative',
+    color: theme.palette.common.ultraLightGrey2,
+    bottom: 30,
+    
   },
   title: {
     fontSize: 12,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 12,
   },
   contact: {
     color: theme.palette.common.ultraLightGrey,
     position: 'relative',
-    bottom: 53,
+    bottom: 62,
   },
   btn: {
     fontSize: 14,
+    listStyle: 'none',
+    marginTop: 8,
+
+  },
+  contacts: {
+    fontSize: 14,
+    listStyle: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: 8,
   },
 }));
 
