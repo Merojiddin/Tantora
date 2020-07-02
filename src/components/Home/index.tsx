@@ -7,12 +7,12 @@ import MyTabs from './Tabs';
 const image = require('../../assets/images/mainbackg.jpg');
 
 const Home: FC = () => (
-  <>
+  <div>
     <MainScreen title="ONLINE-FAIR" bgSrc={image} />
     <Events />
     <About />
     <MyTabs />
-  </>
+  </div>
 );
 
 export default Home;

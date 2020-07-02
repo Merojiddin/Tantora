@@ -90,7 +90,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     color: theme.palette.common.ultraLightGrey2,
     bottom: 30,
-    
   },
   title: {
     fontSize: 12,
@@ -106,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     listStyle: 'none',
     marginTop: 8,
-
   },
   contacts: {
     fontSize: 14,

@@ -218,7 +218,7 @@ const useStyles = makeStyles((theme) => {
       margin: '70px auto 107px',
       width: 163,
       height: 47,
-      color: theme.palette.common.white
+      color: theme.palette.common.white,
     },
     active: {
       border: 'none',
