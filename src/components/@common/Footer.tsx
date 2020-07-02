@@ -23,30 +23,36 @@ const Header = () => {
         </div>
         <div className={classes.menu}>
           <h3 className={classes.title}>Menu</h3>
-          <li className={classes.btn}>Home</li>
-          <li className={classes.btn}>About</li>
-          <li className={classes.btn}>Services</li>
-          <li className={classes.btn}>News</li>
-          <li className={classes.btn}>Gallery</li>
-          <li className={classes.btn}>Contact</li>
+          <ul>
+            <li className={classes.btn}>Home</li>
+            <li className={classes.btn}>About</li>
+            <li className={classes.btn}>Services</li>
+            <li className={classes.btn}>News</li>
+            <li className={classes.btn}>Gallery</li>
+            <li className={classes.btn}>Contact</li>
+          </ul>
         </div>
         <div className={classes.menu}>
           <h3 className={classes.title}>Services</h3>
-          <li className={classes.btn}>Virtual exhibition</li>
-          <li className={classes.btn}>Online conference</li>
-          <li className={classes.btn}>Marketlilace</li>
-          <li className={classes.btn}>Traditional exhibition</li>
-          <li className={classes.btn}>Lorem ilisum</li>
-          <li className={classes.btn}>Dolor sit amet</li>
+          <ul>
+            <li className={classes.btn}>Virtual exhibition</li>
+            <li className={classes.btn}>Online conference</li>
+            <li className={classes.btn}>Marketlilace</li>
+            <li className={classes.btn}>Traditional exhibition</li>
+            <li className={classes.btn}>Lorem ilisum</li>
+            <li className={classes.btn}>Dolor sit amet</li>
+          </ul>
         </div>
         <div className={classes.contact}>
           <h3 className={classes.title}>CONTACT US</h3>
-          <li className={classes.contacts}>
-            <EmailIcon fontSize="small" /> nurislam.ashirmatov@yandex.ru
-          </li>
-          <li className={classes.contacts}>
-            <PhoneIcon fontSize="small" /> +8 613 249 72 0671
-          </li>
+          <ul>
+            <li className={classes.contacts}>
+              <EmailIcon fontSize="small" /> nurislam.ashirmatov@yandex.ru
+            </li>
+            <li className={classes.contacts}>
+              <PhoneIcon fontSize="small" /> +8 613 249 72 0671
+            </li>
+          </ul>
           <FacebookIcon fontSize="small" /> <InstagramIcon fontSize="small" />
         </div>
       </Container>
