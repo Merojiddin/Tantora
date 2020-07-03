@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
 import { Waypoint } from 'react-waypoint';
 import cls from 'classnames';
-import hexToRgb from 'hex-rgb';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -19,6 +18,7 @@ import { LogoutResponse } from 'generated/graphql';
 import useStore from 'hooks/useStore';
 import Menu from 'components/@common/Menu';
 import MenuMobile from 'components/@common/MenuMobile';
+import Logo from '../../assets/images/icon.png';
 
 const LogoutQuery = gql`
   query($token: String!) {
@@ -93,7 +93,7 @@ const Header = observer(() => {
             <Link to="/" style={{ textDecoration: 'none' }}>
               <Button>
                 <Typography variant="h6" className={classes.whiteBtn}>
-                  Tantora
+                  <img src={Logo} alt="Logo" className={classes.logo} />
                 </Typography>
               </Button>
             </Link>
@@ -106,10 +106,10 @@ const Header = observer(() => {
               ) : (
                 <>
                   <Link to="/register" style={{ textDecoration: 'none' }}>
-                    <Button className={classes.whiteBtn}>SignUp</Button>
+                    <Button className={classes.whiteBtn}>Register</Button>
                   </Link>
                   <Link to="/login" style={{ textDecoration: 'none' }}>
-                    <Button className={classes.whiteBtn}>Login</Button>
+                    <Button className={classes.NotwhiteBtn}>Sign In</Button>
                   </Link>
                 </>
               )}
@@ -122,9 +122,6 @@ const Header = observer(() => {
 });
 
 const useStyles = makeStyles((theme) => {
-  const { red, green, blue } = hexToRgb(theme.palette.primary.main);
-  const black = hexToRgb(theme.palette.common.black);
-
   return {
     root: {
       position: 'fixed',
@@ -132,13 +129,18 @@ const useStyles = makeStyles((theme) => {
       left: 0,
       width: '100%',
       zIndex: 250,
+      alignContent: 'center',
+      margin: 'auto',
     },
     headerBar: {
       position: 'relative',
       backgroundColor: 'transparent',
+      boxShadow: 'none',
+      paddingTop: 22,
 
       '&.active': {
         '& > .bg': { opacity: 1 },
+        paddingTop: 2,
       },
 
       '&:before': {
@@ -148,7 +150,6 @@ const useStyles = makeStyles((theme) => {
         right: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: `rgba(${black.red}, ${black.green}, ${black.blue}, 0.3)`,
       },
     },
     headerBg: {
@@ -157,20 +158,41 @@ const useStyles = makeStyles((theme) => {
       top: 0,
       width: '100%',
       height: '100%',
-      background: `linear-gradient(90deg, rgb(${red}, ${green}, ${blue}) 0%, rgb(${blue}, ${green}, ${red}) 96%)`,
+      backgroundColor: theme.palette.common.darkBlue,
       opacity: 0,
       transition: '0.3s',
+      minHeight: 50,
     },
     headerToolbar: {
       display: 'flex',
       justifyContent: 'space-between',
       width: '100%',
+      maxWidth: 1280,
+      margin: 'auto',
     },
     menuButton: {
       marginRight: theme.spacing(2),
     },
     whiteBtn: {
       color: theme.palette.common.white,
+      fontSize: 14,
+    },
+    NotwhiteBtn: {
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.common.blue,
+      fontSize: 14,
+      padding: '10px 1px 12px',
+      marginLeft: 28,
+      width: 106,
+      height: 38,
+    },
+    logo: {
+      paddingTop: 5,
+      width: 80,
+      height: 65,
+      boxSizing: 'border-box',
+      backgroundSize: 'cover',
+      position: 'relative',
     },
     loginWrapper: {
       display: 'flex',

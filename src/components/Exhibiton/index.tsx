@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import MainScreen from '../@common/MainScreen';
 import About from './About';
-import ColoredLine from './HrLine';
+import ColoredLine from '../@common/HrLine';
 import Reason from './Reason';
 import Partners from './Partners';
 import News from './News';
@@ -17,11 +17,29 @@ const Exhibition: FC = () => {
     <div className={classes.wrapper}>
       <MainScreen bgSrc={image} title="Exhibition Name" />
       <About />
-      <ColoredLine color="black" />
+      <ColoredLine
+        color="black"
+        width="640px"
+        margin="50px auto"
+        right=""
+        height="6"
+      />
       <Reason />
-      <ColoredLine color="black" />
+      <ColoredLine
+        color="black"
+        width="640px"
+        margin="50px auto"
+        right=""
+        height="6"
+      />
       <Partners />
-      <ColoredLine color="black" />
+      <ColoredLine
+        color="black"
+        width="640px"
+        margin="50px auto"
+        right=""
+        height="6"
+      />
       <News />
     </div>
   );

@@ -12,5 +12,14 @@ declare module '@material-ui/core/styles/createPalette' {
   interface CommonColors {
     blue: string;
     grey: string;
+    lightGrey: string;
+    lighterGrey: string;
+    black: string;
+    green: string;
+    whiteGrey: string;
+    darkBlue: string;
+    ultraLightGrey: string;
+    ultraLightGrey2: string;
+    grey2: string;
   }
 }

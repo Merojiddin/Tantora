@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
+import hexToRgb from 'hex-rgb';
 
 import { Exhibition } from 'generated/graphql';
 import Loading from 'components/@common/Loading';
@@ -28,8 +27,13 @@ interface IStyleProps {
   bgSrc: string;
 }
 
+const text =
+  'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam a dolorum suscipit velit nobis sunt aspernatur, vero quia! Corporis facilis maxime praesentium cupiditate sint assumenda modi saepe mollitia incidunt soluta?';
+
 const Events: FC = () => {
-  const classes = useStyles({ bgSrc: require('assets/images/event-bp.jpg') })();
+  const classes = useStyles({
+    bgSrc: require('assets/images/homeEventBg.jpg'),
+  })();
   const { data, loading, error } = useQuery<IResponse>(GET_EXHIBITONS);
 
   if (error) {
@@ -57,24 +61,19 @@ const Events: FC = () => {
 
               return (
                 <div className={classes.event} key={exhibitionId!}>
+                  <Typography variant="body2" className={classes.data}>
+                    {`Date: ${year}/${month}/${day}`}
+                  </Typography>
                   <Typography variant="h6" className={classes.eventTitle}>
                     {name}
                   </Typography>
                   <Typography className={classes.text} variant="subtitle2">
                     {description!.length < 150
                       ? description
-                      : description!.slice(0, 250) + ' ...'}
+                      : description!.slice(0, 250) + ' ...'}{' '}
+                    {text}
                   </Typography>
-                  <div className={classes.boxForDateBtn}>
-                    <Typography variant="body2" className={classes.data}>
-                      {`Date: ${year}/${month}/${day}`}
-                    </Typography>
-                    <Link to="/exhibition" key="Join">
-                      <Button className={classes.joinBtn} variant="contained">
-                        Join
-                      </Button>
-                    </Link>
-                  </div>
+                  <div className={classes.boxForDateBtn} />
                 </div>
               );
             }
@@ -85,65 +84,97 @@ const Events: FC = () => {
 };
 
 const useStyles = (props: IStyleProps) =>
-  makeStyles((theme) => ({
-    wrapper: {
-      width: '100%',
-      marginBottom: 150,
-      padding: '0px 50px',
-    },
-    title: {
-      textAlign: 'center',
-      marginBottom: 80,
-      fontWeight: 'bold',
-      fontSize: 35,
-      fontFamily: 'Roboto',
-    },
-    container: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      flexWrap: 'wrap',
-      width: `100%`,
-    },
-    event: {
-      textAlign: 'left',
-      width: '49%',
-      height: '300',
-      padding: '15px 30px',
-      marginBottom: 25,
-      backgroundColor: theme.palette.common.grey,
-      borderRadius: 5,
-      backgroundImage: `url(${props.bgSrc})`,
-      backgroundSize: 'cover',
-    },
-    eventTitle: {
-      fontFamily: 'Roboto',
-      color: theme.palette.common.white,
-      fontWeight: 'bolder',
-    },
-    text: {
-      height: 150,
-      fontSize: 18,
-      fontFamily: 'Roboto',
-      color: theme.palette.common.white,
-      fontWeight: 'bolder',
-    },
-    boxForDateBtn: {
-      display: 'flex',
-      alignItems: 'flex-end',
-      justifyContent: 'space-between',
-    },
-    data: {
-      fontSize: 22,
-      fontWeight: 'bold',
-      color: theme.palette.common.white,
-    },
-    joinBtn: {
-      fontWeight: 'bolder',
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-      width: 97,
-      height: 47,
-    },
-  }));
+  makeStyles((theme) => {
+    const black = hexToRgb(theme.palette.common.black);
+    const white = hexToRgb(theme.palette.common.white);
+
+    return {
+      wrapper: {
+        width: '100%',
+        marginBottom: 150,
+        padding: '0px 50px',
+      },
+      title: {
+        textAlign: 'center',
+        fontSize: 42,
+        fontFamily: 'Roboto',
+        fontWeight: 'bold',
+        marginBottom: 58,
+      },
+      container: {
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        width: `100%`,
+        borderRadius: 16,
+        scale: 'Fill',
+      },
+      event: {
+        position: 'relative',
+        textAlign: 'left',
+        width: '580px',
+        height: '248px',
+        padding: '15px 30px',
+        boxShadow: `0px 4px 16px rgba(${black.red}, ${black.green}, ${black.blue} 0.1)`,
+        color: theme.palette.common.black,
+        marginBottom: 25,
+        borderRadius: 10,
+        backgroundImage: `url(${props.bgSrc})`,
+        backgroundSize: ' 372px 248px',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'right',
+        justifyContent: 'center',
+        zIndex: 10,
+        '&:before': {
+          content: `' '`,
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          zIndex: -1,
+          top: 0,
+          left: 0,
+          background: `linear-gradient(96.76deg, ${theme.palette.common.white} 60.4%, rgba(${white.red},${white.green},${white.blue}, 0) 97.59%)`,
+        },
+      },
+      eventTitle: {
+        fontFamily: 'Roboto',
+        color: theme.palette.common.black,
+        fontWeight: 'bolder',
+        fontSize: 18,
+        letterSpacing: '-1.5%',
+      },
+      text: {
+        height: 150,
+        fontSize: 16,
+        fontFamily: 'Roboto',
+        color: theme.palette.common.black,
+        fontWeight: 300,
+        fontStyle: 'light',
+        width: '356px',
+      },
+      boxForDateBtn: {
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+      },
+      data: {
+        fontSize: 14,
+        color: theme.palette.common.lighterGrey,
+        letterSpacing: '-1.5%',
+        fontFamily: 'Roboto',
+        marginBottom: 17,
+      },
+      joinBtn: {
+        fontWeight: 'bolder',
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.common.white,
+        width: 97,
+        height: 47,
+      },
+      hrLine: {
+        marginBottom: '50',
+      },
+    };
+  });
 
 export default Events;
