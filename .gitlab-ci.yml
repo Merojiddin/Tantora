@@ -48,8 +48,8 @@ build_stage:
     paths:
       - build/
   variables:
-    REACT_APP_BACKEND_URL: http://$PRODUCTION_DOMAIN/api/graphql
-    REACT_APP_CHAT_URL: http://$PRODUCTION_DOMAIN/api-chat
+    REACT_APP_BACKEND_URL: https://$PRODUCTION_DOMAIN/api/graphql
+    REACT_APP_CHAT_URL: https://$PRODUCTION_DOMAIN/api-chat
 
 .deploy_base: &deploy
   before_script:
