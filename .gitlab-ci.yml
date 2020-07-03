@@ -18,7 +18,7 @@ cache:
     - node_modules/
 
 variables:
-  PRODUCTION_DOMAIN: 18.163.156.118
+  PRODUCTION_DOMAIN: tantora.io
   STAGING_DOMAIN: tantora-staging.surge.sh
   REVIEW_DOMAIN: tantora-$CI_ENVIRONMENT_SLUG.surge.sh
 
