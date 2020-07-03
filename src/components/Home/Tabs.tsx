@@ -2,15 +2,20 @@ import React, { FC, ChangeEvent } from 'react';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { makeStyles, Typography } from '@material-ui/core';
-import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
+import hexToRgb from 'hex-rgb';
 
 import VisitorsIcon from 'assets/images/Visitors.png';
 import OrganizatorsIcon from 'assets/images/Organizators.png';
 import ExhibitorsIcon from 'assets/images/Exhibitors.png';
 
-import hexToRgb from 'hex-rgb';
+import Opportunity from 'assets/images/Opportunity.png';
+import Statistics from 'assets/images/Statistics.png';
+import Innovation from 'assets/images/Innovation.png';
+import Optimization from 'assets/images/Optimization.png';
+import Communication from 'assets/images/Communication.png';
+import Price from 'assets/images/Price.png';
 
 import TabPanel from './TabPanel';
 
@@ -63,18 +68,56 @@ const MyTabs: FC = () => {
         <Tab label={TabOrganizations} className={classes.tab} />
       </Tabs>
       <TabPanel value={value} index={0} className={classes.tabPanel}>
-        {['0', '1', '2', '3', '4', '5'].map((index) => {
-          return (
-            <div id={index} className={classes.tabPanelItem} key={index}>
-              <AcUnitIcon className={classes.tabPanelIcon} />
-              <h1 className={classes.tabPanelTitle}>Opportunity</h1>
-              <Typography className={classes.tabPanelText}>
-                An effective opportunity to strengthen business positions and
-                enter new markets{' '}
-              </Typography>
-            </div>
-          );
-        })}
+        <div className={classes.tabPanelItem}>
+          <CardMedia image={Opportunity} className={classes.tabPanelIcon} />
+          <h1 className={classes.tabPanelTitle}>Opportunity</h1>
+          <Typography className={classes.tabPanelText}>
+            An effective opportunity to strengthen business positions and enter
+            new markets
+          </Typography>
+        </div>
+        <div className={classes.tabPanelItem}>
+          <CardMedia image={Statistics} className={classes.tabPanelIcon} />
+          <h1 className={classes.tabPanelTitle}>Statistics</h1>
+          <Typography className={classes.tabPanelText}>
+            Objective statistics and analytics
+          </Typography>
+        </div>
+        <div className={classes.tabPanelItem}>
+          <CardMedia image={Innovation} className={classes.tabPanelIcon} />
+          <h1 className={classes.tabPanelTitle}>Innovation</h1>
+          <Typography className={classes.tabPanelText}>
+            Using an innovative tool for effective research, presentations and
+            educational event
+          </Typography>
+        </div>
+        <div className={classes.tabPanelItem}>
+          <CardMedia image={Optimization} className={classes.tabPanelIcon} />
+          <h1 className={classes.tabPanelTitle}>Optimizatin</h1>
+          <Typography className={classes.tabPanelText}>
+            Cost optimization and maximum effect of participation in
+            exhibitions, forums and conferences
+          </Typography>
+        </div>
+        <div className={classes.tabPanelItem}>
+          <CardMedia image={Communication} className={classes.tabPanelIcon} />
+          <h1 className={classes.tabPanelTitle}>Communication</h1>
+          <Typography className={classes.tabPanelText}>
+            Communication with business partners and visitors is carried out
+            using video and online chat. Exhibitors always stay in touch with
+            potential customers, investors, partners
+          </Typography>
+        </div>
+        <div className={classes.tabPanelItem}>
+          <CardMedia image={Price} className={classes.tabPanelIcon} />
+          <h1 className={classes.tabPanelTitle}>Price</h1>
+          <Typography className={classes.tabPanelText}>
+            You no longer need to pay for renting space for a company stand,
+            installation, printing of materials. To participate in the virtual
+            exhibition, you do not need to pay the fare to exhibitors and pay
+            for the delivery of demonstration goods.
+          </Typography>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
         Item Two
@@ -88,9 +131,7 @@ const MyTabs: FC = () => {
 };
 
 const useStyles = makeStyles((theme) => {
-  const green = hexToRgb(theme.palette.common.green);
-  const black = hexToRgb(theme.palette.common.black);
-  const white = hexToRgb(theme.palette.common.white);
+  const blue = hexToRgb(theme.palette.common.blue);
 
   return {
     tabs: {
@@ -102,22 +143,33 @@ const useStyles = makeStyles((theme) => {
         display: 'flex',
         flexWrap: 'wrap',
         '& .MuiTabs-indicator': {
-          border: '5px solid black',
+          border: `5px solid ${theme.palette.common.black}`,
         },
       },
     },
     tab: {
+      position: 'relative',
+      zIndex: 125,
       color: theme.palette.common.black,
       margin: '10px 20px 80px ',
       width: 380,
       height: 268,
-      background: '#FFFFFF',
-      boxShadow: `0px 8px 20px rgba(${green.red},${green.green},${green.blue}, 0.15)`,
+      background: theme.palette.common.white,
+      boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
       borderRadius: 10,
-
+      overflow: 'inherit',
       '&.Mui-selected': {
         color: theme.palette.common.black,
-        boxShadow: `0px 8px 20px rgba(${green.red},${green.green},${green.blue}, 0.15)`,
+      },
+      '&.Mui-selected:after': {
+        position: 'absolute',
+        content: `' '`,
+        width: '60px',
+        height: '60px',
+        top: 227,
+        zIndex: 4,
+        transform: 'rotate(45deg)',
+        boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
         background: theme.palette.common.white,
 
         '&. MuiTouchRipple-root': {
@@ -173,15 +225,14 @@ const useStyles = makeStyles((theme) => {
     },
     tabPanelItem: {
       color: 'black',
-      width: 315,
+      width: 362,
       margin: '15px 11px',
     },
     tabPanelIcon: {
-      boxShadow: `inset 0px 4px 4px rgba(${black.red}, ${black.green}, ${black.blue}, 0.15)`,
-      background: `rgba(${white.red},${white.green},${white.blue}, 0.25)`,
+      size: 'cover',
       borderRadius: '50%',
-      width: 152,
-      height: 152,
+      width: 117,
+      height: 117,
       margin: 'auto',
       display: 'flex',
     },
@@ -197,6 +248,7 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Roboto',
       fontSize: 16,
       textAlign: 'center',
+      width: 362,
     },
     learnBtn: {
       border: `1px solid ${theme.palette.common.blue}`,

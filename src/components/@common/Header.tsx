@@ -106,10 +106,10 @@ const Header = observer(() => {
               ) : (
                 <>
                   <Link to="/register" style={{ textDecoration: 'none' }}>
-                    <Button className={classes.whiteBtn}>SignUp</Button>
+                    <Button className={classes.whiteBtn}>Register</Button>
                   </Link>
                   <Link to="/login" style={{ textDecoration: 'none' }}>
-                    <Button className={classes.whiteBtn}>Login</Button>
+                    <Button className={classes.NotwhiteBtn}>Sign In</Button>
                   </Link>
                 </>
               )}
@@ -129,16 +129,18 @@ const useStyles = makeStyles((theme) => {
       left: 0,
       width: '100%',
       zIndex: 250,
+      alignContent: 'center',
       margin: 'auto',
     },
     headerBar: {
       position: 'relative',
       backgroundColor: 'transparent',
       boxShadow: 'none',
-      paddingTop: 2,
+      paddingTop: 22,
 
       '&.active': {
         '& > .bg': { opacity: 1 },
+        paddingTop: 2,
       },
 
       '&:before': {
@@ -165,17 +167,29 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       justifyContent: 'space-between',
       width: '100%',
+      maxWidth: 1280,
+      margin: 'auto',
     },
     menuButton: {
       marginRight: theme.spacing(2),
     },
     whiteBtn: {
       color: theme.palette.common.white,
+      fontSize: 14,
+    },
+    NotwhiteBtn: {
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.common.blue,
+      fontSize: 14,
+      padding: '10px 1px 12px',
+      marginLeft: 28,
+      width: 106,
+      height: 38,
     },
     logo: {
       paddingTop: 5,
-      width: 74,
-      height: 55,
+      width: 80,
+      height: 65,
       boxSizing: 'border-box',
       backgroundSize: 'cover',
       position: 'relative',

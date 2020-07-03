@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import hexToRgb from 'hex-rgb';
 import Search from './Search';
 
 interface IStyleProps {
@@ -32,6 +33,8 @@ const MainScreen: FC<IProps> = (props) => {
 
 const useStyles = (props: IStyleProps) =>
   makeStyles((theme) => {
+    const black = hexToRgb(theme.palette.common.black);
+
     return {
       wrapper: {
         display: 'flex',
@@ -42,7 +45,6 @@ const useStyles = (props: IStyleProps) =>
         minWidth: '700px',
         background: `url(${props.bgSrc}) center no-repeat`,
         backgroundSize: 'cover',
-        backgroundColor: '#13303F',
         padding: 0,
         marginBottom: 150,
         position: 'relative',
@@ -55,13 +57,13 @@ const useStyles = (props: IStyleProps) =>
           left: 0,
           top: 0,
           zIndex: 4,
-          background: `rgba(0, 0, 0, 0.4)`,
+          background: `rgba(${black.red},${black.green},${black.blue}, 0.4)`,
         },
       },
       title: {
-        fontSize: 120,
+        fontSize: 72,
         fontFamily: 'Roboto',
-        marginTop: 196,
+        marginTop: 246,
         fontWeight: 'bolder',
         position: 'relative',
         color: theme.palette.common.white,

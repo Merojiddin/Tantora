@@ -99,7 +99,7 @@ const useStyles = (props: IStyleProps) =>
         fontSize: 42,
         fontFamily: 'Roboto',
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: 58,
       },
       container: {
         display: 'flex',
