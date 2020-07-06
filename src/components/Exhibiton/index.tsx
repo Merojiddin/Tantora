@@ -8,14 +8,14 @@ import Reason from './Reason';
 import Partners from './Partners';
 import News from './News';
 
-const image = require('../../assets/images/exhibition.jfif');
+// const image = require('../../assets/images/exhibition.jfif');
 
 const Exhibition: FC = () => {
   const classes = useStyles()();
 
   return (
     <div className={classes.wrapper}>
-      <MainScreen bgSrc={image} title="Exhibition Name" />
+      <MainScreen bgSrc="sss" title="Exhibition Name" />
       <About />
       <ColoredLine
         color="black"

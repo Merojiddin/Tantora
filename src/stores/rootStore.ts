@@ -1,5 +1,6 @@
 import { ApolloClient } from 'apollo-boost';
 
+import AppStore from 'stores/appStore';
 import AuthStore from 'stores/authStore';
 import ChatStore from 'stores/chatStore';
 import LoginStore from 'stores/loginStore';
@@ -8,6 +9,7 @@ import { client } from 'client';
 import { Socket } from 'hooks/useSocket';
 
 export class RootStore {
+  public appStore = new AppStore();
   public authStore = new AuthStore(this);
   public chatStore = new ChatStore(this);
   public loginStore = new LoginStore(this);

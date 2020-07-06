@@ -1,0 +1,10 @@
+{
+  "header": {
+    "home": "Главная",
+    "exhibitions": "Выставки",
+    "about": "О нас",
+    "service": "Сервис",
+    "register": "Регистрация",
+    "sign-in": "Войти"
+  }
+}

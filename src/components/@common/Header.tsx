@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { gql } from 'apollo-boost';
+import { useTranslation } from 'react-i18next';
 import { useApolloClient } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
@@ -16,9 +17,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import { LogoutResponse } from 'generated/graphql';
 import useStore from 'hooks/useStore';
+import Languages from 'components/@common/Languages';
 import Menu from 'components/@common/Menu';
 import MenuMobile from 'components/@common/MenuMobile';
-import Logo from '../../assets/images/icon.png';
+import Logo from 'assets/images/icon.png';
 
 const LogoutQuery = gql`
   query($token: String!) {
@@ -29,6 +31,7 @@ const LogoutQuery = gql`
 `;
 
 const Header = observer(() => {
+  const [t] = useTranslation('common');
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState(false);
   const { authStore } = useStore();
@@ -99,6 +102,7 @@ const Header = observer(() => {
             </Link>
             {!isTablet && <Menu />}
             <div className={classes.loginWrapper}>
+              <Languages />
               {authStore.isAuth ? (
                 <Button className={classes.whiteBtn} onClick={handleLogout}>
                   Logout
@@ -106,10 +110,14 @@ const Header = observer(() => {
               ) : (
                 <>
                   <Link to="/register" style={{ textDecoration: 'none' }}>
-                    <Button className={classes.whiteBtn}>Register</Button>
+                    <Button className={classes.whiteBtn}>
+                      {t('header.register')}
+                    </Button>
                   </Link>
                   <Link to="/login" style={{ textDecoration: 'none' }}>
-                    <Button className={classes.NotwhiteBtn}>Sign In</Button>
+                    <Button className={classes.NotwhiteBtn}>
+                      {t('header.sign-in')}
+                    </Button>
                   </Link>
                 </>
               )}

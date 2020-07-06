@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "lint": "tslint --project .",
-    "check": "yarn run lint && yarn run typecheck",
+    "check": "yarn run lint && yarn run typecheck && yarn run test --watchAll=false --detectOpenHandles",
     "test": "node scripts/test.js",
     "generate": "graphql-codegen --config codegen.js"
   },
@@ -70,6 +70,9 @@
     "graphql": "15.0.0",
     "hex-rgb": "4.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
+    "i18next": "^19.5.4",
+    "i18next-browser-languagedetector": "^5.0.0",
+    "i18next-xhr-backend": "^3.2.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
@@ -92,6 +95,7 @@
     "react-app-polyfill": "1.0.6",
     "react-dev-utils": "10.2.1",
     "react-dom": "16.13.1",
+    "react-i18next": "^11.7.0",
     "react-responsive": "8.0.3",
     "react-router-dom": "5.1.2",
     "react-waypoint": "9.0.2",
@@ -112,14 +116,23 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {
+    "@apollo/react-testing": "^3.1.4",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "copy-webpack-plugin": "^6.0.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "graphql-code-generator": "0.18.2",
     "graphql-codegen-typescript-react-apollo-template": "0.18.2",
+    "jest-enzyme": "^7.1.2",
     "prettier": "2.0.5",
+    "react-test-renderer": "^16.13.1",
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-loader": "3.5.4",
     "tslint-plugin-prettier": "2.3.0",
-    "tslint-react": "5.0.0"
+    "tslint-react": "5.0.0",
+    "yamljs": "^0.3.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -148,6 +161,7 @@
       "react-app-polyfill/jsdom"
     ],
     "setupFilesAfterEnv": [
+      "./node_modules/jest-enzyme/lib/index.js",
       "<rootDir>/src/setupTests.ts"
     ],
     "testMatch": [
@@ -169,6 +183,10 @@
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "moduleFileExtensions": [
       "web.js",
       "js",

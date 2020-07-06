@@ -1,0 +1,96 @@
+{
+  "section_one": {
+    "title": "Online-fair",
+    "subtitle": "Enjoy exhibitions at home",
+    "subtitle2": "Keep in touch with all online exhibitions"
+  },
+  "about": {
+    "title": "<0>About</0> Us",
+    "description": "Tantora is a platform for organizing and conducting online exhibitions, whose mission is to unite exhibition centers, exhibition organizers, exhibitors and visitors into a single network for more efficient, convenient and economical promotion and search of goods and services in international and local markets.",
+    "button": "Learn more"
+  },
+  "clients": {
+    "title": "For who is this platform?",
+    "visitors": "Visitors",
+    "exhibitors": "Exhibitors",
+    "organizators": "Organizators",
+    "visitors_content": {
+      "item1": {
+        "title": "Free",
+        "description": "Pacrticipate at exhibitions for free wihout going out of your home"
+      },
+      "item2": {
+        "title": "Chat",
+        "description": "Chat or make audio and video calls with companies, they will demonstrate everything that interests you"
+      },
+      "item3": {
+        "title": "Planning",
+        "description": "Planning for productive participation in exhibitions, forums and conferences"
+      },
+      "item4": {
+        "title": "Quality",
+        "description": "Only trusted suppliers"
+      },
+      "item5": {
+        "title": "Accessibility",
+        "description": "Quick access to targeted information about the achievements of companies, their products and services"
+      },
+      "item6": {
+        "title": "Online Streams",
+        "description": "Watch and participate in onine stream shows and online conferences. Watch both the presentations of exhibitors and the speeches of experts and specialists of topics and industries of interest to you"
+      }
+    },
+    "exhibitors_content": {
+      "item1": {
+        "title": "Free",
+        "description": "Pacrticipate at exhibitions for free wihout going out of your home"
+      },
+      "item2": {
+        "title": "Chat",
+        "description": "Chat or make audio and video calls with companies, they will demonstrate everything that interests you"
+      },
+      "item3": {
+        "title": "Planning",
+        "description": "Planning for productive participation in exhibitions, forums and conferences"
+      },
+      "item4": {
+        "title": "Quality",
+        "description": "Only trusted suppliers"
+      },
+      "item5": {
+        "title": "Accessibility",
+        "description": "Quick access to targeted information about the achievements of companies, their products and services"
+      },
+      "item6": {
+        "title": "Online Streams",
+        "description": "Watch and participate in onine stream shows and online conferences. Watch both the presentations of exhibitors and the speeches of experts and specialists of topics and industries of interest to you"
+      }
+    },
+    "organizators_content": {
+      "item1": {
+        "title": "Free",
+        "description": "Pacrticipate at exhibitions for free wihout going out of your home"
+      },
+      "item2": {
+        "title": "Chat",
+        "description": "Chat or make audio and video calls with companies, they will demonstrate everything that interests you"
+      },
+      "item3": {
+        "title": "Planning",
+        "description": "Planning for productive participation in exhibitions, forums and conferences"
+      },
+      "item4": {
+        "title": "Quality",
+        "description": "Only trusted suppliers"
+      },
+      "item5": {
+        "title": "Accessibility",
+        "description": "Quick access to targeted information about the achievements of companies, their products and services"
+      },
+      "item6": {
+        "title": "Online Streams",
+        "description": "Watch and participate in onine stream shows and online conferences. Watch both the presentations of exhibitors and the speeches of experts and specialists of topics and industries of interest to you"
+      }
+    }
+  }
+}
