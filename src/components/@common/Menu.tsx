@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { NAV_ITEMS } from './MenuMobile';
+import useStore from 'hooks/useStore';
 
-const Menu = () => {
+const Menu = observer(() => {
+  const { appStore } = useStore();
   const classes = useStyles();
 
   return (
     <List className={classes.list}>
-      {NAV_ITEMS.map(({ label, link }) => (
+      {appStore.NAV_ITEMS.map(({ label, link }) => (
         <Link to={link} key={label}>
           <ListItem
             className={classes.button}
@@ -26,7 +28,7 @@ const Menu = () => {
       ))}
     </List>
   );
-};
+});
 
 const useStyles = makeStyles((theme) => ({
   list: {
