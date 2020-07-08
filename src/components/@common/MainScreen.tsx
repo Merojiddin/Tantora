@@ -2,18 +2,21 @@ import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import hexToRgb from 'hex-rgb';
-import Search from './Search';
 
 interface IStyleProps {
   bgSrc: string;
+  height: string;
 }
 interface IProps {
   title: string;
   bgSrc: string;
+  secondTitle?: string ;
+  thirdTitle?: string ;
+  height: string;
 }
 
 const MainScreen: FC<IProps> = (props) => {
-  const classes = useStyles({ bgSrc: props.bgSrc })();
+  const classes = useStyles({ bgSrc: props.bgSrc, height: props.height })();
 
   return (
     <div className={classes.wrapper}>
@@ -21,12 +24,11 @@ const MainScreen: FC<IProps> = (props) => {
         {props.title}
       </Typography>
       <Typography className={classes.titleText} variant="h4">
-        Enjoy exhibitions at home
+        "Enjoy exhibitions at home"
       </Typography>
       <Typography className={classes.titleText2} variant="h4">
-        Keep in touch with all online exhibitions
+        "Keep in touch with all online exhibitions" 
       </Typography>
-      <Search />
     </div>
   );
 };
@@ -34,25 +36,25 @@ const MainScreen: FC<IProps> = (props) => {
 const useStyles = (props: IStyleProps) =>
   makeStyles((theme) => {
     const black = hexToRgb(theme.palette.common.black);
-
+    
     return {
       wrapper: {
         display: 'flex',
         flexWrap: 'wrap',
-        alignItems: 'center',
-        height: '800px',
+        height: props.height,
         width: '100%',
         minWidth: '700px',
         background: `url(${props.bgSrc}) center no-repeat`,
         backgroundSize: 'cover',
+        alignItems: 'center',
+        flexDirection: 'column',
         padding: 0,
-        marginBottom: 150,
         position: 'relative',
 
         '&:before': {
           content: `' '`,
           position: 'absolute',
-          height: '800px',
+          height: '100%',
           width: '100%',
           left: 0,
           top: 0,
@@ -63,13 +65,14 @@ const useStyles = (props: IStyleProps) =>
       title: {
         fontSize: 72,
         fontFamily: 'Roboto',
-        marginTop: 246,
+        marginTop: "191px",
         fontWeight: 'bolder',
         position: 'relative',
         color: theme.palette.common.white,
         textAlign: 'center',
         width: '100%',
         zIndex: 100,
+
       },
       titleText: {
         fontFamily: 'Roboto',

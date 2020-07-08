@@ -15,7 +15,7 @@ const Exhibition: FC = () => {
 
   return (
     <div className={classes.wrapper}>
-      <MainScreen bgSrc={image} title="Exhibition Name" />
+      <MainScreen bgSrc={image} title="Exhibition Name" height="515px"/>
       <About />
       <ColoredLine
         color="black"

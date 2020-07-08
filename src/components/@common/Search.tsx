@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
@@ -18,11 +17,11 @@ const Search: FC = () => {
 
   return (
     <Container maxWidth="lg" className={classes.searchField}>
-      <Typography className={classes.searchInputFieldContainer}>
+      <div className={classes.searchInputFieldContainer}>
         <Input
           id="input-with-icon-adornment"
           startAdornment={InputElements}
-          inputProps={{ ariaLabel: 'naked' }}
+          inputProps={{ 'aria-label': 'naked' }} 
           className={classes.input}
         />
         <Button
@@ -33,7 +32,7 @@ const Search: FC = () => {
         >
           <SearchIcon /> Search
         </Button>
-      </Typography>
+      </div>
     </Container>
   );
 };
@@ -47,12 +46,12 @@ const useStyles = makeStyles((theme) => {
       position: 'relative',
       width: '80%',
       margin: 'auto',
-      marginTop: 255,
       alignItems: 'center',
       minWidth: 480,
       borderRadius: 10,
       boxSizing: 'border-box',
       zIndex: 100,
+      bottom: 94,
     },
 
     searchInputFieldContainer: {
@@ -112,6 +111,9 @@ const useStyles = makeStyles((theme) => {
       height: 100,
       width: 280,
       fontSize: '16px',
+      '&.makeStyles-iconButton-34:hover' : {
+        backgroundColor: theme.palette.common.blue,
+      }
     },
     divider: {
       height: 40,
