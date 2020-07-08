@@ -40,6 +40,10 @@ const LoadableRegistration = loadable(() => import('components/Registration'), {
 const LoadableMessages = loadable(() => import('components/Messages'), {
   fallback: <Loading />,
 });
+const LoadableVisitors = loadable(() => import('components/Visitors'), {
+  fallback: <Loading />,
+});
+
 
 const App: FC = observer(() => {
   const classes = useStyles();
@@ -77,6 +81,9 @@ const App: FC = observer(() => {
                 </Route>
                 <Route path="/messages">
                   <LoadableMessages />
+                </Route>
+                <Route path="/visitors">
+                  <LoadableVisitors />
                 </Route>
               </Switch>
             </main>
