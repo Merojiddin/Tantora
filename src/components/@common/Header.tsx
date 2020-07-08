@@ -31,7 +31,7 @@ const LogoutQuery = gql`
 `;
 
 const Header = observer(() => {
-  const [t] = useTranslation('common');
+  const [t] = useTranslation('visitors');
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState(false);
   const { authStore } = useStore();

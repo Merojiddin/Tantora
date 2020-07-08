@@ -21,9 +21,9 @@ const Languages = observer(() => {
       value={appStore.lang}
       onChange={handleChange}
     >
-      <MenuItem value={LANGUAGES.en}>{LANGUAGES.en}</MenuItem>
-      <MenuItem value={LANGUAGES.ru}>{LANGUAGES.ru}</MenuItem>
-      <MenuItem value={LANGUAGES.cn}>{LANGUAGES.cn}</MenuItem>
+      <MenuItem value={LANGUAGES.en}>EN</MenuItem>
+      <MenuItem value={LANGUAGES.ru}>РУ</MenuItem>
+      <MenuItem value={LANGUAGES.cn}>中文</MenuItem>
     </Select>
   );
 });
