@@ -1,7 +1,11 @@
 import { observable, action, when } from 'mobx';
 
-import { RootStore } from 'stores/rootStore';
-import AuthStore from 'stores/authStore';
+import { User } from 'generated/graphql';
+
+interface IAuthProvider {
+  isAuth: boolean;
+  user: User | null;
+}
 
 interface IFriend {
   userId: string;
@@ -38,15 +42,10 @@ class ChatStore {
   @observable public friends: IFriend[] = [];
   @observable public recentChats: IRecentChat[] = [];
 
-  get socket(): SocketIOClient.Socket | undefined {
-    return this.rootStore.socket;
-  }
-
-  get authStore(): AuthStore {
-    return this.rootStore.authStore;
-  }
-
-  constructor(private rootStore: RootStore) {
+  constructor(
+    private authStore: IAuthProvider,
+    private socket: SocketIOClient.Socket | undefined
+  ) {
     this.init();
   }
 

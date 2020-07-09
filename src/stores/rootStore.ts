@@ -10,8 +10,8 @@ import { Socket } from 'hooks/useSocket';
 
 export class RootStore {
   public appStore = new AppStore();
-  public authStore = new AuthStore(this);
-  public chatStore = new ChatStore(this);
+  public authStore = new AuthStore(this.appClient);
+  public chatStore = new ChatStore(this.authStore, this.socket);
   public loginStore = new LoginStore(this);
   public registerStore = new RegisterStore(this);
 

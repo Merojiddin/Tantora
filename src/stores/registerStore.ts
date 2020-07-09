@@ -1,10 +1,14 @@
 import { observable, action } from 'mobx';
-import { gql } from 'apollo-boost';
+import { ApolloClient, gql } from 'apollo-boost';
 import get from 'lodash/get';
 
 import { CreateUserResponse } from 'generated/graphql';
-import { RootStore } from 'stores/rootStore';
-import AuthStore from 'stores/authStore';
+
+interface IAuthProvider<T> {
+  isAuth: boolean;
+  setAuthToken: (token: T) => void;
+  setRefreshToken: (toke: T) => void;
+}
 
 export const ROLE_ENUM = Object.freeze({
   CLIENT: 'client',
@@ -72,11 +76,10 @@ class RegisterStore {
   @observable public loading: boolean = false;
   @observable public error: Error | null = null;
 
-  get authStore(): AuthStore {
-    return this.rootStore.authStore;
-  }
-
-  constructor(private rootStore: RootStore) {}
+  constructor(
+    private authStore: IAuthProvider<string>,
+    private appClient: ApolloClient<unknown>,
+  ) {}
 
   @action private setLoading = (val: boolean): void => {
     this.loading = val;
@@ -95,7 +98,7 @@ class RegisterStore {
       this.setError(null);
 
       try {
-        const { data } = await this.rootStore.appClient.mutate<{
+        const { data } = await this.appClient.mutate<{
           createUser: CreateUserResponse;
         }>({
           mutation: CreateUserMutation,
@@ -109,12 +112,12 @@ class RegisterStore {
         const userId = get(data, 'createUser.user.userId');
 
         if (role === ROLE_ENUM.PRODUCER) {
-          await this.rootStore.appClient.mutate({
+          await this.appClient.mutate({
             mutation: AddToProducerMutation,
             variables: { userId },
           });
         } else if (role === ROLE_ENUM.ORGANIZER) {
-          await this.rootStore.appClient.mutate({
+          await this.appClient.mutate({
             mutation: AddToAdminsMutation,
             variables: { userId },
           });
