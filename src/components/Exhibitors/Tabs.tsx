@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 import TabItem from 'components/@common/TabItems';
-import Data from './store';
+import Data from './Store';
 
 import theme from 'theme';
 
@@ -13,7 +13,7 @@ const MyTabs: FC = () => {
   return (
     <div className={classes.root}>
       <Typography variant="h1" className={classes.title}>
-        What do you get as a result
+        What can get from the exhibition
       </Typography>
       <div className={classes.tabPanel}>
         {Data.map((data) => {

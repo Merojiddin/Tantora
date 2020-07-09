@@ -1,20 +1,19 @@
 import React, { FC, ChangeEvent } from 'react';
+import { Link } from 'react-router-dom';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { makeStyles, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
-import TabPanel from './TabPanel'
+import TabPanel from './TabPanel';
 import hexToRgb from 'hex-rgb';
 
-import TabItem from 'components/@common/TabItems'
-import Data from './store'
+import TabItem from 'components/@common/TabItems';
+import Data from './store';
 
 import VisitorsIcon from 'assets/images/Visitors.png';
 import OrganizatorsIcon from 'assets/images/Organizators.png';
 import ExhibitorsIcon from 'assets/images/Exhibitors.png';
-
-
 
 const MyTabs: FC = () => {
   const classes = useStyles();
@@ -28,9 +27,7 @@ const MyTabs: FC = () => {
       <div className={classes.tabCornerNumber}>01</div>
       <CardMedia image={VisitorsIcon} className={classes.tabIcon} />
       <Typography className={classes.tabLabel}>Visitors</Typography>
-      <div className={`${classes.learnBtn} ${classes.active}`}>
-        Learn More...
-      </div>
+      <div className={classes.learnBtn}>More</div>
     </div>
   );
 
@@ -65,21 +62,32 @@ const MyTabs: FC = () => {
         <Tab label={TabOrganizations} className={classes.tab} />
       </Tabs>
       <TabPanel value={value} index={0} className={classes.tabPanel}>
-        {
-          Data.map((data) => {
-            return (
-              <TabItem icon={data.icon} title={data.title} text={data.text} key={data.index} />
-            )
-          })
-        }        
+        {Data.map((data) => {
+          return (
+            <TabItem
+              icon={data.icon}
+              title={data.title}
+              text={data.text}
+              key={data.index}
+            />
+          );
+        })}
+        <Link to={'/visitors'}>
+          <Button className={classes.tabPanelBtn}>More</Button>
+        </Link>
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
         Item Two
+        <Link to={'/exhibitors'}>
+          <Button className={classes.tabPanelBtn}>More</Button>
+        </Link>
       </TabPanel>
       <TabPanel value={value} index={2} className={classes.tabPanel}>
         Item Three
+        <Link to={'/Organizations'}>
+          <Button className={classes.tabPanelBtn}>More</Button>
+        </Link>
       </TabPanel>
-      <Button className={classes.tabPanelBtn}>More</Button>
     </div>
   );
 };

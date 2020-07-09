@@ -10,8 +10,8 @@ interface IStyleProps {
 interface IProps {
   title: string;
   bgSrc: string;
-  secondTitle?: string ;
-  thirdTitle?: string ;
+  secondTitle?: string;
+  thirdTitle?: string;
   height: string;
 }
 
@@ -27,7 +27,7 @@ const MainScreen: FC<IProps> = (props) => {
         "Enjoy exhibitions at home"
       </Typography>
       <Typography className={classes.titleText2} variant="h4">
-        "Keep in touch with all online exhibitions" 
+        "Keep in touch with all online exhibitions"
       </Typography>
     </div>
   );
@@ -36,7 +36,7 @@ const MainScreen: FC<IProps> = (props) => {
 const useStyles = (props: IStyleProps) =>
   makeStyles((theme) => {
     const black = hexToRgb(theme.palette.common.black);
-    
+
     return {
       wrapper: {
         display: 'flex',
@@ -65,14 +65,13 @@ const useStyles = (props: IStyleProps) =>
       title: {
         fontSize: 72,
         fontFamily: 'Roboto',
-        marginTop: "191px",
+        marginTop: '191px',
         fontWeight: 'bolder',
         position: 'relative',
         color: theme.palette.common.white,
         textAlign: 'center',
         width: '100%',
         zIndex: 100,
-
       },
       titleText: {
         fontFamily: 'Roboto',

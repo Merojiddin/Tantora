@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container';
 
 interface IProps {
   value: number;
@@ -10,6 +10,7 @@ interface IProps {
 
 const TabPanel: FC<IProps> = (props) => {
   const { children, value, index } = props;
+
   return (
     <div
       role="tabpanel"
@@ -19,7 +20,7 @@ const TabPanel: FC<IProps> = (props) => {
     >
       {value === index && (
         <Box p={3}>
-          <Container >{children}</Container>
+          <Container>{children}</Container>
         </Box>
       )}
     </div>

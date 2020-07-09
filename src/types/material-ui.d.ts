@@ -21,5 +21,6 @@ declare module '@material-ui/core/styles/createPalette' {
     ultraLightGrey: string;
     ultraLightGrey2: string;
     grey2: string;
+    roundGrey: string;
   }
 }

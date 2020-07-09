@@ -21,7 +21,7 @@ const Search: FC = () => {
         <Input
           id="input-with-icon-adornment"
           startAdornment={InputElements}
-          inputProps={{ 'aria-label': 'naked' }} 
+          inputProps={{ 'aria-label': 'naked' }}
           className={classes.input}
         />
         <Button
@@ -111,9 +111,9 @@ const useStyles = makeStyles((theme) => {
       height: 100,
       width: 280,
       fontSize: '16px',
-      '&.makeStyles-iconButton-34:hover' : {
+      '&.makeStyles-iconButton-34:hover': {
         backgroundColor: theme.palette.common.blue,
-      }
+      },
     },
     divider: {
       height: 40,
