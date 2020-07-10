@@ -78,7 +78,7 @@ class RegisterStore {
 
   constructor(
     private authStore: IAuthProvider<string>,
-    private appClient: ApolloClient<unknown>,
+    private appClient: ApolloClient<unknown>
   ) {}
 
   @action private setLoading = (val: boolean): void => {

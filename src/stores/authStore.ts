@@ -1,6 +1,5 @@
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient, gql } from 'apollo-boost';
 import { observable, computed, action } from 'mobx';
-import { gql } from 'apollo-boost';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 

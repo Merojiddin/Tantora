@@ -12,8 +12,8 @@ export class RootStore {
   public appStore = new AppStore();
   public authStore = new AuthStore(this.appClient);
   public chatStore = new ChatStore(this.authStore, this.socket);
-  public loginStore = new LoginStore(this);
-  public registerStore = new RegisterStore(this);
+  public loginStore = new LoginStore(this.appClient, this.authStore);
+  public registerStore = new RegisterStore(this.authStore, this.appClient);
 
   get socket(): SocketIOClient.Socket | undefined {
     return this._socket.io;
