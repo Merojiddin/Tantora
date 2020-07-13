@@ -1,29 +1,33 @@
 import React, { FC } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 
-import about from '../../assets/images/about.jpg';
+import about from 'assets/images/about.jpg';
 import theme from 'theme';
-
-const text =
-  'Online fair is a platform for organizing virtual exhibitions, offering a whole range of software solutions and additional servicesfor the entire exhibition industry Online fair brings together exhibition centers and exhibition organizers into a single network. Which Will serve as an economical and effective tool for promoting products and services to international markets and developing international trade relations';
 
 const About: FC = () => {
   const classes = useStyles();
+  const [t] = useTranslation('home');
 
   return (
     <div className={classes.div}>
       <Container maxWidth="lg" className={classes.root}>
         <div className={classes.firstColumn}>
           <Typography variant="h4" className={classes.title}>
-            <strong>About</strong> The Project
+            <Trans
+              defaults={t('about.title')}
+              components={[<strong key="0" />]}
+            />
           </Typography>
-          <Typography className={classes.text}>{text}</Typography>
+          <Typography className={classes.text}>
+            {t('about.description')}
+          </Typography>
           <Button color="primary" className={classes.learnBtn}>
-            Learn more
+            {t('about.button')}
           </Button>
         </div>
         <div className={classes.secondColumn}>

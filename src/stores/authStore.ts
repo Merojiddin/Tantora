@@ -1,10 +1,9 @@
+import { ApolloClient, gql } from 'apollo-boost';
 import { observable, computed, action } from 'mobx';
-import { gql } from 'apollo-boost';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 
 import { User, RefreshTokenResponse } from 'generated/graphql';
-import { RootStore } from './rootStore';
 
 const MeQuery = gql`
   query {
@@ -64,7 +63,7 @@ class AuthStore {
     return this._refreshToken || refreshToken;
   }
 
-  constructor(private rootStore: RootStore) {
+  constructor(private appClient: ApolloClient<unknown>) {
     const authToken = localStorage.getItem(LOCAL_STORAGE_ENUMS.AUTH_TOKEN);
     const refreshToken = localStorage.getItem(
       LOCAL_STORAGE_ENUMS.REFRESH_TOKEN
@@ -101,7 +100,7 @@ class AuthStore {
       try {
         const {
           data: { me },
-        } = await this.rootStore.appClient.query<{ me: User }>({
+        } = await this.appClient.query<{ me: User }>({
           query: MeQuery,
         });
 
@@ -118,7 +117,7 @@ class AuthStore {
   @action public refreshAccessToken = async () => {
     if (this.refreshToken) {
       try {
-        const { data } = await this.rootStore.appClient.mutate<{
+        const { data } = await this.appClient.mutate<{
           refreshToken: RefreshTokenResponse;
         }>({
           mutation: RefreshTokenMutation,

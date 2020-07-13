@@ -1,10 +1,14 @@
 import { observable, action } from 'mobx';
-import { gql } from 'apollo-boost';
+import { ApolloClient, gql } from 'apollo-boost';
 import get from 'lodash/get';
 
 import { LoginResponse } from 'generated/graphql';
-import { RootStore } from 'stores/rootStore';
-import AuthStore from 'stores/authStore';
+
+interface IAuthProvider<T> {
+  isAuth: boolean;
+  setAuthToken: (token: T) => void;
+  setRefreshToken: (toke: T) => void;
+}
 
 const LoginUserQuery = gql`
   query($userName: String!, $password: String!) {
@@ -21,11 +25,10 @@ class LoginStore {
   @observable public loading: boolean = false;
   @observable public error: Error | null = null;
 
-  get authStore(): AuthStore {
-    return this.rootStore.authStore;
-  }
-
-  constructor(private rootStore: RootStore) {}
+  constructor(
+    private appClient: ApolloClient<unknown>,
+    private authStore: IAuthProvider<string>
+  ) {}
 
   @action private setLoading = (val: boolean): void => {
     this.loading = val;
@@ -41,7 +44,7 @@ class LoginStore {
       this.setError(null);
 
       try {
-        const { data } = await this.rootStore.appClient.query<{
+        const { data } = await this.appClient.query<{
           loginUser: LoginResponse;
         }>({
           query: LoginUserQuery,

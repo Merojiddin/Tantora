@@ -38,9 +38,9 @@ const Events: FC = () => {
 
   if (error) {
     return (
-      <Typography color="error">
+      <div color="error">
         Error occured during fetching events: {error}!
-      </Typography>
+      </div>
     );
   }
 
@@ -112,18 +112,20 @@ const useStyles = (props: IStyleProps) =>
       event: {
         position: 'relative',
         textAlign: 'left',
-        width: '580px',
-        height: '248px',
+        width: 'calc(50% - 25px)',
+        minHeight: '248px',
         padding: '15px 30px',
-        boxShadow: `0px 4px 16px rgba(${black.red}, ${black.green}, ${black.blue} 0.1)`,
+        boxShadow: `0px 4px 16px rgba(${black.red}, ${black.green}, ${black.blue}, 0.2)`,
         color: theme.palette.common.black,
         marginBottom: 25,
+        marginRight: 25,
         borderRadius: 10,
         backgroundImage: `url(${props.bgSrc})`,
         backgroundSize: ' 372px 248px',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'right',
         justifyContent: 'center',
+        overflow: 'hidden',
         zIndex: 10,
         '&:before': {
           content: `' '`,
@@ -134,6 +136,9 @@ const useStyles = (props: IStyleProps) =>
           top: 0,
           left: 0,
           background: `linear-gradient(96.76deg, ${theme.palette.common.white} 60.4%, rgba(${white.red},${white.green},${white.blue}, 0) 97.59%)`,
+        },
+        '&:nth-child(2n + 2)': {
+          marginRight: 0,
         },
       },
       eventTitle: {

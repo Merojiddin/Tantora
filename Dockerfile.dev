@@ -1,4 +1,4 @@
-FROM node:14.4.0-alpine
+FROM node:14.4.0-alpine AS builder
 
 WORKDIR /app
 
@@ -8,3 +8,8 @@ COPY ./yarn.lock .
 RUN yarn
 
 COPY ./ ./
+
+FROM node:14.4.0-alpine
+
+WORKDIR /app
+COPY --from=builder /app .

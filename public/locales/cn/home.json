@@ -1,0 +1,96 @@
+{
+  "section_one": {
+    "title": "Online-fair",
+    "subtitle": "Enjoy exhibitions at home",
+    "subtitle2": "Keep in touch with all online exhibitions"
+  },
+  "about": {
+    "title": "<0>关于</0>我们",
+    "description": "Tantora是组织和进行在线国际展览的平台，其任务是将展览中心，展览组织者，供应商和采购商整合到一个单一的网络中，以便在海外和国内市场上更有效，更便捷的，更经济地推广与搜索商品和专业服务",
+    "button": "了解更多"
+  },
+  "clients": {
+    "title": "这个平台适合谁?",
+    "visitors": "参展者/采购商",
+    "exhibitors": "供应商",
+    "organizators": "展会组织者",
+    "visitors_content": {
+      "item1": {
+        "title": "免费",
+        "description": "免费参加线上展览，有网路即可"
+      },
+      "item2": {
+        "title": "聊天",
+        "description": "与供应商在线进行文字，音频和视频交流，他们将展示您感兴趣的一切"
+      },
+      "item3": {
+        "title": "信息",
+        "description": "即将举办的展览会，论坛和会议信息"
+      },
+      "item4": {
+        "title": "质量",
+        "description": "所有供应商是平台精心挑选和相关产品协会协助"
+      },
+      "item5": {
+        "title": "功能",
+        "description": "快速访问供应商，直接了解公司信息及相关产品和服务"
+      },
+      "item6": {
+        "title": "直播",
+        "description": "观看并参加直播节目和在线会议。 观看供应商的产品直播以及您感兴趣的主题会议和行业专家的演讲"
+      }
+    },
+    "exhibitors_content": {
+      "item1": {
+        "title": "免费",
+        "description": "免费参加线上展览，有网路即可"
+      },
+      "item2": {
+        "title": "聊天",
+        "description": "与供应商在线进行文字，音频和视频交流，他们将展示您感兴趣的一切"
+      },
+      "item3": {
+        "title": "信息",
+        "description": "即将举办的展览会，论坛和会议信息"
+      },
+      "item4": {
+        "title": "质量",
+        "description": "所有供应商是平台精心挑选和相关产品协会协助"
+      },
+      "item5": {
+        "title": "功能",
+        "description": "快速访问供应商，直接了解公司信息及相关产品和服务"
+      },
+      "item6": {
+        "title": "直播",
+        "description": "观看并参加直播节目和在线会议。 观看供应商的产品直播以及您感兴趣的主题会议和行业专家的演讲"
+      }
+    },
+    "organizators_content": {
+      "item1": {
+        "title": "免费",
+        "description": "免费参加线上展览，有网路即可"
+      },
+      "item2": {
+        "title": "聊天",
+        "description": "与供应商在线进行文字，音频和视频交流，他们将展示您感兴趣的一切"
+      },
+      "item3": {
+        "title": "信息",
+        "description": "即将举办的展览会，论坛和会议信息"
+      },
+      "item4": {
+        "title": "质量",
+        "description": "所有供应商是平台精心挑选和相关产品协会协助"
+      },
+      "item5": {
+        "title": "功能",
+        "description": "快速访问供应商，直接了解公司信息及相关产品和服务"
+      },
+      "item6": {
+        "title": "直播",
+        "description": "观看并参加直播节目和在线会议。 观看供应商的产品直播以及您感兴趣的主题会议和行业专家的演讲"
+      }
+    }
+  }
+}

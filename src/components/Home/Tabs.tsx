@@ -15,6 +15,8 @@ import VisitorsIcon from 'assets/images/Visitors.png';
 import OrganizatorsIcon from 'assets/images/Organizators.png';
 import ExhibitorsIcon from 'assets/images/Exhibitors.png';
 
+
+
 const MyTabs: FC = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -116,35 +118,52 @@ const useStyles = makeStyles((theme) => {
       margin: '10px 20px 80px ',
       width: 380,
       height: 268,
+      padding: 0,
       background: theme.palette.common.white,
       boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
       borderRadius: 10,
       overflow: 'inherit',
+      '& .MuiTab-wrapper': {
+        position: 'relative',
+        height: '100%',
+        width: '100%',
+        zIndex: 5,
+      },
       '&.Mui-selected': {
         color: theme.palette.common.black,
-      },
-      '&.Mui-selected:after': {
-        position: 'absolute',
-        content: `' '`,
-        width: '60px',
-        height: '60px',
-        top: 227,
-        zIndex: 4,
-        transform: 'rotate(45deg)',
-        boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
-        background: theme.palette.common.white,
-
-        '&. MuiTouchRipple-root': {
-          border: 'none',
+        '& .MuiTab-wrapper': {
+          '&:after': {
+            position: 'absolute',
+            content: `' '`,
+            width: '60px',
+            height: '60px',
+            left: '50%',
+            bottom: 0,
+            zIndex: 0,
+            transform: 'rotate(45deg) translateY(70%)',
+            boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
+            background: theme.palette.common.white,
+            transition: '0.3s',
+          },
         },
+      },
+      '& .MuiTouchRipple-root': {
+        zIndex: 100,
       },
       '&.MuiTab-root': {
         maxWidth: 380,
       },
     },
     tabBtnContainer: {
+      position: 'relative',
       display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       flexFlow: 'column',
+      width: '100%',
+      height: '100%',
+      backgroundColor: theme.palette.common.white,
+      zIndex: 5,
     },
     tabCornerNumber: {
       width: 53,
@@ -154,9 +173,9 @@ const useStyles = makeStyles((theme) => {
       borderRadius: '0px 10px',
       background: theme.palette.common.whiteGrey,
       fontWeight: 'bold',
-      left: 218,
-      top: 22,
-      position: 'relative',
+      right: 0,
+      top: 0,
+      position: 'absolute',
     },
     tabLabel: {
       fontFamily: 'Roboto',
@@ -167,23 +186,53 @@ const useStyles = makeStyles((theme) => {
     tabIcon: {
       width: 80,
       height: 80,
-      margin: 'auto',
-      display: 'flex',
     },
     tabPanel: {
       width: '100%',
-      display: 'flex',
-      flexWrap: 'wrap',
-      padding: '0 100px',
-      justifyContent: 'center',
+      padding: '0 200px',
       '& .MuiBox-root': {
-        '& .MuiContainer-root': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        flexWrap: 'wrap',
+        width: '100%',
+        '& .MuiTypography-root': {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-around',
           maxWidth: 1240,
         },
       },
+    },
+    tabPanelItem: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      color: 'black',
+      minWidth: '30%',
+      margin: '25px 0',
+    },
+    tabPanelIcon: {
+      size: 'cover',
+      borderRadius: '50%',
+      width: 117,
+      height: 117,
+      marginBottom: 10,
+      display: 'flex',
+    },
+    tabPanelTitle: {
+      fontFamily: 'Roboto',
+      fontWeight: 'bold',
+      fontSize: 20,
+      justifyContent: 'center',
+      margin: 'auto',
+      display: 'flex',
+    },
+    tabPanelText: {
+      fontFamily: 'Roboto',
+      fontSize: 16,
+      textAlign: 'center',
+      width: 362,
     },
     learnBtn: {
       border: `1px solid ${theme.palette.common.blue}`,

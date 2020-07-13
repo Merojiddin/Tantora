@@ -1,10 +1,5 @@
 image: node:10
 
-# services:
-#   - mysql:latest
-#   - redis:latest
-#   - postgres:latest
-
 stages:
   - test
   - build

@@ -8,6 +8,7 @@ import loadable from '@loadable/component';
 
 import 'mobx-react-lite/batchingForReactDom';
 import 'normalize.css';
+
 import './App.scss';
 
 import theme from 'theme';

@@ -9,6 +9,8 @@ interface IStyleProps {
 }
 interface IProps {
   title: string;
+  subtitle?: string;
+  subtitle2?: string;
   bgSrc: string;
   secondTitle?: string;
   thirdTitle?: string;
@@ -24,10 +26,10 @@ const MainScreen: FC<IProps> = (props) => {
         {props.title}
       </Typography>
       <Typography className={classes.titleText} variant="h4">
-        "Enjoy exhibitions at home"
+        {props.subtitle}
       </Typography>
       <Typography className={classes.titleText2} variant="h4">
-        "Keep in touch with all online exhibitions"
+        {props.subtitle2}
       </Typography>
     </div>
   );

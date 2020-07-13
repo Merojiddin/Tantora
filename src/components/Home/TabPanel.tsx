@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
 
 interface IProps {
   value: number;
@@ -18,11 +17,7 @@ const TabPanel: FC<IProps> = (props) => {
       aria-labelledby={`simple-tab-${index}`}
       className={props.className}
     >
-      {value === index && (
-        <Box p={3}>
-          <Container>{children}</Container>
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 };

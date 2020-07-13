@@ -1,5 +1,6 @@
 import { ApolloClient } from 'apollo-boost';
 
+import AppStore from 'stores/appStore';
 import AuthStore from 'stores/authStore';
 import ChatStore from 'stores/chatStore';
 import LoginStore from 'stores/loginStore';
@@ -8,10 +9,11 @@ import { client } from 'client';
 import { Socket } from 'hooks/useSocket';
 
 export class RootStore {
-  public authStore = new AuthStore(this);
-  public chatStore = new ChatStore(this);
-  public loginStore = new LoginStore(this);
-  public registerStore = new RegisterStore(this);
+  public appStore = new AppStore();
+  public authStore = new AuthStore(this.appClient);
+  public chatStore = new ChatStore(this.authStore, this.socket);
+  public loginStore = new LoginStore(this.appClient, this.authStore);
+  public registerStore = new RegisterStore(this.authStore, this.appClient);
 
   get socket(): SocketIOClient.Socket | undefined {
     return this._socket.io;
