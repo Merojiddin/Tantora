@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core';
+import { useMediaQuery } from 'react-responsive';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
@@ -12,6 +12,7 @@ import hexToRgb from 'hex-rgb';
 const Search: FC = () => {
   const classes = useStyles();
   const [t] = useTranslation('common');
+  const isTablet = useMediaQuery({ query: '(max-width: 768px)' });
 
   const InputElements = (
     <InputAdornment position="start">{t('search.label')}... |</InputAdornment>
@@ -19,22 +20,22 @@ const Search: FC = () => {
 
   return (
     <Container maxWidth="lg" className={classes.searchField}>
-      <Typography className={classes.searchInputFieldContainer}>
-        <Input
-          id="input-with-icon-adornment"
-          startAdornment={InputElements}
-          inputProps={{ ariaLabel: 'naked' }}
-          className={classes.input}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          className={classes.iconButton}
-          aria-label="search"
-        >
-          <SearchIcon /> {t('search.btn')}
-        </Button>
-      </Typography>
+      <Input
+        id="input-with-icon-adornment"
+        startAdornment={isTablet ? null : InputElements}
+        inputProps={{ 'aria-label': 'naked' }}
+        className={classes.input}
+        placeholder={isTablet ? t('search.label') : ''}
+      />
+      <Button
+        type="submit"
+        variant="contained"
+        className={classes.iconButton}
+        aria-label="search"
+      >
+        <SearchIcon />
+        <p className={classes.searchBtnLabel}> {t('search.btn')}</p>
+      </Button>
     </Container>
   );
 };
@@ -45,25 +46,16 @@ const useStyles = makeStyles((theme) => {
 
   return {
     searchField: {
+      ...theme.mixins.container,
       position: 'relative',
-      width: '80%',
-      margin: 'auto',
-      marginTop: 255,
-      alignItems: 'center',
-      minWidth: 480,
+      minWidth: 360,
       borderRadius: 10,
       boxSizing: 'border-box',
       zIndex: 100,
-    },
-
-    searchInputFieldContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: '49px 0px 49px 37px',
-      borderRadius: 40,
-      backgroundColor: '',
-      border: `none 1px ${theme.palette.common.black}`,
-      height: 167,
+      transform: 'translateY(-50%)',
+      [theme.breakpoints.down('xs')]: {
+        height: 50,
+      },
     },
     inputLabel: {
       position: 'relative',
@@ -71,14 +63,12 @@ const useStyles = makeStyles((theme) => {
     },
     input: {
       width: '100%',
-      maxWidth: 1170,
       height: 100,
-      backgroundColor: theme.palette.common.white,
       padding: '22px 37px 19px',
-      zIndex: 100,
+      backgroundColor: theme.palette.common.white,
       border: `1px solid rgba(${black.red},${black.green},${black.blue}, 0.15)`,
-      boxSizing: 'border-box',
       borderRadius: '5px 0 0 5px ',
+      zIndex: 100,
       '&.MuiInput-underline:after': {
         left: 0,
         right: 0,
@@ -103,16 +93,29 @@ const useStyles = makeStyles((theme) => {
       '&.MuiInput-underline:hover:not(.Mui-disabled):before': {
         borderBottom: 'none',
       },
+      [theme.breakpoints.down('xs')]: {
+        width: '100%',
+        height: 50,
+      },
     },
     iconButton: {
-      padding: 10,
       position: 'relative',
+      fontSize: '16px',
       color: theme.palette.common.white,
       backgroundColor: theme.palette.common.blue,
       borderRadius: '0 10px 10px 0',
       height: 100,
       width: 280,
-      fontSize: '16px',
+      padding: 10,
+      [theme.breakpoints.down('xs')]: {
+        width: 68,
+        height: 50,
+      },
+    },
+    searchBtnLabel: {
+      [theme.breakpoints.down('xs')]: {
+        display: 'none',
+      },
     },
     divider: {
       height: 40,
