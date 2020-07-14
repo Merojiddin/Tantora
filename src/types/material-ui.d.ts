@@ -23,3 +23,18 @@ declare module '@material-ui/core/styles/createPalette' {
     grey2: string;
   }
 }
+/*
+declare module "@material-ui/core/styles/createBreakpoints" {
+  interface BreakpointOverrides {
+    xs: true; 
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    mobile: true;
+    tablet: true; 
+    laptop: true;
+    desktop: true;
+  };
+}
+*/

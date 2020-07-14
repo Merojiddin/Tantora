@@ -108,9 +108,11 @@ const Header = observer(() => {
                   Logout
                 </Button>
               ) : (
-                <>
+                <div className={classes.signLang}>
                   <Link to="/register" style={{ textDecoration: 'none' }}>
-                    <Button className={classes.whiteBtn}>
+                    <Button
+                      className={`${classes.whiteBtn}, ${classes.smallScreen}`}
+                    >
                       {t('header.register')}
                     </Button>
                   </Link>
@@ -119,7 +121,7 @@ const Header = observer(() => {
                       {t('header.sign-in')}
                     </Button>
                   </Link>
-                </>
+                </div>
               )}
             </div>
           </Toolbar>
@@ -139,6 +141,10 @@ const useStyles = makeStyles((theme) => {
       zIndex: 250,
       alignContent: 'center',
       margin: 'auto',
+      [theme.breakpoints.down('xs')]: {
+        minWidth: 360,
+        height: 143,
+      },
     },
     headerBar: {
       position: 'relative',
@@ -177,13 +183,32 @@ const useStyles = makeStyles((theme) => {
       width: '100%',
       maxWidth: 1280,
       margin: 'auto',
+      [theme.breakpoints.down('xs')]: {
+        justifyContent: 'center',
+      },
     },
     menuButton: {
       marginRight: theme.spacing(2),
+      '& .MuiIconButton-label': {
+        '& .MuiSvgIcon-root': {
+          fontSize: 40,
+        },
+      },
+    },
+    signLang: {
+      [theme.breakpoints.down('xs')]: {
+        margin: 0,
+      },
     },
     whiteBtn: {
       color: theme.palette.common.white,
       fontSize: 14,
+    },
+    smallScreen: {
+      color: theme.palette.common.white,
+      [theme.breakpoints.down('xs')]: {
+        display: 'none',
+      },
     },
     NotwhiteBtn: {
       color: theme.palette.common.white,
@@ -193,6 +218,9 @@ const useStyles = makeStyles((theme) => {
       marginLeft: 28,
       width: 106,
       height: 38,
+      [theme.breakpoints.down('xs')]: {
+        marginLeft: 0,
+      },
     },
     logo: {
       paddingTop: 5,
@@ -201,6 +229,12 @@ const useStyles = makeStyles((theme) => {
       boxSizing: 'border-box',
       backgroundSize: 'cover',
       position: 'relative',
+      [theme.breakpoints.down('xs')]: {
+        marginRight: 16,
+        marginLeft: 20,
+        width: 55,
+        height: 45,
+      },
     },
     loginWrapper: {
       display: 'flex',

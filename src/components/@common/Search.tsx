@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
@@ -18,7 +17,7 @@ const Search: FC = () => {
 
   return (
     <Container maxWidth="lg" className={classes.searchField}>
-      <Typography className={classes.searchInputFieldContainer}>
+      <div className={classes.searchInputFieldContainer}>
         <Input
           id="input-with-icon-adornment"
           startAdornment={InputElements}
@@ -31,9 +30,9 @@ const Search: FC = () => {
           className={classes.iconButton}
           aria-label="search"
         >
-          <SearchIcon /> Search
+          <SearchIcon /> <p className={classes.searchBtnLabel}>Search</p>
         </Button>
-      </Typography>
+      </div>
     </Container>
   );
 };
@@ -47,22 +46,29 @@ const useStyles = makeStyles((theme) => {
       position: 'relative',
       width: '80%',
       margin: 'auto',
-      marginTop: 255,
       alignItems: 'center',
-      minWidth: 480,
+      minWidth: 360,
       borderRadius: 10,
       boxSizing: 'border-box',
       zIndex: 100,
+      bottom: 100,
+      [theme.breakpoints.down('xs')]: {
+        width: 360,
+        height: 50,
+        // padding: '0 20px',
+        margin: 'auto',
+      },
     },
 
     searchInputFieldContainer: {
       display: 'flex',
       alignItems: 'center',
-      padding: '49px 0px 49px 37px',
+      padding: '49px 37px 49px 37px',
       borderRadius: 40,
       backgroundColor: '',
       border: `none 1px ${theme.palette.common.black}`,
       height: 167,
+      justifyContent: 'center',
     },
     inputLabel: {
       position: 'relative',
@@ -75,6 +81,7 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: theme.palette.common.white,
       padding: '22px 37px 19px',
       zIndex: 100,
+      margin: 0,
       border: `1px solid rgba(${black.red},${black.green},${black.blue}, 0.15)`,
       boxSizing: 'border-box',
       borderRadius: '5px 0 0 5px ',
@@ -102,6 +109,10 @@ const useStyles = makeStyles((theme) => {
       '&.MuiInput-underline:hover:not(.Mui-disabled):before': {
         borderBottom: 'none',
       },
+      [theme.breakpoints.down('xs')]: {
+        width: 252,
+        height: 50,
+      },
     },
     iconButton: {
       padding: 10,
@@ -112,6 +123,15 @@ const useStyles = makeStyles((theme) => {
       height: 100,
       width: 280,
       fontSize: '16px',
+      [theme.breakpoints.down('xs')]: {
+        width: 68,
+        height: 50,
+      },
+    },
+    searchBtnLabel: {
+      [theme.breakpoints.down('xs')]: {
+        display: 'none',
+      },
     },
     divider: {
       height: 40,
