@@ -50,7 +50,10 @@ const MyTabs: FC = () => {
   );
 
   return (
-    <div>
+    <div className={classes.container}>
+      <Typography variant="h3" className={classes.title}>
+        For who is the project?
+      </Typography>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -112,14 +115,22 @@ const MyTabs: FC = () => {
             for the delivery of demonstration goods.
           </Typography>
         </div>
+        <div className={classes.btnWrapper}>
+          <Button className={classes.tabPanelBtn}>More</Button>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
         Item Two
+        <div className={classes.btnWrapper}>
+          <Button className={classes.tabPanelBtn}>More</Button>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2} className={classes.tabPanel}>
         Item Three
+        <div className={classes.btnWrapper}>
+          <Button className={classes.tabPanelBtn}>More</Button>
+        </div>
       </TabPanel>
-      <Button className={classes.tabPanelBtn}>More</Button>
     </div>
   );
 };
@@ -128,9 +139,28 @@ const useStyles = makeStyles((theme) => {
   const blue = hexToRgb(theme.palette.common.blue);
 
   return {
+    container: {},
+    title: {
+      fontWeight: 'bold',
+      fontSize: 42,
+      lineHeight: '62px',
+      alignItems: 'center',
+      display: 'flex',
+      marginTop: 38,
+      margin: 'auto',
+      justifyContent: 'center',
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 32,
+        lineHeight: '46px',
+        width: 211,
+        textAlign: 'center',
+        marginTop: 38,
+      },
+    },
     tabs: {
       backgroundColor: theme.palette.common.white,
-      margin: 'auto',
+      margin: '111px auto 54px',
+
       width: '100%',
       '& .MuiTabs-flexContainer': {
         justifyContent: 'center',
@@ -138,6 +168,12 @@ const useStyles = makeStyles((theme) => {
         flexWrap: 'wrap',
         '& .MuiTabs-indicator': {
           border: `5px solid ${theme.palette.common.black}`,
+        },
+      },
+      '& .MuiTabs-scroller': {
+        '& .MuiTabs-indicator': {
+          width: 0,
+          display: 'none',
         },
       },
     },
@@ -183,6 +219,10 @@ const useStyles = makeStyles((theme) => {
       '&.MuiTab-root': {
         maxWidth: 380,
       },
+      [theme.breakpoints.down('xs')]: {
+        width: 320,
+        height: 268,
+      },
     },
     tabBtnContainer: {
       position: 'relative',
@@ -218,11 +258,13 @@ const useStyles = makeStyles((theme) => {
       height: 80,
     },
     tabPanel: {
+      maxWidth: 1684,
       width: '100%',
       padding: '0 200px',
+      margin: 'auto',
       '& .MuiBox-root': {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'flex-start',
         flexWrap: 'wrap',
         width: '100%',
@@ -233,6 +275,9 @@ const useStyles = makeStyles((theme) => {
           maxWidth: 1240,
         },
       },
+      [theme.breakpoints.down('xs')]: {
+        padding: '0 19px',
+      },
     },
     tabPanelItem: {
       display: 'flex',
@@ -241,6 +286,9 @@ const useStyles = makeStyles((theme) => {
       color: 'black',
       minWidth: '30%',
       margin: '25px 0',
+      [theme.breakpoints.down('xs')]: {
+        width: 320,
+      },
     },
     tabPanelIcon: {
       size: 'cover',
@@ -263,6 +311,9 @@ const useStyles = makeStyles((theme) => {
       fontSize: 16,
       textAlign: 'center',
       width: 362,
+      [theme.breakpoints.down('xs')]: {
+        width: 320,
+      },
     },
     learnBtn: {
       border: `1px solid ${theme.palette.common.blue}`,
@@ -277,6 +328,9 @@ const useStyles = makeStyles((theme) => {
       marginBottom: 61,
       color: theme.palette.common.blue,
     },
+    btnWrapper: {
+      width: '100%',
+    },
     tabPanelBtn: {
       backgroundColor: theme.palette.common.blue,
       fontSize: 14,
@@ -285,9 +339,10 @@ const useStyles = makeStyles((theme) => {
       width: 163,
       height: 47,
       color: theme.palette.common.white,
-    },
-    active: {
-      border: 'none',
+      [theme.breakpoints.down('xs')]: {
+        width: '100%',
+        margin: '30px 0',
+      },
     },
   };
 });

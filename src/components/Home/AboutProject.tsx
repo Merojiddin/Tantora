@@ -42,13 +42,23 @@ const useStyles = makeStyles({
   div: {
     backgroundColor: theme.palette.common.lightGrey,
     paddingTop: 1,
+    display: 'flex',
+    justifyContent: 'center',
   },
   root: {
     width: '100%',
+    maxWidth: 1280,
     marginBottom: 150,
     justifyContent: 'space-around',
     display: 'flex',
     flexWrap: 'wrap',
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: 320,
+      margin: 20,
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: 38,
+    },
   },
   title: {
     fontFamily: 'Roboto',
@@ -56,6 +66,12 @@ const useStyles = makeStyles({
     marginBottom: 0,
     marginTop: 92,
     fontSize: 48,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 32,
+      marginBottom: 9,
+      marginTop: 0,
+      textAlign: 'center',
+    },
   },
   text: {
     fontFamily: 'Roboto',
@@ -65,10 +81,15 @@ const useStyles = makeStyles({
     margin: '25px 0 50px',
     width: 478,
     color: theme.palette.common.grey,
+    [theme.breakpoints.down('xs')]: {
+      minWidth: 320,
+      width: '100%',
+    },
   },
   firstColumn: {
     width: 518,
     padding: 20,
+    margin: 'auto',
   },
   learnBtn: {
     border: '1px solid',
@@ -81,23 +102,50 @@ const useStyles = makeStyles({
     height: 47,
     textAlign: 'center',
     marginBottom: 100,
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+      marginBottom: 0,
+    },
   },
   secondColumn: {
     width: 478,
     boxSizing: 'border-box',
     position: 'relative',
     marginBottom: 100,
+    margin: 'auto',
+    display: 'flex',
+    justifyContent: 'center',
     '&:before': {
       content: `' '`,
       position: 'absolute',
       height: '437px',
       width: '368px',
       borderRadius: 10,
-      left: 104,
+      left: 121,
       top: 139,
       zIndex: 2,
       background: theme.palette.common.blue,
+      [theme.breakpoints.down('xs')]: {
+        marginTop: 18,
+        width: '268px',
+        height: 274,
+        left: 78,
+        top: 21,
+      },
+      [theme.breakpoints.down('sm')]: {
+        width: '268x',
+      },
     },
+    [theme.breakpoints.down('xs')]: {
+      marginTop: 18,
+      marginBottom: 38,
+
+      width: '370px',
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: 38,
+    width: '370px',
   },
   secondndColumnPic: {
     position: 'relative',
@@ -106,6 +154,15 @@ const useStyles = makeStyles({
     borderRadius: 10,
     width: '456px',
     height: '448px',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: 0,
+      width: '303px',
+      height: '298px',
+      right: 5,
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: 38,
+    },
   },
 });
 

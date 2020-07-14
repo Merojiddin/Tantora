@@ -20,7 +20,15 @@ let theme = createMuiTheme({
       whiteGrey: '#E3E8ED',
       darkBlue: '#212D37',
     },
-  },
+  } /*
+  breakpoints: {
+    values: {
+      mobile: 360,
+      tablet: 640,
+      laptop: 1024,
+      desktop: 1280,
+    }
+  }*/,
 });
 
 theme = {

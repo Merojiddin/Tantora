@@ -64,7 +64,7 @@ const Events: FC = () => {
                   <Typography variant="body2" className={classes.data}>
                     {`Date: ${year}/${month}/${day}`}
                   </Typography>
-                  <Typography variant="h6" className={classes.eventTitle}>
+                  <Typography variant="h2" className={classes.eventTitle}>
                     {name}
                   </Typography>
                   <Typography className={classes.text} variant="subtitle2">
@@ -93,6 +93,10 @@ const useStyles = (props: IStyleProps) =>
         width: '100%',
         marginBottom: 150,
         padding: '0px 50px',
+        [theme.breakpoints.down('xs')]: {
+          margin: '0px',
+          padding: '0px 20px',
+        },
       },
       title: {
         textAlign: 'center',
@@ -100,6 +104,10 @@ const useStyles = (props: IStyleProps) =>
         fontFamily: 'Roboto',
         fontWeight: 'bold',
         marginBottom: 58,
+        [theme.breakpoints.down('xs')]: {
+          fontSize: 32,
+          lineHeight: '37px',
+        },
       },
       container: {
         display: 'flex',
@@ -113,12 +121,12 @@ const useStyles = (props: IStyleProps) =>
         position: 'relative',
         textAlign: 'left',
         width: 'calc(50% - 25px)',
+        minWidth: 413,
         minHeight: '248px',
         padding: '15px 30px',
         boxShadow: `0px 4px 16px rgba(${black.red}, ${black.green}, ${black.blue}, 0.2)`,
         color: theme.palette.common.black,
-        marginBottom: 25,
-        marginRight: 25,
+        margin: 12.5,
         borderRadius: 10,
         backgroundImage: `url(${props.bgSrc})`,
         backgroundSize: ' 372px 248px',
@@ -137,7 +145,9 @@ const useStyles = (props: IStyleProps) =>
           left: 0,
           background: `linear-gradient(96.76deg, ${theme.palette.common.white} 60.4%, rgba(${white.red},${white.green},${white.blue}, 0) 97.59%)`,
         },
-        '&:nth-child(2n + 2)': {
+        [theme.breakpoints.down('xs')]: {
+          minWidth: 320,
+          height: 275,
           marginRight: 0,
         },
       },
@@ -146,7 +156,13 @@ const useStyles = (props: IStyleProps) =>
         color: theme.palette.common.black,
         fontWeight: 'bolder',
         fontSize: 18,
-        letterSpacing: '-1.5%',
+
+        [theme.breakpoints.down('xs')]: {
+          fontSize: 20,
+          lineHeight: '23px',
+          margin: 0,
+          marginBottom: 10,
+        },
       },
       text: {
         height: 150,
@@ -156,6 +172,10 @@ const useStyles = (props: IStyleProps) =>
         fontWeight: 300,
         fontStyle: 'light',
         width: '356px',
+        [theme.breakpoints.down('xs')]: {
+          width: 285,
+          height: 143,
+        },
       },
       boxForDateBtn: {
         display: 'flex',

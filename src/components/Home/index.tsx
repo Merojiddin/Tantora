@@ -2,9 +2,10 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import MainScreen from 'components/@common/MainScreen';
-import Events from './Events';
 import About from './AboutProject';
 import MyTabs from './Tabs';
+import Search from 'components/@common/Search';
+import Events from './Events';
 
 const image = require('assets/images/mainbackg.jpg');
 
@@ -19,6 +20,7 @@ const Home: FC = () => {
         subtitle2={t('section_one.subtitle2')}
         bgSrc={image}
       />
+      <Search />
       <Events />
       <About />
       <MyTabs />
