@@ -5,6 +5,13 @@
     "about": "关于我们",
     "service": "服务",
     "register": "注册",
-    "sign-in": "登陆"
+    "sign-in": "登录"
+  },
+  "search": {
+    "label": "你在找什么?",
+    "btn": "找"
+  },
+  "btns": {
+    "more": "更多"
   }
 }

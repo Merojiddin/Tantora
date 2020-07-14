@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { gql } from 'apollo-boost';
+import { useTranslation } from 'react-i18next';
 import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
@@ -31,10 +32,11 @@ const text =
   'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam a dolorum suscipit velit nobis sunt aspernatur, vero quia! Corporis facilis maxime praesentium cupiditate sint assumenda modi saepe mollitia incidunt soluta?';
 
 const Events: FC = () => {
+  const [t] = useTranslation('home');
+  const { data, loading, error } = useQuery<IResponse>(GET_EXHIBITONS);
   const classes = useStyles({
     bgSrc: require('assets/images/homeEventBg.jpg'),
   })();
-  const { data, loading, error } = useQuery<IResponse>(GET_EXHIBITONS);
 
   if (error) {
     return (
@@ -47,7 +49,7 @@ const Events: FC = () => {
   return (
     <Container maxWidth="lg" className={classes.wrapper}>
       <Typography variant="h4" className={classes.title}>
-        Up coming online exhibitions
+        {t('exhibitions.title')}
       </Typography>
       {loading && <Loading />}
       <div className={classes.container}>

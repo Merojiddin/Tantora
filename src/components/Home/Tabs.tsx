@@ -1,4 +1,5 @@
 import React, { FC, ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { makeStyles, Typography } from '@material-ui/core';
@@ -6,21 +7,18 @@ import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 import hexToRgb from 'hex-rgb';
 
+import clients from '@config/clients';
 import VisitorsIcon from 'assets/images/Visitors.png';
 import OrganizatorsIcon from 'assets/images/Organizators.png';
 import ExhibitorsIcon from 'assets/images/Exhibitors.png';
-import Opportunity from 'assets/images/Opportunity.png';
-import Statistics from 'assets/images/Statistics.png';
-import Innovation from 'assets/images/Innovation.png';
-import Optimization from 'assets/images/Optimization.png';
-import Communication from 'assets/images/Communication.png';
-import Price from 'assets/images/Price.png';
 
 import TabPanel from './TabPanel';
 
 const MyTabs: FC = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [t] = useTranslation('home');
+
   const handleChange = (_: ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -29,7 +27,9 @@ const MyTabs: FC = () => {
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>01</div>
       <CardMedia image={VisitorsIcon} className={classes.tabIcon} />
-      <Typography className={classes.tabLabel}>Visitors</Typography>
+      <Typography className={classes.tabLabel}>
+        {t('clients.visitors')}
+      </Typography>
     </div>
   );
 
@@ -37,7 +37,9 @@ const MyTabs: FC = () => {
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>02</div>
       <CardMedia image={ExhibitorsIcon} className={classes.tabIcon} />
-      <Typography className={classes.tabLabel}>Exhibitors</Typography>
+      <Typography className={classes.tabLabel}>
+        {t('clients.exhibitors')}
+      </Typography>
     </div>
   );
 
@@ -45,7 +47,9 @@ const MyTabs: FC = () => {
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>03</div>
       <CardMedia image={OrganizatorsIcon} className={classes.tabIcon} />
-      <Typography className={classes.tabLabel}>Organizations</Typography>
+      <Typography className={classes.tabLabel}>
+        {t('clients.organizators')}
+      </Typography>
     </div>
   );
 
@@ -62,64 +66,53 @@ const MyTabs: FC = () => {
         <Tab label={TabOrganizations} className={classes.tab} />
       </Tabs>
       <TabPanel value={value} index={0} className={classes.tabPanel}>
-        <div className={classes.tabPanelItem}>
-          <CardMedia image={Opportunity} className={classes.tabPanelIcon} />
-          <h1 className={classes.tabPanelTitle}>Opportunity</h1>
-          <Typography className={classes.tabPanelText}>
-            An effective opportunity to strengthen business positions and enter
-            new markets
-          </Typography>
-        </div>
-        <div className={classes.tabPanelItem}>
-          <CardMedia image={Statistics} className={classes.tabPanelIcon} />
-          <h1 className={classes.tabPanelTitle}>Statistics</h1>
-          <Typography className={classes.tabPanelText}>
-            Objective statistics and analytics
-          </Typography>
-        </div>
-        <div className={classes.tabPanelItem}>
-          <CardMedia image={Innovation} className={classes.tabPanelIcon} />
-          <h1 className={classes.tabPanelTitle}>Innovation</h1>
-          <Typography className={classes.tabPanelText}>
-            Using an innovative tool for effective research, presentations and
-            educational event
-          </Typography>
-        </div>
-        <div className={classes.tabPanelItem}>
-          <CardMedia image={Optimization} className={classes.tabPanelIcon} />
-          <h1 className={classes.tabPanelTitle}>Optimizatin</h1>
-          <Typography className={classes.tabPanelText}>
-            Cost optimization and maximum effect of participation in
-            exhibitions, forums and conferences
-          </Typography>
-        </div>
-        <div className={classes.tabPanelItem}>
-          <CardMedia image={Communication} className={classes.tabPanelIcon} />
-          <h1 className={classes.tabPanelTitle}>Communication</h1>
-          <Typography className={classes.tabPanelText}>
-            Communication with business partners and visitors is carried out
-            using video and online chat. Exhibitors always stay in touch with
-            potential customers, investors, partners
-          </Typography>
-        </div>
-        <div className={classes.tabPanelItem}>
-          <CardMedia image={Price} className={classes.tabPanelIcon} />
-          <h1 className={classes.tabPanelTitle}>Price</h1>
-          <Typography className={classes.tabPanelText}>
-            You no longer need to pay for renting space for a company stand,
-            installation, printing of materials. To participate in the virtual
-            exhibition, you do not need to pay the fare to exhibitors and pay
-            for the delivery of demonstration goods.
-          </Typography>
-        </div>
+        {clients.visitors_content.map(({ icon, itemNumber }) => {
+          return (
+            <div key={itemNumber} className={classes.tabPanelItem}>
+              <CardMedia image={icon} className={classes.tabPanelIcon} />
+              <h1 className={classes.tabPanelTitle}>
+                {t(`clients.visitors_content.${itemNumber}.title`)}
+              </h1>
+              <Typography className={classes.tabPanelText}>
+                {t(`clients.visitors_content.${itemNumber}.description`)}
+              </Typography>
+            </div>
+          );
+        })}
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
-        Item Two
+        {clients.exhibitors_content.map(({ icon, itemNumber }) => {
+          return (
+            <div key={itemNumber} className={classes.tabPanelItem}>
+              <CardMedia image={icon} className={classes.tabPanelIcon} />
+              <h1 className={classes.tabPanelTitle}>
+                {t(`clients.exhibitors_content.${itemNumber}.title`)}
+              </h1>
+              <Typography className={classes.tabPanelText}>
+                {t(`clients.exhibitors_content.${itemNumber}.description`)}
+              </Typography>
+            </div>
+          );
+        })}
       </TabPanel>
       <TabPanel value={value} index={2} className={classes.tabPanel}>
-        Item Three
+        {clients.organizators_content.map(({ icon, itemNumber }) => {
+          return (
+            <div key={itemNumber} className={classes.tabPanelItem}>
+              <CardMedia image={icon} className={classes.tabPanelIcon} />
+              <h1 className={classes.tabPanelTitle}>
+                {t(`clients.organizators_content.${itemNumber}.title`)}
+              </h1>
+              <Typography className={classes.tabPanelText}>
+                {t(`clients.organizators_content.${itemNumber}.description`)}
+              </Typography>
+            </div>
+          );
+        })}
       </TabPanel>
-      <Button className={classes.tabPanelBtn}>More</Button>
+      <Button className={classes.tabPanelBtn}>
+        {useTranslation('common')[0]('btns.more')}
+      </Button>
     </div>
   );
 };

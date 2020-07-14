@@ -6,5 +6,12 @@
     "service": "Service",
     "register": "Register",
     "sign-in": "Sign-in"
+  },
+  "search": {
+    "label": "What are you looking for?",
+    "btn": "Search"
+  },
+  "btns": {
+    "more": "More"
   }
 }

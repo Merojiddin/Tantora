@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -10,10 +11,10 @@ import hexToRgb from 'hex-rgb';
 
 const Search: FC = () => {
   const classes = useStyles();
+  const [t] = useTranslation('common');
+
   const InputElements = (
-    <InputAdornment position="start">
-      What are you looking for... |
-    </InputAdornment>
+    <InputAdornment position="start">{t('search.label')}... |</InputAdornment>
   );
 
   return (
@@ -31,7 +32,7 @@ const Search: FC = () => {
           className={classes.iconButton}
           aria-label="search"
         >
-          <SearchIcon /> Search
+          <SearchIcon /> {t('search.btn')}
         </Button>
       </Typography>
     </Container>

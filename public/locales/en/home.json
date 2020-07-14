@@ -1,8 +1,11 @@
 {
   "section_one": {
-    "title": "Online-fair",
+    "title": "Online Fair",
     "subtitle": "Enjoy exhibitions at home",
     "subtitle2": "Keep in touch with all online exhibitions"
+  },
+  "exhibitions": {
+    "title": "Upcoming online exhibitions"
   },
   "about": {
     "title": "<0>About</0> Us",
