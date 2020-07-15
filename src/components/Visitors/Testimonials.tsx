@@ -73,7 +73,7 @@ const useStyles = makeStyles({
     top: 12,
   },
   text: {
-    width: 923,
+    maxWidth: 923,
     padding: '0px 20px',
     fontSize: 16,
     margin: 'auto',
