@@ -130,7 +130,6 @@ const MyTabs: FC = () => {
           </Button>
         </Link>
       </TabPanel>
-      
     </Container>
   );
 };

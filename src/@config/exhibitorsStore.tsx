@@ -1,4 +1,4 @@
-const data = [
+const datas = [
   {
     icon: require('assets/images/ExhibitorsPage/click.png'),
     title: 'The convenience of use',
@@ -41,4 +41,4 @@ const data = [
   },
 ];
 
-export default data;
+export default datas;

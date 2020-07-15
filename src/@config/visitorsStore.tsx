@@ -1,4 +1,4 @@
-const data = [
+const datas = [
   {
     icon: require('assets/images/VisitorsPage/See.png'),
     title: 'See the stands',
@@ -49,4 +49,4 @@ const data = [
   },
 ];
 
-export default data;
+export default datas;
