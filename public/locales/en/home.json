@@ -1,11 +1,14 @@
 {
   "section_one": {
-    "title": "Online-fair",
+    "title": "Online Fair",
     "subtitle": "Enjoy exhibitions at home",
     "subtitle2": "Keep in touch with all online exhibitions"
   },
+  "exhibitions": {
+    "title": "Upcoming online exhibitions"
+  },
   "about": {
-    "title": "<0>About</0> Us",
+    "title": "<0>About </0>Us",
     "description": "Tantora is a platform for organizing and conducting online exhibitions, whose mission is to unite exhibition centers, exhibition organizers, exhibitors and visitors into a single network for more efficient, convenient and economical promotion and search of goods and services in international and local markets.",
     "button": "Learn more"
   },
@@ -42,54 +45,54 @@
     },
     "exhibitors_content": {
       "item1": {
-        "title": "Free",
-        "description": "Pacrticipate at exhibitions for free wihout going out of your home"
+        "title": "Opportunity",
+        "description": "An effective opportunity to strengthen business positions and enter new markets"
       },
       "item2": {
-        "title": "Chat",
-        "description": "Chat or make audio and video calls with companies, they will demonstrate everything that interests you"
+        "title": "Statistics",
+        "description": "Objective statistics and analytics"
       },
       "item3": {
-        "title": "Planning",
-        "description": "Planning for productive participation in exhibitions, forums and conferences"
+        "title": "Innovation",
+        "description": "Using innovative tools for effective online exhibitions"
       },
       "item4": {
-        "title": "Quality",
-        "description": "Only trusted suppliers"
+        "title": "Optimization",
+        "description": "Cost optimization and maximum effect of participation in exhibitions, forums and conferences"
       },
       "item5": {
-        "title": "Accessibility",
-        "description": "Quick access to targeted information about the achievements of companies, their products and services"
+        "title": "Communication",
+        "description": "Communication with business partners and visitors is carried out using video and online chat. Exhibitors always stay in touch with potential customers, investors, and partners"
       },
       "item6": {
         "title": "Online Streams",
-        "description": "Watch and participate in onine stream shows and online conferences. Watch both the presentations of exhibitors and the speeches of experts and specialists of topics and industries of interest to you"
+        "description": "You no longer need to pay for renting space for a company stand, installation, printing of materials. To participate in the virtual exhibition, you do not need to pay the fare to exhibitors and pay for the delivery of demonstration goods"
       }
     },
     "organizators_content": {
       "item1": {
-        "title": "Free",
-        "description": "Pacrticipate at exhibitions for free wihout going out of your home"
+        "title": "Support",
+        "description": "Interactive support of real-time exhibitions, forums and conferences online"
       },
       "item2": {
-        "title": "Chat",
-        "description": "Chat or make audio and video calls with companies, they will demonstrate everything that interests you"
+        "title": "Quality",
+        "description": "Improving the quality of exhibition services using innovative technologies"
       },
       "item3": {
-        "title": "Planning",
-        "description": "Planning for productive participation in exhibitions, forums and conferences"
+        "title": "Opportunity",
+        "description": "Increase attendance at exhibitions, forums and conferences by expanding borders, audience and time"
       },
       "item4": {
-        "title": "Quality",
-        "description": "Only trusted suppliers"
+        "title": "Creation",
+        "description": "Creatу a thematic online exhibition under your brand"
       },
       "item5": {
-        "title": "Accessibility",
-        "description": "Quick access to targeted information about the achievements of companies, their products and services"
+        "title": "Digitalization",
+        "description": "Improving the status of exhibitions, forums and conferences due to the digital format"
       },
       "item6": {
-        "title": "Online Streams",
-        "description": "Watch and participate in onine stream shows and online conferences. Watch both the presentations of exhibitors and the speeches of experts and specialists of topics and industries of interest to you"
+        "title": "Unique design",
+        "description": "Unique design landing page on registration page"
       }
     }
   }

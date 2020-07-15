@@ -7,14 +7,13 @@ import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import about from 'assets/images/about.jpg';
-import theme from 'theme';
 
 const About: FC = () => {
   const classes = useStyles();
   const [t] = useTranslation('home');
 
   return (
-    <div className={classes.div}>
+    <div className={classes.wrapper}>
       <Container maxWidth="lg" className={classes.root}>
         <div className={classes.firstColumn}>
           <Typography variant="h4" className={classes.title}>
@@ -38,37 +37,48 @@ const About: FC = () => {
   );
 };
 
-const useStyles = makeStyles({
-  div: {
+const useStyles = makeStyles((theme) => ({
+  wrapper: {
+    ...theme.mixins.sectionPaddings,
+    display: 'flex',
+    justifyContent: 'center',
     backgroundColor: theme.palette.common.lightGrey,
-    paddingTop: 1,
   },
   root: {
-    width: '100%',
-    marginBottom: 150,
-    justifyContent: 'space-around',
     display: 'flex',
     flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  firstColumn: {
+    width: '50%',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      marginBottom: 50,
+    },
   },
   title: {
     fontFamily: 'Roboto',
     textAlign: 'left',
-    marginBottom: 0,
-    marginTop: 92,
+    marginBottom: 25,
     fontSize: 48,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 32,
+      marginBottom: 9,
+      marginTop: 0,
+      textAlign: 'center',
+    },
   },
   text: {
     fontFamily: 'Roboto',
     fontSize: 18,
     textAlign: 'left',
     letterSpacing: '-0.015em',
-    margin: '25px 0 50px',
+    marginBottom: 50,
     width: 478,
     color: theme.palette.common.grey,
-  },
-  firstColumn: {
-    width: 518,
-    padding: 20,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
   learnBtn: {
     border: '1px solid',
@@ -80,33 +90,45 @@ const useStyles = makeStyles({
     width: 163,
     height: 47,
     textAlign: 'center',
-    marginBottom: 100,
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   },
   secondColumn: {
-    width: 478,
-    boxSizing: 'border-box',
     position: 'relative',
-    marginBottom: 100,
+    display: 'flex',
+    justifyContent: 'center',
+    height: '40vw',
+    width: 'calc(45% - 20px)',
+    maxHeight: '448px',
+    boxSizing: 'border-box',
     '&:before': {
       content: `' '`,
       position: 'absolute',
-      height: '437px',
-      width: '368px',
+      height: '40vw',
+      width: 'calc(100% - 20px)',
+      maxHeight: '437px',
       borderRadius: 10,
-      left: 104,
-      top: 139,
+      top: 30,
+      right: -20,
       zIndex: 2,
       background: theme.palette.common.blue,
     },
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: 38,
+    width: '370px',
   },
   secondndColumnPic: {
     position: 'relative',
-    marginTop: 109,
-    zIndex: 200,
+    height: '100%',
+    width: '100%',
     borderRadius: 10,
-    width: '456px',
-    height: '448px',
+    zIndex: 200,
   },
-});
+}));
 
 export default About;

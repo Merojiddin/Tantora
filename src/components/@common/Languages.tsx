@@ -31,8 +31,11 @@ const Languages = observer(() => {
 const useStyles = makeStyles((theme) => ({
   select: {
     color: theme.palette.common.white,
-    marginRight: 10,
+    marginRight: 15,
     border: 'none',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 14,
+    },
   },
 }));
 

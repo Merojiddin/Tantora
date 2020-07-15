@@ -229,7 +229,7 @@ const Register = observer(() => {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    ...theme.mixins.container,
+    ...theme.mixins.fullPageContainer,
     width: '100%',
     maxWidth: '100%',
     background: `url(${require('assets/images/register-bg.jpg')}) center no-repeat`,

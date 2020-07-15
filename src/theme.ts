@@ -26,9 +26,48 @@ let theme = createMuiTheme({
 
 theme = {
   ...theme,
+  breakpoints: {
+    ...theme.breakpoints,
+    values: {
+      xs: 480,
+      sm: 600,
+      md: 960,
+      lg: 1180,
+      xl: 1920,
+    },
+  },
   mixins: {
     ...theme.mixins,
     container: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      maxWidth: 1180,
+      margin: '0 auto',
+      [theme.breakpoints.down('md')]: {
+        padding: '0 50px',
+      },
+      [theme.breakpoints.down('sm')]: {
+        padding: '0 40px',
+      },
+      [theme.breakpoints.down('xs')]: {
+        padding: '0 30px',
+      },
+    },
+    sectionPaddings: {
+      padding: '111px 0',
+      [theme.breakpoints.down('md')]: {
+        padding: '111px 50px',
+      },
+      [theme.breakpoints.down('sm')]: {
+        padding: '111px 40px',
+      },
+      [theme.breakpoints.down('xs')]: {
+        padding: '111px 30px',
+      },
+    },
+    fullPageContainer: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',

@@ -1,20 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import useStore from 'hooks/useStore';
+import { NAV_ITEMS } from '@config/nav_items';
 
 const Menu = observer(() => {
-  const { appStore } = useStore();
+  const [t] = useTranslation('common');
   const classes = useStyles();
 
   return (
     <List className={classes.list}>
-      {appStore.NAV_ITEMS.map(({ label, link }) => (
+      {NAV_ITEMS.map(({ label, link }) => (
         <Link to={link} key={label}>
           <ListItem
             className={classes.button}
@@ -22,7 +23,7 @@ const Menu = observer(() => {
             key={label}
             button={true}
           >
-            <ListItemText primary={label} />
+            <ListItemText primary={t(`header.${label}`)} />
           </ListItem>
         </Link>
       ))}
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     color: theme.palette.common.white,
     marginRight: 25,
-    fontSize: 14,
+    fontSize: 38,
 
     '&:last-child': {
       marginRight: 0,

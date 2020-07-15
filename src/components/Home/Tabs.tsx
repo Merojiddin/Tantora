@@ -1,25 +1,25 @@
 import React, { FC, ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import { makeStyles, Typography } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
+import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
-import TabPanel from './TabPanel';
+import Container from '@material-ui/core/Container';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
 import hexToRgb from 'hex-rgb';
 
-import TabItem from 'components/@common/TabItems';
-import Data from './store';
-
+import clients from '@config/clients';
+import TabPanel from './TabPanel';
 import VisitorsIcon from 'assets/images/Visitors.png';
 import OrganizatorsIcon from 'assets/images/Organizators.png';
 import ExhibitorsIcon from 'assets/images/Exhibitors.png';
 
-
-
 const MyTabs: FC = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [t] = useTranslation('home');
+
   const handleChange = (_: ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -28,8 +28,9 @@ const MyTabs: FC = () => {
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>01</div>
       <CardMedia image={VisitorsIcon} className={classes.tabIcon} />
-      <Typography className={classes.tabLabel}>Visitors</Typography>
-      <div className={classes.learnBtn}>More</div>
+      <Typography className={classes.tabLabel}>
+        {t('clients.visitors')}
+      </Typography>
     </div>
   );
 
@@ -37,8 +38,9 @@ const MyTabs: FC = () => {
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>02</div>
       <CardMedia image={ExhibitorsIcon} className={classes.tabIcon} />
-      <Typography className={classes.tabLabel}>Exhibitors</Typography>
-      <div className={classes.learnBtn}>More</div>
+      <Typography className={classes.tabLabel}>
+        {t('clients.exhibitors')}
+      </Typography>
     </div>
   );
 
@@ -46,13 +48,17 @@ const MyTabs: FC = () => {
     <div className={classes.tabBtnContainer}>
       <div className={classes.tabCornerNumber}>03</div>
       <CardMedia image={OrganizatorsIcon} className={classes.tabIcon} />
-      <Typography className={classes.tabLabel}>Organizations</Typography>
-      <div className={classes.learnBtn}>More</div>
+      <Typography className={classes.tabLabel}>
+        {t('clients.organizators')}
+      </Typography>
     </div>
   );
 
   return (
-    <div>
+    <Container maxWidth="lg" className={classes.wrapper}>
+      <Typography variant="h3" className={classes.title}>
+        {t('clients.title')}
+      </Typography>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -64,33 +70,54 @@ const MyTabs: FC = () => {
         <Tab label={TabOrganizations} className={classes.tab} />
       </Tabs>
       <TabPanel value={value} index={0} className={classes.tabPanel}>
-        {Data.map((data) => {
+        {clients.visitors_content.map(({ icon, itemNumber }) => {
           return (
-            <TabItem
-              icon={data.icon}
-              title={data.title}
-              text={data.text}
-              key={data.index}
-            />
+            <li key={itemNumber} className={classes.tabPanelItem}>
+              <CardMedia image={icon} className={classes.tabPanelIcon} />
+              <h1 className={classes.tabPanelTitle}>
+                {t(`clients.visitors_content.${itemNumber}.title`)}
+              </h1>
+              <Typography className={classes.tabPanelText}>
+                {t(`clients.visitors_content.${itemNumber}.description`)}
+              </Typography>
+            </li>
           );
         })}
-        <Link to={'/visitors'}>
-          <Button className={classes.tabPanelBtn}>More</Button>
-        </Link>
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
-        Item Two
-        <Link to={'/exhibitors'}>
-          <Button className={classes.tabPanelBtn}>More</Button>
-        </Link>
+        {clients.exhibitors_content.map(({ icon, itemNumber }) => {
+          return (
+            <li key={itemNumber} className={classes.tabPanelItem}>
+              <CardMedia image={icon} className={classes.tabPanelIcon} />
+              <h1 className={classes.tabPanelTitle}>
+                {t(`clients.exhibitors_content.${itemNumber}.title`)}
+              </h1>
+              <Typography className={classes.tabPanelText}>
+                {t(`clients.exhibitors_content.${itemNumber}.description`)}
+              </Typography>
+            </li>
+          );
+        })}
       </TabPanel>
       <TabPanel value={value} index={2} className={classes.tabPanel}>
-        Item Three
-        <Link to={'/Organizations'}>
-          <Button className={classes.tabPanelBtn}>More</Button>
-        </Link>
+        {clients.organizators_content.map(({ icon, itemNumber }) => {
+          return (
+            <li key={itemNumber} className={classes.tabPanelItem}>
+              <CardMedia image={icon} className={classes.tabPanelIcon} />
+              <h1 className={classes.tabPanelTitle}>
+                {t(`clients.organizators_content.${itemNumber}.title`)}
+              </h1>
+              <Typography className={classes.tabPanelText}>
+                {t(`clients.organizators_content.${itemNumber}.description`)}
+              </Typography>
+            </li>
+          );
+        })}
       </TabPanel>
-    </div>
+      <Button className={classes.tabPanelBtn}>
+        {useTranslation('common')[0]('btns.more')}
+      </Button>
+    </Container>
   );
 };
 
@@ -98,60 +125,84 @@ const useStyles = makeStyles((theme) => {
   const blue = hexToRgb(theme.palette.common.blue);
 
   return {
+    wrapper: {
+      ...theme.mixins.sectionPaddings,
+    },
+    title: {
+      fontWeight: 'bold',
+      fontSize: 42,
+      textAlign: 'center',
+      marginBottom: 58,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 32,
+        textAlign: 'center',
+        marginTop: 38,
+      },
+    },
     tabs: {
       backgroundColor: theme.palette.common.white,
-      margin: 'auto',
       width: '100%',
       '& .MuiTabs-flexContainer': {
-        justifyContent: 'center',
         display: 'flex',
         flexWrap: 'wrap',
+        justifyContent: 'space-between',
         '& .MuiTabs-indicator': {
           border: `5px solid ${theme.palette.common.black}`,
         },
       },
-    },
-    tab: {
-      position: 'relative',
-      zIndex: 125,
-      color: theme.palette.common.black,
-      margin: '10px 20px 80px ',
-      width: 380,
-      height: 268,
-      padding: 0,
-      background: theme.palette.common.white,
-      boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
-      borderRadius: 10,
-      overflow: 'inherit',
-      '& .MuiTab-wrapper': {
-        position: 'relative',
-        height: '100%',
-        width: '100%',
-        zIndex: 5,
-      },
-      '&.Mui-selected': {
-        color: theme.palette.common.black,
-        '& .MuiTab-wrapper': {
-          '&:after': {
-            position: 'absolute',
-            content: `' '`,
-            width: '60px',
-            height: '60px',
-            left: '50%',
-            bottom: 0,
-            zIndex: 0,
-            transform: 'rotate(45deg) translateY(70%)',
-            boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
-            background: theme.palette.common.white,
-            transition: '0.3s',
-          },
+      '& .MuiTabs-scroller': {
+        padding: '10px 24px 0',
+        '& .MuiTabs-indicator': {
+          width: 0,
+          display: 'none',
         },
       },
-      '& .MuiTouchRipple-root': {
-        zIndex: 100,
-      },
-      '&.MuiTab-root': {
-        maxWidth: 380,
+    },
+    tab: {
+      '&&': {
+        position: 'relative',
+        color: theme.palette.common.black,
+        width: '100%',
+        height: 268,
+        maxWidth: 'calc(33% - 20px)',
+        padding: 0,
+        marginBottom: 80,
+        background: theme.palette.common.white,
+        boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
+        borderRadius: 10,
+        overflow: 'inherit',
+        zIndex: 125,
+        '& .MuiTab-wrapper': {
+          position: 'relative',
+          height: '100%',
+          width: '100%',
+          zIndex: 5,
+        },
+        '&.Mui-selected': {
+          color: theme.palette.common.black,
+          '& .MuiTab-wrapper': {
+            '&:after': {
+              position: 'absolute',
+              content: `' '`,
+              width: '60px',
+              height: '60px',
+              left: '50%',
+              bottom: 0,
+              zIndex: 0,
+              transform: 'rotate(45deg) translateY(70%)',
+              boxShadow: `0px 8px 20px rgba(${blue.red},${blue.green},${blue.blue}, 0.15)`,
+              background: theme.palette.common.white,
+              transition: '0.3s',
+            },
+          },
+        },
+        '& .MuiTouchRipple-root': {
+          zIndex: 100,
+        },
+        [theme.breakpoints.down('xs')]: {
+          maxWidth: '100%',
+          height: 268,
+        },
       },
     },
     tabBtnContainer: {
@@ -189,7 +240,6 @@ const useStyles = makeStyles((theme) => {
     },
     tabPanel: {
       width: '100%',
-      padding: '0 200px',
       '& .MuiBox-root': {
         display: 'flex',
         justifyContent: 'space-between',
@@ -200,8 +250,10 @@ const useStyles = makeStyles((theme) => {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-around',
-          maxWidth: 1240,
         },
+      },
+      [theme.breakpoints.down('xs')]: {
+        flexDirection: 'row',
       },
     },
     tabPanelItem: {
@@ -209,8 +261,14 @@ const useStyles = makeStyles((theme) => {
       flexDirection: 'column',
       alignItems: 'center',
       color: 'black',
-      minWidth: '30%',
+      width: 'calc(33% - 12.5px)',
       margin: '25px 0',
+      [theme.breakpoints.down('sm')]: {
+        width: 'calc(50% - 12.5px)',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: '100%',
+      },
     },
     tabPanelIcon: {
       size: 'cover',
@@ -225,14 +283,14 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 'bold',
       fontSize: 20,
       justifyContent: 'center',
-      margin: 'auto',
+      margin: '0 auto 15px',
       display: 'flex',
     },
     tabPanelText: {
       fontFamily: 'Roboto',
       fontSize: 16,
       textAlign: 'center',
-      width: 362,
+      width: '100%',
     },
     learnBtn: {
       border: `1px solid ${theme.palette.common.blue}`,
@@ -248,17 +306,20 @@ const useStyles = makeStyles((theme) => {
       paddingTop: 13,
       color: theme.palette.common.blue,
     },
+    btnWrapper: {
+      width: '100%',
+    },
     tabPanelBtn: {
-      backgroundColor: theme.palette.common.blue,
-      fontSize: 14,
       display: 'flex',
-      margin: '70px auto 107px',
+      fontSize: 14,
       width: 163,
       height: 47,
+      margin: '70px auto 0',
+      backgroundColor: theme.palette.common.blue,
       color: theme.palette.common.white,
-    },
-    active: {
-      border: 'none',
+      [theme.breakpoints.down('xs')]: {
+        width: '80%',
+      },
     },
   };
 });

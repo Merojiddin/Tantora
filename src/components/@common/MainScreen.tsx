@@ -45,16 +45,14 @@ const useStyles = (props: IStyleProps) =>
         flexWrap: 'wrap',
         height: props.height,
         width: '100%',
-        minWidth: '700px',
         background: `url(${props.bgSrc}) center no-repeat`,
         backgroundSize: 'cover',
         alignItems: 'center',
         flexDirection: 'column',
         padding: 0,
         position: 'relative',
-
         '&:before': {
-          content: `' '`,
+          content: `''`,
           position: 'absolute',
           height: '100%',
           width: '100%',
@@ -63,17 +61,24 @@ const useStyles = (props: IStyleProps) =>
           zIndex: 4,
           background: `rgba(${black.red},${black.green},${black.blue}, 0.4)`,
         },
+        [theme.breakpoints.down('xs')]: {
+          height: '80vh',
+        },
       },
       title: {
         fontSize: 72,
         fontFamily: 'Roboto',
-        marginTop: '191px',
         fontWeight: 'bolder',
         position: 'relative',
         color: theme.palette.common.white,
         textAlign: 'center',
         width: '100%',
         zIndex: 100,
+        [theme.breakpoints.down('xs')]: {
+          fontSize: 42,
+          lineHeight: '37px',
+          marginBottom: 25,
+        },
       },
       titleText: {
         fontFamily: 'Roboto',
@@ -83,6 +88,11 @@ const useStyles = (props: IStyleProps) =>
         color: theme.palette.common.white,
         marginTop: '9px',
         zIndex: 10,
+        [theme.breakpoints.down('xs')]: {
+          marginTop: 4,
+          fontSize: 18,
+          lineHeight: '21px',
+        },
       },
       titleText2: {
         fontFamily: 'Roboto',
@@ -93,6 +103,11 @@ const useStyles = (props: IStyleProps) =>
         marginTop: '12px',
         zIndex: 10,
         marginBottom: 40,
+        [theme.breakpoints.down('xs')]: {
+          marginTop: 5,
+          fontSize: 18,
+          lineHeight: '21px',
+        },
       },
     };
   });
