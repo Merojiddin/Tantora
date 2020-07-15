@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => {
       flexWrap: 'wrap',
       justifyContent: 'center',
       padding: '0 20px',
+      maxWidth: 1263,
     },
     leftBox: {
       maxWidth: 590,

@@ -17,7 +17,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import { LogoutResponse } from 'generated/graphql';
 import useStore from 'hooks/useStore';
-//import Languages from 'components/@common/Languages';
+import Languages from 'components/@common/Languages';
 import Menu from 'components/@common/Menu';
 import MenuMobile from 'components/@common/MenuMobile';
 import Logo from 'assets/images/icon.png';
@@ -49,7 +49,6 @@ const Header = observer(() => {
       });
     } catch (error) {
       // handle error
-      console.log('logout Error');
     }
 
     client.resetStore();
@@ -105,7 +104,7 @@ const Header = observer(() => {
             )}
             {!isTablet && <Menu />}
             <div className={classes.loginWrapper}>
-              {/* <Languages /> */}
+              <Languages />
               {authStore.isAuth ? (
                 <Button className={classes.whiteBtn} onClick={handleLogout}>
                   Logout

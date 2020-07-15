@@ -10,72 +10,64 @@ const Necessities: FC = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Container className={classes.wrapper}>
-        <div className={classes.upperBox}>
-          <Typography className={classes.upperBoxTitle} variant="h2">
-            What you need to become an exhibitor
-          </Typography>
-          <ul className={classes.upperBoxList}>
-            <li className={classes.upperBoxListItem}>
-              <div className={classes.upperBoxListRound}>1</div>
-              <p className={classes.upperBoxListText}>
-                Register in your account
-              </p>
-            </li>
-            <li className={classes.upperBoxListItem}>
-              <div className={classes.upperBoxListRound}>2</div>
-              <p className={classes.upperBoxListText}>
-                Choose a virtual exhibition
-              </p>
-            </li>
-            <li className={classes.upperBoxListItem}>
-              <div className={classes.upperBoxListRound}>3</div>
-              <p className={classes.upperBoxListText}>
-                Create a virtual stand with up-to-date information about the
-                company, including company description, logo, contact details,
-                etc.
-              </p>
-            </li>
-            <li className={classes.upperBoxListItem}>
-              <div className={classes.upperBoxListRound}>4</div>
-              <p className={classes.upperBoxListText}>
-                Select and pay the fare{' '}
-              </p>
-            </li>
-            <li className={classes.upperBoxListItem}>
-              <div className={classes.upperBoxListRound}>5</div>
-              <p className={classes.upperBoxListText}>
-                Now your booth has appeared on the virtual exhibition.
-              </p>
-            </li>
-          </ul>
+    <Container className={classes.wrapper}>
+      <div className={classes.upperBox}>
+        <Typography className={classes.upperBoxTitle} variant="h2">
+          What you need to become an exhibitor
+        </Typography>
+        <ul className={classes.upperBoxList}>
+          <li className={classes.upperBoxListItem}>
+            <div className={classes.upperBoxListRound}>1</div>
+            <p className={classes.upperBoxListText}>Register in your account</p>
+          </li>
+          <li className={classes.upperBoxListItem}>
+            <div className={classes.upperBoxListRound}>2</div>
+            <p className={classes.upperBoxListText}>
+              Choose a virtual exhibition
+            </p>
+          </li>
+          <li className={classes.upperBoxListItem}>
+            <div className={classes.upperBoxListRound}>3</div>
+            <p className={classes.upperBoxListText}>
+              Create a virtual stand with up-to-date information about the
+              company, including company description, logo, contact details,
+              etc.
+            </p>
+          </li>
+          <li className={classes.upperBoxListItem}>
+            <div className={classes.upperBoxListRound}>4</div>
+            <p className={classes.upperBoxListText}>Select and pay the fare </p>
+          </li>
+          <li className={classes.upperBoxListItem}>
+            <div className={classes.upperBoxListRound}>5</div>
+            <p className={classes.upperBoxListText}>
+              Now your booth has appeared on the virtual exhibition.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div className={classes.lowerBox}>
+        <Typography variant="h2" className={classes.lowerBoxTitle}>
+          Process of participation in an online exhibition
+          <strong className={classes.bigDot}> .</strong>
+        </Typography>
+        <div className={classes.iPad}>
+          <CardMedia image={iPad} className={classes.ipadPic} />
         </div>
-        <div className={classes.lowerBox}>
-          <Typography variant="h2" className={classes.lowerBoxTitle}>
-            Process of participation in an online exhibition
-          </Typography>
-          <div className={classes.iPad}>
-            <CardMedia image={iPad} className={classes.ipadPic} />
-          </div>
-        </div>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 };
 
 const useStyles = makeStyles((theme) => {
   return {
-    root: {
-      width: '100%',
-      paddingBottom: 15,
-    },
     wrapper: {
       paddingTop: 137,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       padding: '0 20px',
+      maxWidth: 1280,
     },
     upperBox: {
       alignItems: 'center',
@@ -129,6 +121,8 @@ const useStyles = makeStyles((theme) => {
       height: 560,
       bottom: 19,
       position: 'relative',
+      padding: '0 20px',
+      justifyContent: 'center',
     },
     lowerBoxTitle: {
       fontFamily: 'Roboto',
@@ -140,6 +134,15 @@ const useStyles = makeStyles((theme) => {
       alignItems: 'center',
       bottom: 65,
       position: 'relative',
+      marginRight: 38,
+    },
+    bigDot: {
+      color: theme.palette.common.blue,
+      fontSize: 132,
+      textAlign: 'center',
+      lineHeight: '0px',
+      position: 'relative',
+      bottom: 67,
     },
     iPad: {
       height: 430,

@@ -51,6 +51,7 @@ const useStyles = (props: IStyleProps) =>
         flexDirection: 'column',
         padding: 0,
         position: 'relative',
+        justifyContent: 'center',
         '&:before': {
           content: `''`,
           position: 'absolute',
