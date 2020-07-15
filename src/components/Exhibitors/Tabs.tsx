@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 import TabItem from 'components/@common/TabItems';
-import Data from './Store';
+import data from '@config/exhibitorsStore';
 
 import theme from 'theme';
 
@@ -16,7 +16,7 @@ const MyTabs: FC = () => {
         What can get from the exhibition
       </Typography>
       <div className={classes.tabPanel}>
-        {Data.map((data) => {
+        {data.map((data) => {
           return (
             <TabItem
               icon={data.icon}
