@@ -20,10 +20,10 @@ const TabItem: FC<IProps> = (props) => {
   );
 };
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles((theme) => {
   return {
     tabPanelItem: {
-      color: 'black',
+      color: theme.palette.common.black,
       width: 362,
       margin: '15px 11px',
     },
