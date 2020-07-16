@@ -78,13 +78,13 @@ const useStyles = makeStyles((theme) => {
     upperBoxTitle: {
       fontFamily: 'Roboto',
       fontSize: 42,
-      lineHeight: '207.9%',
+      lineHeight: '86px',
       fontWeight: 'bold',
       marginBottom: '68px',
     },
     upperBoxText: {
       fontSize: 16,
-      fontHeight: '191.4%',
+      fontHeight: '30px',
     },
     upperBoxList: {
       display: 'flex',
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => {
     },
     upperBoxListItem: {
       fontSize: 16,
-      lineHeight: '191.4%',
+      lineHeight: '30px',
       width: 247,
       display: 'flex',
       flexWrap: 'wrap',
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => {
       height: 88,
       fontWeight: 900,
       fontSize: 42,
-      lineHeight: '207.9%',
+      lineHeight: '86px',
       color: theme.palette.common.blue,
       display: 'flex',
       justifyContent: 'center',
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => {
     lowerBoxTitle: {
       fontFamily: 'Roboto',
       fontSize: 42,
-      lineHeight: '174.4%',
+      lineHeight: '72px',
       fontWeight: 'bold',
       width: 484,
       display: 'flex',
@@ -147,7 +147,7 @@ const useStyles = makeStyles((theme) => {
     iPad: {
       height: 430,
       width: 669,
-      border: ' 0.5px dashed #C5C5C5',
+      border:  `0.5px dashed ${theme.palette.common.ultraLightGrey3}`,
       borderRadius: '22px',
       padding: '25px 24px',
     },
