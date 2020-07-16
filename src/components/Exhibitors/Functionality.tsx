@@ -73,18 +73,18 @@ const useStyles = makeStyles((theme) => {
       width: 589,
       fontFamily: 'Roboto',
       fontSize: 42,
-      lineHeight: '130.4%',
+      lineHeight: '54px',
       fontWeight: 'bold',
     },
     leftBoxText: {
       width: 588,
       fontSize: 16,
-      fontHeight: '191.4%',
+      fontHeight: '30px',
     },
     leftBoxListItem: {
       width: 588,
       fontSize: 16,
-      lineHeight: '191.4%',
+      lineHeight: '30px',
     },
     rightBox: {
       display: 'flex',

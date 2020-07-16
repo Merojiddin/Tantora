@@ -47,6 +47,9 @@ const LoadableVisitors = loadable(() => import('components/Visitors'), {
 const LoadableExhibitors = loadable(() => import('components/Exhibitors'), {
   fallback: <Loading />,
 });
+const LoadableOrganizators = loadable(() => import('components/Organizators'), {
+  fallback: <Loading />,
+});
 
 const App: FC = observer(() => {
   const classes = useStyles();
@@ -90,6 +93,9 @@ const App: FC = observer(() => {
                 </Route>
                 <Route path="/exhibitors">
                   <LoadableExhibitors />
+                </Route>
+                <Route path="/organizators">
+                  <LoadableOrganizators />
                 </Route>
               </Switch>
             </main>

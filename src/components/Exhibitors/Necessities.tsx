@@ -1,10 +1,8 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
-import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-
-import iPad from 'assets/images/ExhibitorsPage/video.png';
+import Process from 'components/@common/Process';
 
 const Necessities: FC = () => {
   const classes = useStyles();
@@ -46,15 +44,7 @@ const Necessities: FC = () => {
           </li>
         </ul>
       </div>
-      <div className={classes.lowerBox}>
-        <Typography variant="h2" className={classes.lowerBoxTitle}>
-          Process of participation in an online exhibition
-          <strong className={classes.bigDot}> .</strong>
-        </Typography>
-        <div className={classes.iPad}>
-          <CardMedia image={iPad} className={classes.ipadPic} />
-        </div>
-      </div>
+      <Process />
     </Container>
   );
 };
@@ -78,13 +68,13 @@ const useStyles = makeStyles((theme) => {
     upperBoxTitle: {
       fontFamily: 'Roboto',
       fontSize: 42,
-      lineHeight: '207.9%',
+      lineHeight: '86px',
       fontWeight: 'bold',
       marginBottom: '68px',
     },
     upperBoxText: {
       fontSize: 16,
-      fontHeight: '191.4%',
+      fontHeight: '30px',
     },
     upperBoxList: {
       display: 'flex',
@@ -93,7 +83,7 @@ const useStyles = makeStyles((theme) => {
     },
     upperBoxListItem: {
       fontSize: 16,
-      lineHeight: '191.4%',
+      lineHeight: '30px',
       width: 247,
       display: 'flex',
       flexWrap: 'wrap',
@@ -107,53 +97,13 @@ const useStyles = makeStyles((theme) => {
       height: 88,
       fontWeight: 900,
       fontSize: 42,
-      lineHeight: '207.9%',
+      lineHeight: '86px',
       color: theme.palette.common.blue,
       display: 'flex',
       justifyContent: 'center',
     },
     upperBoxListText: {
       textAlign: 'start',
-    },
-    lowerBox: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      height: 560,
-      bottom: 19,
-      position: 'relative',
-      padding: '0 20px',
-      justifyContent: 'center',
-    },
-    lowerBoxTitle: {
-      fontFamily: 'Roboto',
-      fontSize: 42,
-      lineHeight: '174.4%',
-      fontWeight: 'bold',
-      width: 484,
-      display: 'flex',
-      alignItems: 'center',
-      bottom: 65,
-      position: 'relative',
-      marginRight: 38,
-    },
-    bigDot: {
-      color: theme.palette.common.blue,
-      fontSize: 132,
-      textAlign: 'center',
-      lineHeight: '0px',
-      position: 'relative',
-      bottom: 67,
-    },
-    iPad: {
-      height: 430,
-      width: 669,
-      border: ' 0.5px dashed #C5C5C5',
-      borderRadius: '22px',
-      padding: '25px 24px',
-    },
-    ipadPic: {
-      height: 383,
-      width: 621,
     },
   };
 });
