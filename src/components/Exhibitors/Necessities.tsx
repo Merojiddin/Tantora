@@ -147,7 +147,7 @@ const useStyles = makeStyles((theme) => {
     iPad: {
       height: 430,
       width: 669,
-      border:  `0.5px dashed ${theme.palette.common.ultraLightGrey3}`,
+      border: `0.5px dashed ${theme.palette.common.ultraLightGrey3}`,
       borderRadius: '22px',
       padding: '25px 24px',
     },
