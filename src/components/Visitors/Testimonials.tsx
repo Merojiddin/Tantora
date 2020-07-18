@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
-import theme from 'theme';
 
 import background from 'assets/images/VisitorsPage/testimolbg.png';
 import profil from 'assets/images/VisitorsPage/profil.jpg';
+
+import theme from 'theme';
 
 const Testimonials: FC = () => {
   const classes = useStyles();

@@ -6,7 +6,6 @@ import theme from 'theme';
 import TabItem from 'components/@common/TabItem';
 import datas from '@config/exhibitors';
 
-
 const MyTabs: FC = () => {
   const classes = useStyles();
 
