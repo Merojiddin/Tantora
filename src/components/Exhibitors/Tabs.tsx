@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import theme from 'theme';
 
 import TabItem from 'components/@common/TabItem';
-import datas from '@config/exhibitorsStore';
+import datas from '@config/exhibitors';
 
-import theme from 'theme';
 
 const MyTabs: FC = () => {
   const classes = useStyles();

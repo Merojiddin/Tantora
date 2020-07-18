@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
-import { makeStyles, Container } from '@material-ui/core';
+import { makeStyles,  } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
 import TabItem from './TabItem';
-import datas from '@config/organizatorsStore';
+import datas from '@config/organizators';
 import theme from 'theme';
 
 const Results: FC = () => {

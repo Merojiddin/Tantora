@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { makeStyles, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+import Typography  from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
-import theme from 'theme';
 
 interface IProps {
   icon: string;
@@ -32,7 +32,7 @@ const TabItem: FC<IProps> = (props) => {
 };
 
 const useStyles = (props: IStyleProps) =>
-  makeStyles(() => {
+  makeStyles((theme) => {
     return {
       tabPanelItem: {
         color: theme.palette.common.black,

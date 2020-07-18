@@ -1,4 +1,5 @@
 import React, { FC, ChangeEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -14,7 +15,6 @@ import TabPanel from './TabPanel';
 import VisitorsIcon from 'assets/images/Visitors.png';
 import OrganizatorsIcon from 'assets/images/Organizators.png';
 import ExhibitorsIcon from 'assets/images/Exhibitors.png';
-import { Link } from 'react-router-dom';
 
 const MyTabs: FC = () => {
   const classes = useStyles();

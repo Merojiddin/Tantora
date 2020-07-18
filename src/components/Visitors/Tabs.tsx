@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 import TabItem from 'components/@common/TabItem';
-import datas from '@config/visitorsStore';
+import datas from '@config/visitors';
 
 import theme from 'theme';
 
