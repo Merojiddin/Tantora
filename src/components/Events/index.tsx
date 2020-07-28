@@ -7,7 +7,7 @@ const image = require('../../assets/images/bgImg.jpg');
 
 const Exhibitions: FC = () => (
   <div>
-    <MainScreen title="Tantora" bgSrc={image} />
+    <MainScreen title="Tantora" bgSrc={image} height="800px" />
     <Search />
     <Events />
   </div>

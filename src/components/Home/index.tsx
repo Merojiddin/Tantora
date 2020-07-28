@@ -19,6 +19,7 @@ const Home: FC = () => {
         subtitle={t('section_one.subtitle')}
         subtitle2={t('section_one.subtitle2')}
         bgSrc={image}
+        height="800px"
       />
       <Search />
       <Events />

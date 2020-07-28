@@ -41,7 +41,9 @@ const Menu: FC<IProps> = observer(({ open, handleClose }) => {
                     key={label}
                     button={true}
                   >
-                    <ListItemIcon className={classes.itemIcon}>{icon}</ListItemIcon>
+                    <ListItemIcon className={classes.itemIcon}>
+                      {icon}
+                    </ListItemIcon>
                     <ListItemText primary={t(`header.${label}`)} />
                   </ListItem>
                 </Link>

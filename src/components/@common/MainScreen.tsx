@@ -5,16 +5,20 @@ import hexToRgb from 'hex-rgb';
 
 interface IStyleProps {
   bgSrc: string;
+  height: string;
 }
 interface IProps {
   title: string;
   subtitle?: string;
   subtitle2?: string;
   bgSrc: string;
+  secondTitle?: string;
+  thirdTitle?: string;
+  height: string;
 }
 
 const MainScreen: FC<IProps> = (props) => {
-  const classes = useStyles({ bgSrc: props.bgSrc })();
+  const classes = useStyles({ bgSrc: props.bgSrc, height: props.height })();
 
   return (
     <div className={classes.wrapper}>
@@ -39,15 +43,15 @@ const useStyles = (props: IStyleProps) =>
       wrapper: {
         display: 'flex',
         flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '800px',
+        height: props.height,
         width: '100%',
         background: `url(${props.bgSrc}) center no-repeat`,
         backgroundSize: 'cover',
+        alignItems: 'center',
+        flexDirection: 'column',
         padding: 0,
         position: 'relative',
-        flexDirection: 'column',
+        justifyContent: 'center',
         '&:before': {
           content: `''`,
           position: 'absolute',

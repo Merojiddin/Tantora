@@ -1,4 +1,5 @@
 import React, { FC, ChangeEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -10,11 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import hexToRgb from 'hex-rgb';
 
 import clients from '@config/clients';
+import TabPanel from './TabPanel';
 import VisitorsIcon from 'assets/images/Visitors.png';
 import OrganizatorsIcon from 'assets/images/Organizators.png';
 import ExhibitorsIcon from 'assets/images/Exhibitors.png';
-
-import TabPanel from './TabPanel';
 
 const MyTabs: FC = () => {
   const classes = useStyles();
@@ -84,6 +84,11 @@ const MyTabs: FC = () => {
             </li>
           );
         })}
+        <Link to="/visitors">
+          <Button className={classes.tabPanelBtn}>
+            {useTranslation('common')[0]('btns.more')}
+          </Button>
+        </Link>
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
         {clients.exhibitors_content.map(({ icon, itemNumber }) => {
@@ -99,6 +104,11 @@ const MyTabs: FC = () => {
             </li>
           );
         })}
+        <Link to="/exhibitors">
+          <Button className={classes.tabPanelBtn}>
+            {useTranslation('common')[0]('btns.more')}
+          </Button>
+        </Link>
       </TabPanel>
       <TabPanel value={value} index={2} className={classes.tabPanel}>
         {clients.organizators_content.map(({ icon, itemNumber }) => {
@@ -114,10 +124,12 @@ const MyTabs: FC = () => {
             </li>
           );
         })}
+        <Link to="/organizators">
+          <Button className={classes.tabPanelBtn}>
+            {useTranslation('common')[0]('btns.more')}
+          </Button>
+        </Link>
       </TabPanel>
-      <Button className={classes.tabPanelBtn}>
-        {useTranslation('common')[0]('btns.more')}
-      </Button>
     </Container>
   );
 };
@@ -243,7 +255,7 @@ const useStyles = makeStyles((theme) => {
       width: '100%',
       '& .MuiBox-root': {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'flex-start',
         flexWrap: 'wrap',
         width: '100%',
@@ -304,6 +316,7 @@ const useStyles = makeStyles((theme) => {
       textAlign: 'center',
       marginTop: '32px',
       marginBottom: 61,
+      paddingTop: 13,
       color: theme.palette.common.blue,
     },
     btnWrapper: {
@@ -318,7 +331,7 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: theme.palette.common.blue,
       color: theme.palette.common.white,
       [theme.breakpoints.down('xs')]: {
-        width: '80%',
+        width: '340px',
       },
     },
   };
