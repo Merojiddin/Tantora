@@ -1,0 +1,99 @@
+{
+  "section_one": {
+    "title": "线上展会",
+    "subtitle": "居家在线享受展会",
+    "subtitle2": "与所有在线展览保持联系"
+  },
+  "exhibitions": {
+    "title": "即将举行的在线展览"
+  },
+  "about": {
+    "title": "<0>关于</0>我们",
+    "description": "Tantora是组织和进行在线国际展览的平台，其任务是将展览中心，展览组织者，供应商和采购商整合到一个单一的网络中，以便在海外和国内市场上更有效，更便捷的，更经济地推广与搜索商品和专业服务",
+    "button": "了解更多"
+  },
+  "clients": {
+    "title": "这个平台适合谁?",
+    "visitors": "参展者/采购商",
+    "exhibitors": "供应商",
+    "organizators": "展会组织者",
+    "visitors_content": {
+      "item1": {
+        "title": "免费",
+        "description": "免费参加线上展览，有网路即可"
+      },
+      "item2": {
+        "title": "聊天",
+        "description": "与供应商在线进行文字，音频和视频交流，他们将展示您感兴趣的一切"
+      },
+      "item3": {
+        "title": "信息",
+        "description": "即将举办的展览会，论坛和会议信息"
+      },
+      "item4": {
+        "title": "质量",
+        "description": "所有供应商是平台精心挑选和相关产品协会协助"
+      },
+      "item5": {
+        "title": "功能",
+        "description": "快速访问供应商，直接了解公司信息及相关产品和服务"
+      },
+      "item6": {
+        "title": "直播",
+        "description": "观看并参加直播节目和在线会议。 观看供应商的产品直播以及您感兴趣的主题会议和行业专家的演讲"
+      }
+    },
+    "exhibitors_content": {
+      "item1": {
+        "title": "机会",
+        "description": "一个有效的机会来巩固业务地位并进入新市场"
+      },
+      "item2": {
+        "title": "统计",
+        "description": "客观统计和分析"
+      },
+      "item3": {
+        "title": "创新",
+        "description": "使用创新工具进行有效的研究，演示和培训活动"
+      },
+      "item4": {
+        "title": "优化",
+        "description": "参加展览，论坛和会议的成本优化效果"
+      },
+      "item5": {
+        "title": "沟通",
+        "description": "通过文字，音频，视频和采购商进行沟通"
+      },
+      "item6": {
+        "title": "价格",
+        "description": "您不再需要支付线下展位租费，安装费用，人员布置相关费用"
+      }
+    },
+    "organizators_content": {
+      "item1": {
+        "title": "支持",
+        "description": "支持在线展览，论坛和会议"
+      },
+      "item2": {
+        "title": "质量",
+        "description": "利用创新技术提高展览服务质量"
+      },
+      "item3": {
+        "title": "机会",
+        "description": "更有效的把海外国内的供应商和采购商更直接的联系在一起"
+      },
+      "item4": {
+        "title": "创作",
+        "description": "以您的品牌创建主题在线展览"
+      },
+      "item5": {
+        "title": "数字化",
+        "description": "通过数字格式改善展览，论坛和会议的状况"
+      },
+      "item6": {
+        "title": "独特的设计",
+        "description": "注册页面上独特的登录页面设计版块"
+      }
+    }
+  }
+}
